@@ -1,0 +1,227 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+	line-height: 24px;
+	background-color: #ffffff;
+    color: #000000;
+    font-family: 'Poppins', sans-serif;
+}
+a{
+	text-decoration: none;
+	color: inherit;
+}
+.visually-hidden {
+	position: absolute;
+	clip: rect(1px 1px 1px 1px);
+	clip: rect(1px, 1px, 1px, 1px);
+	padding:0;
+	border:0;
+	height: 1px ; 
+	width: 1px; 
+	overflow: hidden;
+}
+ul,p{
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+.Header-top-wrapper{
+    background-color: #434343;
+    height: 54px;
+}
+.Header-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1141px;
+    height: 100%;
+    margin: 0 auto;
+    font-size: 13px;
+    line-height: 42px;
+    color: #ffffff;
+    font-weight: 500;
+
+}
+.Top-config{
+    display: flex;
+}
+.Top-config > ul{
+    margin-right: 34px;
+}
+.Config-money{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.Config-money-variants-list{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    visibility: hidden;
+    background-color: #2a2a2a;
+}
+
+.Config-language{
+    position: relative;
+}
+.Config-language-list{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    visibility: hidden;
+    background-color: #2a2a2a;
+}
+.Config-help{
+    position: relative;
+}
+
+.Config-help-list{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    visibility: hidden;
+    min-width: 110px;
+    background-color: #2a2a2a;
+}
+.Top-config >ul:not(:first-child)::before{
+    content: "";
+    position: absolute;
+    display: block;
+    background-color: #ffffff;
+    width: 1px;
+    height: 21px;
+    top: 10px;
+    left: -12px;
+}
+.User-profile{
+    display: flex;
+}
+.Profile-login{
+    margin-right: 54px;
+}
+.Profile-register{
+    margin-right: 36px;
+}
+.Profile-burger{
+    margin-right: 17px;
+}
+.Header-middle-wrapper{
+    background-color: #363636;
+    height: 144px;
+}
+.Header-middle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1141px;
+    height: 100%;
+    margin: 0 auto;
+    font-size: 17px;
+    line-height: 42px;
+    color: #d8d8d8;    
+}
+
+.Middle-card{
+    margin-right: 22px;
+}
+.Middle-phone{
+    margin-left: 31px;
+    font-weight: 600;
+}
+.Middle-card>a{
+    display: block;
+    position: relative;
+    width: 51px;
+    height: 49px;
+    background-color: #d58e32;
+    border-radius: 3px;
+}
+.Middle-card>a::after{
+    content: "0";
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    top: 12px;
+    right: -20px;  
+    display: inline-block;
+    text-align: center;
+    background-color: #363636;
+    line-height: 28px;
+    font-size: 14px; 
+    border-radius: 50%;
+    font-weight: 500;
+}
+.Header-bottom-wrapper{
+    height: 84px;
+    box-shadow: 0px 4px 6px 0px rgba(1, 2, 2, 0.2);
+}
+.Header-bottom{
+    display:flex;
+    max-width: 1141px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    height: 100%;
+}
+.Header-Bottom-accurate-nav{
+    display: flex;
+    border: 1px solid #2a2a2a;
+    height: 44px;
+    width: 487px;
+
+}
+.Main-nav{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    font-size: 14px;
+    line-height: 42px;
+    color: #2a2a2a;
+    font-weight: 600;
+}
+.Main-nav>li{
+    text-align: center;
+    line-height: 84px;
+    width: 75px;
+}
+.Main-nav a{
+    display: block;
+    height: 100%;
+}
+.Main-nav>li:last-child{
+    margin-right: 10px;
+}
+.Main-nav a.Сurrent-tab{
+    border-top: 4px solid #2a2a2a;
+    line-height: 76px;
+    padding-bottom: 4px;
+    background-color: #d58e32;
+    color: white;
+}
+.Nav-catalog{
+    flex-shrink: 0;
+    flex-basis: 123px;
+    padding-left: 52px;
+    padding-right: 36px;
+    font-size: 14px;
+    line-height: 42px;
+    color: #2a2a2a;
+    font-weight: 400;
+    border-bottom: 1px solid #e3e3e3;
+    border-right: 1px solid #2a2a2a;
+}
+.Nav-search{
+    width:100%;
+    border-bottom: 1px solid #e3e3e3;
+}
+.Nav-search-field{
+    display: block;
+    outline: none;
+    border: none;
+    padding-left: 13px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 42px;
+    color: #2a2a2a;
+}
