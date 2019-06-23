@@ -410,9 +410,6 @@ ul,p,h2,h3, button{
     height: 1px;
     background-color: #2a2a2a;
 }
-.Special-offers-slider, .Special-offer-1, .Special-offer-2, .Special-offer-3{
-
-}
 .Special-offer-1, .Special-offer-2, .Special-offer-3{
     display: none;
     position: relative;
@@ -471,4 +468,50 @@ ul,p,h2,h3, button{
     border: none;
     width: 375px;
     background-color: #2a2a2a;
+}
+.Our-advantages-wrapper{
+    margin-top: 70px;
+}
+.Our-advantages{
+    width: 1141px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    height: 119px;
+}
+.Our-advantages li{
+    position: relative;
+    height: 100%;
+}
+.Our-advantages a{
+    display: block;
+    border: 1px solid #b7b7b7;
+    width: 261px;
+    height: 100%;
+    text-align: center;
+}
+.Advantages-header{
+    margin-top: 50px;
+}
+.Our-advantages li:not(:last-child){
+    margin-right: 29px;
+}
+.Advantages-icons{
+    top: -40px;
+    left: 93px;
+    width: 74px;
+    padding-top: 6px;
+    padding-left: 6px;
+    height: 74px;
+    position: absolute;
+    border: 1px solid #bababa;
+    border-radius: 50%;
+    background-color: white;
+}
+.Advantage-icons-inside{
+    position: absolute;
+    border: 1px solid #bababa;
+    border-radius: 50%;
+    height: 67px;
+    width: 67px;
 }
