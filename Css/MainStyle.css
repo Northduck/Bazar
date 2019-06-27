@@ -1,3 +1,6 @@
+
+/*HOME.html*/
+
 body{
 	margin: 0;
 	padding: 0;
@@ -137,14 +140,14 @@ ul,p,h2,h3, button{
     color: #d8d8d8;    
 }
 
-.Middle-card{
+.Middle-cart{
     margin-right: 22px;
 }
 .Middle-phone{
     margin-left: 31px;
     font-weight: 600;
 }
-.Middle-card>a{
+.Middle-cart>a{
     display: block;
     position: relative;
     width: 51px;
@@ -152,7 +155,7 @@ ul,p,h2,h3, button{
     background-color: #d58e32;
     border-radius: 3px;
 }
-.Middle-card>a::after{
+.Middle-cart>a::after{
     content: "0";
     position: absolute;
     width: 28px;
@@ -297,12 +300,12 @@ ul,p,h2,h3, button{
 /*.Hot-deal-img-wrapper img{
 
 }*/
-.adding-to-card{
+.adding-to-cart{
     position: absolute;
     top: 96px;
     left: 114px;
 }
-.adding-to-card button{
+.adding-to-cart button{
     display:block;
     border: none;
     width: 132px;
@@ -717,7 +720,7 @@ ul,p,h2,h3, button{
     background-color: #2a2a2a;
     color: white;
 }
-.New-furniture-item-buttons .Add-to-card-btn{
+.New-furniture-item-buttons .Add-to-cart-btn{
     display: block;
     padding-right: 11px;
     width: 132px;
@@ -1153,4 +1156,48 @@ ul,p,h2,h3, button{
     font-size: 14px;
     line-height: 24px;
     color: #676767;
+}
+.Footer-top{
+    background-color: #363636;
+    height: 334px;
+}
+.Footer-information-lists{
+    width: 1141px;
+    margin: 0 auto;   
+    padding-top: 62px;
+    display: flex;
+    justify-content: space-between;
+}
+.Footer-information-lists .Footer-header{
+    margin-bottom: 23px;
+    font-size: 22px;
+    line-height: 26px;
+    font-weight: 600;
+    color: white;
+}
+.Footer-info-list li:not(:first-child){
+    margin-bottom: 10px;
+    color: #a9a9a9;
+}
+.Footer-info-list li:last-child{
+    margin-bottom: 0px;
+}
+.Footer-bottom-wrapper{
+    background-color: #2a2a2a;
+    height: 95px;
+}
+.Footer-bottom{
+    width: 1141px;
+    margin: 0 auto;     
+}
+.Footer-bottom{
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+.Footer-copyright{
+    font-size: 14px;
+    line-height: 24px;
+    color: #a9a9a9;
 }
