@@ -1103,7 +1103,8 @@ ul,p,h2,h3, button{
 .Brands-list-section .List-scroll-left{
     margin-right: 31px;
 }
-.Brands-list li{
+.Brands-list a{
+    display: block;
     width: 141px;
     height: 90px;
     border: 1px solid #e2e2e2;
