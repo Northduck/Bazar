@@ -79,25 +79,25 @@
                 <div class="Product-category-nav">
                     <h3 class="Category-header">FURNITURE</h3>
                     <ul class="Category-nesting-nav">
-                        <li>Home</li>
-                        <li>Furniture</li>
-                        <li>Chair</li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Furniture</a></li>
+                        <li><a href="#">Chair</a></li>
                     </ul>
                 </div>
             </div>
             <div class="Shop-page-product-item">
                 <div class="Shop-page-product-left-column">
                     <div class="Product-active-img">
-                        <img src="" alt="">
+                        <img src="" alt="" width="436" height="493">
                         <button class="Expand-img-btn"></button>
                     </div>
                     <div class="Product-img-slider">
                         <button class="Slide-left-btn"></button>
                         <ul class="Product-imgs-list">
-                            <li><img src="" alt=""></li>
-                            <li><img src="" alt=""></li>
-                            <li><img src="" alt=""></li>
-                            <li><img src="" alt=""></li>
+                            <li><img src="" alt="" width="88" height="104"></li>
+                            <li><img src="" alt="" width="88" height="104"></li>
+                            <li><img src="" alt="" width="88" height="104"></li>
+                            <li><img src="" alt="" width="88" height="104"></li>
                         </ul>
                         <button class="Slide-right-btn"></button>
                     </div>
@@ -107,33 +107,32 @@
                         <div class="Product-header-row">
                             <h1 class="Product-name-header">Sunbaby Magic Bear Chair</h1>
                             <div class="Change-product-btn-wrapper">
-                                <button class="Change-product-btn"></button>
-                                <button class="Change-product-btn"></button>
+                                <button class="Change-product-btn-left"></button>
+                                <button class="Change-product-btn-right"></button>
                             </div>
                         </div>
                         <div class="Product-users-rating-row">
-                            <span class="Product-rating">SS</span>
-                            <span class="Product-reviews-counter">0 reviews</span>
+                            <span class="Product-rating">SS</span><span class="Product-reviews-counter">0 reviews</span>
                             <a href="#" class="Product-to-adding-review-link">Add Your Review</a>
                         </div>
                     </li>
                     <li class="Product-price-subsection">
                         <p class="Old-price">$350.00</p>
-                        <p class="New-orice">$250.00</p>
+                        <p class="New-price">$250.00</p>
                     </li>
                     <li class="Product-controls-btns-subsection">
                         <form action="" method="GET">
                             <ul class="Controls-btns">
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
+                                <li><button class="Add-to-cart-btn">ADD TO CARD</button></li>
+                                <li><button class="Control-btn"></button></li>
+                                <li><button class="Control-btn"></button></li>
+                                <li><button class="Control-btn"></button></li>
                             </ul>
                             <div class="Quantity-controls">
                                 <label for="">Quantity:</label>
-                                <button class="Quantity-minus-btn">-</button>
-                                <input type="text">
-                                <button class="Quantity-plus-btn">+</button>
+                                <button class="Quantity-minus-btn"></button>
+                                <input type="text" value="2">
+                                <button class="Quantity-plus-btn"></button>
                             </div>
                         </form>
                     </li>
@@ -144,51 +143,50 @@
                     <li class="Product-special-info-subsection">
                         <table class="Product-special-table">
                             <tr>
-                                <td>Avaliability:</td>
-                                <td>In Stock</td>
+                                <td class="Product-special-table-head">Avaliability:</td>
+                                <td class="Product-special-table-value">In Stock</td>
                             </tr>
                             <tr>
-                                <td>Category</td>
-                                <td>Furniture</td>
+                                <td class="Product-special-table-head">Category:</td>
+                                <td class="Product-special-table-value">Furniture</td>
                             </tr>
                         </table>
                     </li>
                     <li class="Product-share-subsection">
                         <ul class="Product-share-list">
-                            <li>Facebook</li>
-                            <li>Google+</li>
-                            <li>Tweet</li>
-                            <li>Pinterest</li>
-                            <li>Linkedin</li>
+                            <li><a href="#">Facebook</a></li>
+                            <li><a href="#">Google+</a></li>
+                            <li><a href="#">Tweet</a></li>
+                            <li><a href="#">Pinterest</a></li>
+                            <li><a href="#">Linkedin</a></li>
                         </ul>
                     </li>
                 </ul>
             </div>
             <div class="Product-info-wrapper">
                 <ul class="Product-info-nav">
-                    <li>DESCRIPTION</li>
-                    <li>REVIEWS (<span></span>)</li>
-                    <li>SPECIFICATION</li>
+                    <li><a href="#">DESCRIPTION</a></li>
+                    <li><a href="#" class="Product-info-active-tab">REVIEWS (<span>0</span>)</a></li>
+                    <li><a href="#">SPECIFICATION</a></li>
                 </ul>
                 <ul class="Product-info-content">
-                    <li></li>
                     <li class="Product-info-content-reviews-wrapper">
                         <ul class="Product-reviews">
-                            <li>There are no reviews for this product.</li>
+                            <li class="No-reviews-plug">There are no reviews for this product.</li>
                         </ul>
                         <div class="New-user-review">
-                            <p>Add a review</p>
-                            <p>Your rating</p>
-                            <span>SS</span>
-                            <form action="" method="POST">
-                                <label for="">
+                            <h4 class="New-user-review-header">Add a review</h4>
+                            <p class="New-user-review-rating-par">Your Rating</p>
+                            <span class="New-user-review-rating">SS</span>
+                            <form action="" method="POST" class="User-review-form">
+                                <label for="" class="Review-text-label">
                                     Your review
-                                    <input type="text">
+                                    <textarea name="" id="" rows="5" class="New-user-revier-text"></textarea>
                                 </label>
                                 <div class="User-info-wrapper">
-                                    <input type="text" placeholder="Name*">
-                                    <input type="email">
-                                    <input type="submit" value="Post">
+                                    <input type="text" placeholder="Name*" class="User-info-user-name">
+                                    <input type="email" placeholder="Email*" class="User-info-email">
+                                    <input type="submit" value="POST" class="User-info-submit-btn">
                                 </div>        
                             </form>
                         </div>
@@ -196,10 +194,8 @@
                     <li></li>
                 </ul>
             </div>
-            <div class="Separating-line"></div>
             <section class="New-furniture-catalog">
                 <div class="New-furniture-catalog-head">
-                    <div class="Catalog-nav-wrapper">
                         <h2 class="Section-header">NEW FURNITURE</h2>
                     <div class="Catalog-slider-btn-wrapper">
                         <button class="Slider-btn Active-slide-btn"></button>
@@ -309,12 +305,16 @@
             <div class="User-news-subscriber-form-wrapper">
                 <div class="User-news-subscriber-form-centerer">
                     <form action="" method="POST">
-                        <label for="">
-                            NEWSLETTER:
-                        </label>
-                        <div class="Email-icon-wrapper"></div>
-                        <input type="email">
-                        <input type="submit">
+                        <div class="User-news-form-content-wrapper">
+                            <label for="" class="User-news-form-header">
+                                NEWSLETTER:
+                            </label>
+                            <div class="User-news-email-wrapper">
+                                <div class="Email-icon-wrapper"></div>
+                                <input type="email" class="User-news-email" placeholder="Enter your email address">
+                                <input type="submit" class="User-news-submit-btn" value="">
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>         
