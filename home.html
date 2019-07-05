@@ -4,63 +4,57 @@
         <title>Bazar</title>
         <link rel="stylesheet" type="text/css" href="Css/MainStyle.css">
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap" rel="stylesheet">
+        <link href="Css/all.min.css" rel="stylesheet">
     </head>
     <body>
         <header class="Header">
             <div class="Header-top-wrapper">
                 <div class="Header-top">
                     <div class="Top-config">
-                        <ul class="Config-money">
-                            <li class="Current-currency"><a href="#">USD</a></li>
-                            <li class="Config-money-variants">
-                                <ul class="Config-money-variants-list">
-                                    <li class="Config-money-usd"><a href="#">USD</a></li>
-                                    <li class="Config-money-euro"><a href="#">EUR</a></li>
-                                    <li class="Config-money-rubles"><a href="#">RUB</a></li>
-                                </ul>
-                            </li>
-
-                        </ul>
-                        <ul class="Config-language">
-                            <li><a href="#">English</a></li>
-                            <li>
+                        <div class="Config-money">
+                            <a class="Current-config-tab Current-money-tab" href="#">USD<i class="fas fa-caret-down"></i></a>
+                            <ul class="Config-money-list">
+                                <li><a class="Config-money-usd"  href="#">USD</a></li>
+                                <li><a class="Config-money-euro"  href="#">EUR</a></li>
+                                <li><a class="Config-money-rubles" href="#">RUB</a></li>
+                            </ul>
+                        </div>
+                        <div class="Config-language">
+                            <a class="Current-config-tab Current-language-tab" href="#">English<i class="fas fa-caret-down"></i></a>
                                 <ul class="Config-language-list">
                                     <li><a href="#">English</a></li>
                                     <li><a href="#">Russian</a></li>
                                 </ul>
-                            </li>
-                        </ul>
-                        <ul class="Config-help">
-                            <li><a href="#">Help</a></li>
-                            <li>
+                        </div>
+                        <div class="Config-help">
+                            <a class="Current-config-tab Current-help-tab" href="#">Help<i class="fas fa-caret-down"></i></a>
                                 <ul class="Config-help-list">
                                     <li><a href="#">First variant</a></li>
                                     <li><a href="#">Second variant</a></li>
                                     <li><a href="#">Thrird variant</a></li>
-                                </ul>
-                            </li>                    
-                        </ul>
+                                </ul>                  
+                        </div>
                     </div>
                     <ul class="User-profile">
-                        <li class="Profile-login"><a href="#">Login</a></li>
-                        <li class="Profile-register"><a href="#">Register</a></li>
-                        <li class="Profile-burger"><a href="#"><span class="visually-hidden">Burger</span></a></li>
+                        <li><a class="Profile-login" href="#"><i class="fas fa-user"></i>Login</a></li>
+                        <li><a class="Profile-register" href="#"><i class="fas fa-lock"></i>Register</a></li>
+                        <li><a class="Profile-burger" href="#"><i class="fas fa-bars"></i><span class="visually-hidden">Burger</span></a></li>
                     </ul>
                 </div>
             </div>
             <div class="Header-middle-wrapper">
                 <ul class="Header-middle">
-                        <li class="Middle-phone">2300 - 3560 - 222</li>
-                        <li class="Middle-logo"><img src="Img/MainLogo.png" alt="Logo" width="165" height="77"></li>
-                        <li class="Middle-cart"><a href="#"></a></li>
-                    </ul>
+                    <li><a class="Middle-phone" href="tel:+23003560222"><i class="fas fa-mobile-alt"></i>2300 - 3560 - 222</a></li>
+                    <li><a class="Middle-logo" href="#"><img src="Img/MainLogo.png" alt="Logo" width="165" height="77"></a></li>
+                    <li><a class="Middle-cart" href="#"><i class="fas fa-shopping-basket"></i></a></li>
+                </ul>
             </div>
             <div class="Header-bottom-wrapper">
                 <div class="Header-bottom">
                     <div class="Header-Bottom-accurate-nav">
-                        <p class="Nav-catalog">Select a category</p>
+                        <button class="Nav-catalog-btn"><i class="fas fa-list"></i>Select a category<i class="fas fa-caret-down"></i></button>
                         <div class="Nav-search">
-                            <form action="" method="POST"><input class="Nav-search-field" type="search" name="Search-field" id="Header-nav-search-field" placeholder="Search products ..."></form>
+                            <form class="Nav-search-form" action="" method="POST"><input class="Nav-search-field" type="search" name="Search-field" id="Header-nav-search-field" placeholder="Search products..."><i class="fas fa-search"></i></form>
                         </div>
                     </div>
                     <ul class="Main-nav">

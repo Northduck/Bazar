@@ -29,6 +29,9 @@ ul,p,h2,h3, button{
     padding:0;
     list-style: none;
 }
+.fas{
+    position: absolute;
+}
 .Section-header{
     position: relative;
     font-size: 20px;
@@ -64,45 +67,66 @@ ul,p,h2,h3, button{
 .Top-config{
     display: flex;
 }
-.Top-config > ul{
-    margin-right: 34px;
-}
 .Config-money{
-    display: flex;
-    flex-direction: column;
     position: relative;
 }
-.Config-money-variants-list{
+.Current-money-tab:hover + .Config-money-list,
+.Current-money-tab:focus + .Config-money-list,
+.Config-money-list:hover{
+    visibility: visible;
+}
+.Config-money-list,
+.Config-language-list,
+.Config-help-list{
     position: absolute;
+    top: 30px;
+    left: -5px;
+    padding: 5px;
     display: flex;
     flex-direction: column;
     visibility: hidden;
-    background-color: #2a2a2a;
+    line-height: 25px;
+    background-color: #434343;
+    z-index: 10;
 }
-
+.Current-config-tab{
+    position:  relative;
+    margin-right: 21px;
+    padding-right: 13px;
+    line-height: 25px;
+}
+.Header-top a:hover,
+.Header-top .a:focus{
+    opacity: 0.5;
+}
+.Header-top a:active{
+    opacity: 1;
+}
+.Current-config-tab .fa-caret-down{
+    top: 4px;
+    right: 0px;
+    font-size: 13px;
+}
 .Config-language{
     position: relative;
 }
-.Config-language-list{
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    visibility: hidden;
-    background-color: #2a2a2a;
+.Current-language-tab:hover + .Config-language-list,
+.Current-language-tab:focus + .Config-language-list,
+.Config-language-list:hover{
+    visibility: visible;
 }
 .Config-help{
     position: relative;
 }
-
-.Config-help-list{
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    visibility: hidden;
-    min-width: 110px;
-    background-color: #2a2a2a;
+.Current-help-tab:hover + .Config-help-list,
+.Current-help-tab:focus + .Config-help-list,
+.Config-help-list:hover{
+    visibility: visible;
 }
-.Top-config >ul:not(:first-child)::before{
+.Config-help-list{
+    min-width: 110px;
+}
+.Top-config >div:not(:first-child)::before{
     content: "";
     position: absolute;
     display: block;
@@ -116,19 +140,35 @@ ul,p,h2,h3, button{
     display: flex;
 }
 .Profile-login{
-    margin-right: 54px;
+    position: relative;
+    margin-right: 32px;
+    padding-left: 22px;
+}
+.Profile-login .fa-user,
+.Profile-register .fa-lock{
+    font-size: 13px;
+    top:5px;
+    left: 0px;
 }
 .Profile-register{
+    position: relative;
     margin-right: 36px;
+    padding-left: 22px;
 }
 .Profile-burger{
-    margin-right: 17px;
+    position: relative;
+}
+.Profile-burger .fa-bars{
+    position: static;
+    top: 1px;
+    font-size: 16px;
 }
 .Header-middle-wrapper{
     background-color: #363636;
     height: 144px;
 }
 .Header-middle{
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -139,15 +179,19 @@ ul,p,h2,h3, button{
     line-height: 42px;
     color: #d8d8d8;    
 }
-
+.Header-middle .fa-mobile-alt{
+    font-size: 44px;
+    left: 0px;
+    color: #d58e32;
+}
 .Middle-cart{
     margin-right: 22px;
 }
 .Middle-phone{
-    margin-left: 31px;
+    padding-left: 42px;
     font-weight: 600;
 }
-.Middle-cart>a{
+.Middle-cart{
     display: block;
     position: relative;
     width: 51px;
@@ -155,7 +199,7 @@ ul,p,h2,h3, button{
     background-color: #d58e32;
     border-radius: 3px;
 }
-.Middle-cart>a::after{
+.Middle-cart::after{
     content: "0";
     position: absolute;
     width: 28px;
@@ -170,6 +214,15 @@ ul,p,h2,h3, button{
     border-radius: 50%;
     font-weight: 500;
 }
+.Middle-cart:hover,
+.Middle-phone:hover{
+    opacity: 0.9;
+}
+.Header-middle .fa-shopping-basket{
+    left: 10px;
+    top: 11px;
+    font-size: 25px;
+}
 .Header-bottom-wrapper{
     height: 84px;
     box-shadow: 0px 4px 6px 0px rgba(1, 2, 2, 0.2);
@@ -183,12 +236,17 @@ ul,p,h2,h3, button{
     height: 100%;
 }
 .Header-Bottom-accurate-nav{
+    position: relative;
     display: flex;
     border: 1px solid #2a2a2a;
     height: 44px;
-    width: 487px;
-
+    width: 487px;           
 }
+.Header-bottom .fa-list{
+    font-size: 22px;
+    left: 13px;
+    top: 10px;   
+}                                                           
 .Main-nav{
     display: flex;
     align-items: center;
@@ -201,11 +259,11 @@ ul,p,h2,h3, button{
 .Main-nav>li{
     text-align: center;
     line-height: 84px;
-    width: 75px;
 }
 .Main-nav a{
     display: block;
     height: 100%;
+    padding: 0 15px;
 }
 .Main-nav>li:last-child{
     margin-right: 10px;
@@ -217,9 +275,16 @@ ul,p,h2,h3, button{
     background-color: #d58e32;
     color: white;
 }
-.Nav-catalog{
+
+.Main-nav a:hover{
+    color: #d58e32;
+}
+.Main-nav .Сurrent-tab:hover{
+    color: #ffffff;
+}
+.Nav-catalog-btn{
+    position: relative;
     flex-shrink: 0;
-    flex-basis: 123px;
     padding-left: 52px;
     padding-right: 36px;
     font-size: 14px;
@@ -243,8 +308,23 @@ ul,p,h2,h3, button{
     line-height: 42px;
     color: #2a2a2a;
 }
-
-
+.Nav-search-form{
+    position: relative;
+}
+.Nav-search-form .fa-search{
+    top: 14px;
+    right: 14px;
+    font-size: 16px;    
+}
+.Nav-catalog-btn .fa-caret-down{
+    font-size: 16px;
+    top: 14px;
+    right: 12px;
+}
+.Nav-catalog-btn:focus,
+.Nav-catalog-btn:hover{
+color: #d58e32;
+}
 .Hot-deals-special-offers-sliders{
     display: flex;
     justify-content: space-between;
