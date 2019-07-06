@@ -29,7 +29,8 @@ ul,p,h2,h3, button{
     padding:0;
     list-style: none;
 }
-.fas{
+.fas,
+.far{
     position: absolute;
 }
 .Section-header{
@@ -285,6 +286,7 @@ ul,p,h2,h3, button{
 .Nav-catalog-btn{
     position: relative;
     flex-shrink: 0;
+    cursor: pointer;
     padding-left: 52px;
     padding-right: 36px;
     font-size: 14px;
@@ -303,7 +305,7 @@ ul,p,h2,h3, button{
     outline: none;
     border: none;
     padding-left: 13px;
-    width: 100%;
+    width: 254px;
     font-size: 14px;
     line-height: 42px;
     color: #2a2a2a;
@@ -331,12 +333,10 @@ color: #d58e32;
     width: 1141px;
     margin: 0 auto;
 }
-
 .Hot-deals-slider{
     width: 360px;
     height: 505px;
 }
-
 .Hot-deals-top{
     display: flex;
     align-items: center;
@@ -357,11 +357,15 @@ color: #d58e32;
 }
 .Slider-btn{
     display: block;
+    cursor: pointer;
     width: 13px;
     height: 13px;
     border-radius: 50%;
     border: none;
     background-color: #e2e2e2;
+}
+.Slider-btn:hover{
+    background-color: #d58e32;
 }
 .Hot-deals-slider-btn-wrapper>button:not(:first-child){
     margin-left: 9px;
@@ -377,20 +381,24 @@ color: #d58e32;
     position: relative;
     background-color: #f4f5f7;
 }
-/*.Hot-deal-img-wrapper img{
-
-}*/
-.adding-to-cart{
+.Hot-deal-img-wrapper:hover > .Adding-to-cart,
+.Adding-to-cart:hover,
+.Hot-deals-timer:hover ~ .Adding-to-cart{
+    visibility: visible;
+}
+.Adding-to-cart{
+    cursor: pointer;
     position: absolute;
-    top: 96px;
+    visibility: hidden;
+    bottom: 155px;
     left: 114px;
 }
-.adding-to-cart button{
+.Hot-deals-slider .Add-to-cart-btn{
     display:block;
     border: none;
     width: 132px;
     height: 37px;
-    padding-left: 35px;
+    padding-left: 32px;
     border-radius: 0;
     text-align: start;
     line-height: 37px;
@@ -398,6 +406,11 @@ color: #d58e32;
     font-weight: 600;
     color: white;
     background-color: #2a2a2a;
+}
+.Add-to-cart-btn .fa-shopping-basket{
+    font-size: 16px;
+    top: 10px;
+    left: 7px;
 }
 .Hot-deals-timer{
     display: flex;
@@ -438,8 +451,16 @@ color: #d58e32;
     font-size: 16px;
     line-height: 41px;
 }
+.item-header-link:hover{
+    color: #d58e32;
+}
 .Hot-deal-rating{
+    position: relative;
     margin-bottom: 14px;
+}
+.fa-star{
+    position: static;
+    font-size: 16px;
 }
 .Hot-deal-decorative-line{
     position: relative;
@@ -462,23 +483,37 @@ color: #d58e32;
     width: 100%;
     justify-content: space-between;
 }
-.Hot-deal-controls{
+.Item-controls{
     display: flex;
     padding-left: 13px;
 }
-.Hot-deal-controls li{
+.Item-controls button{
+    display: block;
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
     width: 35px;
     height: 35px;
     border: 1px solid #2a2a2a;
 }
-.Hot-deal-controls li:not(:last-child){
+.Item-controls button:hover{
+    color: #d58e32;
+}
+.Item-controls .fa-eye,
+.Item-controls .fa-heart,
+.Item-controls .fa-exchange-alt,
+.Item-controls .fa-shopping-basket{
+    font-size: 16px;
+    top: 8px;
+    left: 8px;
+}
+.Item-controls li:not(:last-child){
     margin-right: 5px;
 }
 .About-prices{
     display: flex;
     align-items: baseline;
     margin-right: 15px;
-    
 }
 .About-prices .New-price{
     width: 95px;
@@ -509,7 +544,6 @@ color: #d58e32;
     background-color: #2a2a2a;
 }
 .Special-offers-slider .Special-offer-slider-item-1, .Special-offers-slider .Special-offer-slider-item-2, .Special-offers-slider .Special-offer-slider-item-3{
-    display: none;
     position: relative;
 }
 .Special-offers-slider .Special-offer-slider-item-1{
@@ -542,7 +576,7 @@ color: #d58e32;
 }
 .Special-offers-slider .Catalog-link{
     position: absolute;
-    display: block;
+    visibility: hidden;
     left: 308px;
     top: 330px;
     width: 136px;
@@ -554,6 +588,11 @@ color: #d58e32;
     border-radius: 3px;
     background-color: white;
 }
+.Special-offer-slider-item-1:hover>.Catalog-link,
+.Special-offer-slider-item-2:hover>.Catalog-link,
+.Special-offer-slider-item-3:hover>.Catalog-link{
+    visibility: visible;
+}
 .Special-offer-slider-btn{
     display: flex;
     width: 750px;
@@ -562,10 +601,23 @@ color: #d58e32;
     border-right: 1px solid #e3e3e3;
 }
 .Special-offer-slider-btn .slider-btn{
+    position: relative;
     display: block;
     border: none;
+    cursor: pointer;
     width: 375px;
     background-color: #2a2a2a;
+    color: white;
+    font-size: 14px;
+}
+.Special-offer-slider-btn .fa-chevron-left,
+.Special-offer-slider-btn .fa-chevron-right{
+    top: 13px;
+}
+.Slider-previous-btn:hover,
+.Slider-next-btn:hover
+{
+    background-color: #d58e32;
 }
 .Our-advantages{  
     width: 1141px;
@@ -611,6 +663,26 @@ color: #d58e32;
     border-radius: 50%;
     height: 67px;
     width: 67px;
+}
+.Advantage-icons-inside .fas{
+    font-size: 26px;
+    left: 20px;
+    top: 20px;
+}
+.Advantage-icons-inside .fa-headphones{
+    left: 21px;
+}
+.Our-advantages-article-link:hover > .Advantages-header,
+.Our-advantages-article-link:hover > .Advantages-par{
+    color: #d58e32;
+}
+.Our-advantages-article-link:hover > .Advantages-icons{
+    border-color: #d58e32;
+}
+.Our-advantages-article-link:hover > .Advantages-icons .Advantage-icons-inside{
+    border-color: #d58e32;
+    background-color: #d58e32;
+    color: white;
 }
 .Fixed-two-column-special-offers{
     display: flex;
@@ -737,6 +809,9 @@ color: #d58e32;
     display: block;
     height: 100%;
 }
+.New-furniture-Catalog-nav a:not(.Active-tab):hover{
+    color: #d58e32;
+}
 .New-furniture-Catalog-nav li:not(:last-child){
     margin-right: 18px;
 }
@@ -786,30 +861,43 @@ color: #d58e32;
 .New-furniture-item-buttons{
     position: absolute;
     display: flex;
+    visibility: hidden;
     left: 11px;
     bottom: 5px;
-    font-size: 13px;
     line-height: 37px;
 }
-.New-furniture-item-buttons .Quick-view-btn{
+.Quick-view-btn{
     display: block;
     width: 87px;
     height: 37px;
+    font-size: 13px;
     margin-right: 22px;
+    font-weight: 500;
     border: none;
+    cursor: pointer;
     background-color: #2a2a2a;
     color: white;
 }
-.New-furniture-item-buttons .Add-to-cart-btn{
+.Add-to-cart-btn{
+    position: relative;
     display: block;
+    font-size: 13px;
     padding-right: 11px;
     width: 132px;
     height: 37px;
+    cursor: pointer;
     border: none;
     background-color: #2a2a2a;
     color: white;
     text-align: end;
     font-weight: 600;
+}
+.Quick-view-btn:hover,
+.Add-to-cart-btn:hover{
+    color: #d58e32;
+}
+.New-furniture-catalog-item:hover  .New-furniture-item-buttons{
+    visibility: visible;
 }
 .Sale-item::before{
     content: "SALE";
@@ -913,36 +1001,42 @@ color: #d58e32;
     line-height: 43px;
     font-weight: 600;
 }
-.Gallery-nav li{
-    width: 137px;
+.Gallery-nav-element{
+    box-sizing: border-box;
+    width: 138.25px;
     text-align: center;
     border: 1px solid #e2e2e2;
+    border-left: none;
 }
-.Gallery-nav a{
+.Gallery-nav:first-of-type{
+    border-left: 1px solid #e2e2e2;
+}
+.Gallery-nav-element{
     display: block;
     height: 100%;
 }
+.Gallery-nav-element:not(.Active-gallery-element):hover{
+    color: #d58e32;
+}
 .Gallery-nav .Active-gallery-element{
-    border-bottom: none;
     border-top: 3px solid #d58e32;
+    border-bottom: none;
 }
 .Gallery-content{
     position: relative;
     border: 1px solid #e2e2e2;
     border-top: none;
 }
-.Gallery-controls{
+.Gallery-content .Item-controls{
+    flex-direction: column;
+
     position: absolute;
     top: 118px;
     left: 8px;
 }
-.Gallery-controls li button{
-    display: block;
-    width: 35px;
-    height: 35px;
+.Gallery-content .Item-controls button{
+    background-color: rgba(0, 0, 0, 0);
     margin-bottom: 8px;
-    border: 1px solid #2a2a2a;
-    background: none;
 }
 .Gallery-item-prices{
     position: absolute;
@@ -1029,7 +1123,9 @@ color: #d58e32;
 }
 .Gallery-slider .Slider-scroll-left-btn,
 .Gallery-slider .Slider-scroll-right-btn{
+    position: relative;
     display: block;
+    cursor: pointer;
     width: 33px;
     height: 70px;
     border: none;
@@ -1037,6 +1133,19 @@ color: #d58e32;
 }
 .Gallery-slider .Slider-scroll-left-btn{
     margin-right: 7px;
+}
+.Gallery-slider .fa-chevron-left,
+.Gallery-slider .fa-chevron-right{
+    font-size: 13px;
+    top: 30px;
+    left: 14px;
+    color: white;
+}
+.Gallery-slider .Slider-scroll-left-btn:hover .fa-chevron-left,
+.Gallery-slider .Slider-scroll-right-btn:hover .fa-chevron-right,
+.Brands-list-section .List-scroll-left-btn:hover .fa-chevron-left,
+.Brands-list-section .List-scroll-right-btn:hover .fa-chevron-right{
+    color: #d58e32;
 }
 .Gallery-img-list{
     display: flex;
@@ -1046,8 +1155,10 @@ color: #d58e32;
     height: 70px;
     margin-right: 7px;
 }
+.Gallery-img-list .Gallery-item:hover{
+    opacity: 0.9;
+}
 .Extra-promotion-special-offer{
-
     width: 556px;
     height: 615px;
     background-color: #e8edf7;
@@ -1072,6 +1183,10 @@ color: #d58e32;
     color: #d58e32;
 }
 .Extra-promotion-special-shop-now-btn{
+    display: block;
+    text-align: center;
+    visibility: hidden;
+    cursor: pointer;
     margin-left: 62px;
     margin-top: 40px;
     width: 136px;
@@ -1083,6 +1198,12 @@ color: #d58e32;
     line-height: 54px;
     font-size: 14px;
     font-weight: 600;
+}
+.Extra-promotion-special-offer:hover .Extra-promotion-special-shop-now-btn{
+    visibility: visible;
+}
+.Extra-promotion-special-shop-now-btn:hover{
+    color: #000000;
 }
 .Latest-blog-articles{
     width: 1141px;
@@ -1125,14 +1246,29 @@ color: #d58e32;
     left: calc(50% - 150px);
     background-color: white;
 }
+.Article-button-read-more:hover{
+    background-color: #d58e32;
+}
 .Blog-article .Article-top{
     display: flex;
     justify-content: space-between;
-    padding-left: 43px;
-    padding-right: 25px;
+    padding-left: 22px;
+    padding-right: 26px;
+    margin-bottom: 20px;
+    padding-top: 25px;
     font-size: 13px;
     line-height: 78px;
     color: #676767;
+}
+.Article-date,
+.Article-comments-count{
+    position: relative;
+    line-height: 37px;
+}
+.Article-top .fa-calendar-alt,
+.Article-top .fa-comments{
+    padding-right: 7px;
+    position: static;
 }
 .Blog-article  .Article-content{
     text-align: center;
@@ -1153,6 +1289,7 @@ color: #d58e32;
     bottom: -96px;
     left: calc(50% - 82px);
     border: none;
+    cursor: pointer;
     width: 165px;
     height: 45px;
     background-color: #2a2a2a;
@@ -1174,21 +1311,32 @@ color: #d58e32;
     display: flex;
 }
 .Brands-list-section button{
+    position: relative;
     display: block;
     border: none;
+    cursor: pointer;
     background-color: #2a2a2a;
     width: 33px;
     height: 92px;
 }
-.Brands-list-section .List-scroll-left{
+.Brands-list-section .List-scroll-left-btn{
     margin-right: 31px;
 }
-.Brands-list a{
+.Brands-list-section button .fas{
+    color: white;
+    font-size: 13px;
+    top: 41px;
+    left: 14px;
+}
+.Brands-list .List-item{
     display: block;
     width: 141px;
     height: 90px;
     border: 1px solid #e2e2e2;
     margin-right: 31px;
+}
+.Brands-list .List-item:hover{
+    border-color: #d58e32;
 }
 .Client-feedback-wrapper{
     width: 1141px;
@@ -1205,6 +1353,14 @@ color: #d58e32;
 .Feedback-section-top .Catalog-slider-btn-wrapper{
     position: relative;
     bottom: -5px;
+}
+.Feedback-content{
+    position: relative;
+}
+.Feedback-content .fa-quote-right{
+    font-size: 24px;
+    top: -49px;
+    left: 559px;
 }
 .Feedback-content .Feedback-text{
     margin-left: 103px;
@@ -1238,6 +1394,9 @@ color: #d58e32;
     line-height: 24px;
     color: #676767;
 }
+.Footer a:hover{
+    opacity: 0.5;
+}
 .Footer-top{
     background-color: #363636;
     height: 334px;
@@ -1263,6 +1422,9 @@ color: #d58e32;
 .Footer-info-list li:last-child{
     margin-bottom: 0px;
 }
+.Payments-types{
+    margin-top: 24px;
+}
 .Footer-bottom-wrapper{
     background-color: #2a2a2a;
     height: 95px;
@@ -1282,7 +1444,17 @@ color: #d58e32;
     line-height: 24px;
     color: #a9a9a9;
 }
-
+.Footer-media-list{
+    display: flex;
+    font-size: 18px;
+    color: #a1a1a1;
+}
+.Footer-media-list li:not(:last-child){
+    margin-right: 23px;
+}
+.Footer-media-element:hover{
+    opacity: 0.5;
+}
 /*shop.html*/
 h1,h4{
     padding: 0;
@@ -1476,18 +1648,7 @@ h1,h4{
 .Product-controls-btns-subsection li:not(:last-child){
     margin-right: 7px;
 }
-.Add-to-cart-btn{
-    display: block;
-    font-size: 13px;
-    padding-right: 11px;
-    width: 132px;
-    height: 37px;
-    border: none;
-    background-color: #2a2a2a;
-    color: white;
-    text-align: end;
-    font-weight: 600;
-}
+
 .Quantity-controls{
     display: flex;
 }
