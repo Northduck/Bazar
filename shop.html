@@ -1,65 +1,60 @@
 <!DOCTYPE html>
 <html>
-        <head>
-            <title>Bazar</title>
-            <link rel="stylesheet" type="text/css" href="Css/MainStyle.css">
-            <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap" rel="stylesheet">
-        </head>
-        <body>
+    <head>
+        <title>Bazar</title>
+        <link rel="stylesheet" type="text/css" href="Css/MainStyle.css">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap" rel="stylesheet">
+        <link href="Css/all.min.css" rel="stylesheet">
+    </head>
+    <body>
         <header class="Header">
             <div class="Header-top-wrapper">
                 <div class="Header-top">
                     <div class="Top-config">
-                        <ul class="Config-money">
-                            <li class="Current-currency"><a href="#">USD</a></li>
-                            <li class="Config-money-variants">
-                                <ul class="Config-money-variants-list">
-                                    <li class="Config-money-usd"><a href="#">USD</a></li>
-                                    <li class="Config-money-euro"><a href="#">EUR</a></li>
-                                    <li class="Config-money-rubles"><a href="#">RUB</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <ul class="Config-language">
-                            <li><a href="#">English</a></li>
-                            <li>
+                        <div class="Config-money">
+                            <a class="Current-config-tab Current-money-tab" href="#">USD<i class="fas fa-caret-down"></i></a>
+                            <ul class="Config-money-list">
+                                <li><a class="Config-money-usd"  href="#">USD</a></li>
+                                <li><a class="Config-money-euro"  href="#">EUR</a></li>
+                                <li><a class="Config-money-rubles" href="#">RUB</a></li>
+                            </ul>
+                        </div>
+                        <div class="Config-language">
+                            <a class="Current-config-tab Current-language-tab" href="#">English<i class="fas fa-caret-down"></i></a>
                                 <ul class="Config-language-list">
                                     <li><a href="#">English</a></li>
                                     <li><a href="#">Russian</a></li>
                                 </ul>
-                            </li>
-                        </ul>
-                        <ul class="Config-help">
-                            <li><a href="#">Help</a></li>
-                            <li>
+                        </div>
+                        <div class="Config-help">
+                            <a class="Current-config-tab Current-help-tab" href="#">Help<i class="fas fa-caret-down"></i></a>
                                 <ul class="Config-help-list">
                                     <li><a href="#">First variant</a></li>
                                     <li><a href="#">Second variant</a></li>
                                     <li><a href="#">Thrird variant</a></li>
-                                </ul>
-                            </li>                    
-                        </ul>
+                                </ul>                  
+                        </div>
                     </div>
                     <ul class="User-profile">
-                        <li class="Profile-login"><a href="#">Login</a></li>
-                        <li class="Profile-register"><a href="#">Register</a></li>
-                        <li class="Profile-burger"><a href="#"><span class="visually-hidden">Burger</span></a></li>
+                        <li><a class="Profile-login" href="#"><i class="fas fa-user"></i>Login</a></li>
+                        <li><a class="Profile-register" href="#"><i class="fas fa-lock"></i>Register</a></li>
+                        <li><a class="Profile-burger" href="#"><i class="fas fa-bars"></i><span class="visually-hidden">Burger</span></a></li>
                     </ul>
                 </div>
             </div>
             <div class="Header-middle-wrapper">
                 <ul class="Header-middle">
-                        <li class="Middle-phone">2300 - 3560 - 222</li>
-                        <li class="Middle-logo"><img src="Img/MainLogo.png" alt="Logo" width="165" height="77"></li>
-                        <li class="Middle-cart"><a href="#"></a></li>
-                    </ul>
+                    <li><a class="Middle-phone" href="tel:+23003560222"><i class="fas fa-mobile-alt"></i>2300 - 3560 - 222</a></li>
+                    <li><a class="Middle-logo" href="#"><img src="Img/MainLogo.png" alt="Logo" width="165" height="77"></a></li>
+                    <li><a class="Middle-cart" href="#"><i class="fas fa-shopping-basket"></i></a></li>
+                </ul>
             </div>
             <div class="Header-bottom-wrapper">
                 <div class="Header-bottom">
                     <div class="Header-Bottom-accurate-nav">
-                        <p class="Nav-catalog">Select a category</p>
+                        <button class="Nav-catalog-btn"><i class="fas fa-list"></i>Select a category<i class="fas fa-caret-down"></i></button>
                         <div class="Nav-search">
-                            <form action="" method="POST"><input class="Nav-search-field" type="search" name="Search-field" id="Header-nav-search-field" placeholder="Search products ..."></form>
+                            <form class="Nav-search-form" action="" method="POST"><input class="Nav-search-field" type="search" name="Search-field" id="Header-nav-search-field" placeholder="Search products..."><i class="fas fa-search"></i></form>
                         </div>
                     </div>
                     <ul class="Main-nav">
@@ -73,14 +68,14 @@
                     </ul>                    
                 </div>
             </div>
-        </header>  
+        </header>
         <main class="Shop-main">
             <div class="Product-category-nav-wrapper">
                 <div class="Product-category-nav">
                     <h3 class="Category-header">FURNITURE</h3>
                     <ul class="Category-nesting-nav">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Furniture</a></li>
+                        <li><a href="#">Home</a><i class="fas fa-chevron-right"></i></li>
+                        <li><a href="#">Furniture</a><i class="fas fa-chevron-right"></i></li>
                         <li><a href="#">Chair</a></li>
                     </ul>
                 </div>
@@ -89,17 +84,17 @@
                 <div class="Shop-page-product-left-column">
                     <div class="Product-active-img">
                         <img src="" alt="" width="436" height="493">
-                        <button class="Expand-img-btn"></button>
+                        <button class="Expand-img-btn"><i class="far fa-expand-alt"></i></button>
                     </div>
                     <div class="Product-img-slider">
-                        <button class="Slide-left-btn"></button>
+                        <button class="Slide-left-btn"><i class="fas fa-chevron-left"></i></button>
                         <ul class="Product-imgs-list">
-                            <li><img src="" alt="" width="88" height="104"></li>
-                            <li><img src="" alt="" width="88" height="104"></li>
-                            <li><img src="" alt="" width="88" height="104"></li>
-                            <li><img src="" alt="" width="88" height="104"></li>
+                            <li><a href="#"><img src="" alt="" width="88" height="104"></a></li>
+                            <li><a href="#"><img src="" alt="" width="88" height="104"></a></li>
+                            <li><a href="#"><img src="" alt="" width="88" height="104"></a></li>
+                            <li><a href="#"><img src="" alt="" width="88" height="104"></a></li>
                         </ul>
-                        <button class="Slide-right-btn"></button>
+                        <button class="Slide-right-btn"><i class="fas fa-chevron-right"></i></button>
                     </div>
                 </div>
                 <ul class="Shop-page-product-right-column">
@@ -107,12 +102,12 @@
                         <div class="Product-header-row">
                             <h1 class="Product-name-header">Sunbaby Magic Bear Chair</h1>
                             <div class="Change-product-btn-wrapper">
-                                <button class="Change-product-btn-left"></button>
-                                <button class="Change-product-btn-right"></button>
+                                <button class="Change-product-btn-left"><i class="fas fa-chevron-left"></i></button>
+                                <button class="Change-product-btn-right"><i class="fas fa-chevron-right"></i></button>
                             </div>
                         </div>
                         <div class="Product-users-rating-row">
-                            <span class="Product-rating">SS</span><span class="Product-reviews-counter">0 reviews</span>
+                            <span class="Product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span><a href="#" class="Product-reviews-counter">0 reviews</a>
                             <a href="#" class="Product-to-adding-review-link">Add Your Review</a>
                         </div>
                     </li>
@@ -123,16 +118,16 @@
                     <li class="Product-controls-btns-subsection">
                         <form action="" method="GET">
                             <ul class="Controls-btns">
-                                <li><button class="Add-to-cart-btn">ADD TO CARD</button></li>
-                                <li><button class="Control-btn"></button></li>
-                                <li><button class="Control-btn"></button></li>
-                                <li><button class="Control-btn"></button></li>
+                                <li><button class="Add-to-cart-btn"><i class="fas fa-shopping-basket"></i>ADD TO CARD</button></li>
+                                <li><button class="Control-btn Hot-deal-look"><i class="far fa-eye"></i></button></li>
+                                <li><button class="Control-btn Hot-deal-like"><i class="far fa-heart"></i></button></li>
+                                <li><button class="Control-btn Hot-deal-compare"><i class="fas fa-exchange-alt"></i></button></li>
                             </ul>
                             <div class="Quantity-controls">
                                 <label for="">Quantity:</label>
-                                <button class="Quantity-minus-btn"></button>
+                                <button class="Quantity-minus-btn"><i class="fas fa-minus"></i></button>
                                 <input type="text" value="2">
-                                <button class="Quantity-plus-btn"></button>
+                                <button class="Quantity-plus-btn"><i class="fas fa-plus"></i></button>
                             </div>
                         </form>
                     </li>
@@ -154,11 +149,10 @@
                     </li>
                     <li class="Product-share-subsection">
                         <ul class="Product-share-list">
-                            <li><a href="#">Facebook</a></li>
-                            <li><a href="#">Google+</a></li>
-                            <li><a href="#">Tweet</a></li>
-                            <li><a href="#">Pinterest</a></li>
-                            <li><a href="#">Linkedin</a></li>
+                            <li><a class="Share-facebook" href="#"><i class="fab fa-facebook-f"></i></i>Facebook</a></li>
+                            <li><a class="Share-twitter" href="#"><i class="fab fa-twitter"></i>Tweet</a></li>
+                            <li><a class="Share-pinterest" href="#"><i class="fab fa-pinterest-p"></i>Pinterest</a></li>
+                            <li><a class="Share-linkedin" href="#"><i class="fab fa-linkedin-in"></i>Linkedin</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -176,10 +170,19 @@
                         </ul>
                         <div class="New-user-review">
                             <h4 class="New-user-review-header">Add a review</h4>
-                            <p class="New-user-review-rating-par">Your Rating</p>
-                            <span class="New-user-review-rating">SS</span>
+                            <fieldset class="New-user-review-rating-fieldset">
+                                <legend class="New-user-review-rating-caption">Your Rating</legend>
+                                <div class="New-user-review-rating-group">
+                                    <input class="Rating-star" type="radio" name="product-rating" value="1" aria-label="awful">
+                                    <input class="Rating-star" type="radio" name="product-rating" value="2" aria-label="bad">
+                                    <input class="Rating-star" type="radio" name="product-rating" value="3" aria-label="normal">
+                                    <input class="Rating-star" type="radio" name="product-rating" value="4" aria-label="good">
+                                    <input class="Rating-star" type="radio" name="product-rating" value="5" aria-label="exelent">
+                                    <div class="Rating-focus"></div>
+                                </div>
+                            </fieldset>
                             <form action="" method="POST" class="User-review-form">
-                                <label for="" class="Review-text-label">
+                                <label class="Review-text-label">
                                     Your review
                                     <textarea name="" id="" rows="5" class="New-user-revier-text"></textarea>
                                 </label>
@@ -206,20 +209,20 @@
                 <ul class="New-furniture-catalog-list">
                     <li class="New-furniture-catalog-item">
                         <div class="New-furniture-item-top Sale-item">
-                            <img src="Img/MainLogo.png" alt="" width="262" height="260">
+                            <img class="Catalog-item-img" src="Img/MainLogo.png" alt="" width="262" height="260">
                             <div class="New-furniture-item-buttons">
                                 <button class="Quick-view-btn">Quick View</button>
-                                <button class="Add-to-cart-btn">ADD TO CART</button>
+                                <button class="Add-to-cart-btn"><i class="fas fa-shopping-basket"></i>ADD TO CART</button>
                             </div>
                         </div>
                         <div class="New-furniture-item-bottom">
-                            <h3 class="Item-header">Aenean Ru Bristique</h3>
-                            <span class="Item-rating">SS</span>
+                            <a class="item-header-link" href="#"><h3 class="Item-header">Aenean Ru Bristique</h3></a>
+                            <span class="Item-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
                             <div class="Item-decorative-line"></div>
                             <div class="Item-controls-and-price">
                                 <ul class="Item-controls">
-                                    <li><button class="Like-btn"></button></li>
-                                    <li><button class="Compare-btn"></button></li>
+                                    <li><button class="Like-btn"><i class="far fa-heart"></i></button></li>
+                                    <li><button class="Compare-btn"><i class="fas fa-exchange-alt"></i></button></li>
                                 </ul>
                                 <div class="Item-price">
                                     <p class="Old-price">$45.00</p>
@@ -230,20 +233,20 @@
                     </li>
                     <li class="New-furniture-catalog-item">
                         <div class="New-furniture-item-top">
-                            <img src="Img/MainLogo.png" alt="" width="262" height="260">
+                            <img class="Catalog-item-img" src="Img/MainLogo.png" alt="" width="262" height="260">
                             <div class="New-furniture-item-buttons">
                                 <button class="Quick-view-btn">Quick View</button>
-                                <button class="Add-to-cart-btn">ADD TO CART</button>
+                                <button class="Add-to-cart-btn"><i class="fas fa-shopping-basket"></i>ADD TO CART</button>
                             </div>
                         </div>
                         <div class="New-furniture-item-bottom">
-                            <h3 class="Item-header">Aenean Ru Bristique</h3>
-                            <span class="Item-rating">SS</span>
+                            <a class="item-header-link" href="#"><h3 class="Item-header">Aenean Ru Bristique</h3></a>
+                            <span class="Item-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
                             <div class="Item-decorative-line"></div>
                             <div class="Item-controls-and-price">
                                 <ul class="Item-controls">
-                                    <li><button class="Like-btn"></button></li>
-                                    <li><button class="Compare-btn"></button></li>
+                                    <li><button class="Like-btn"><i class="far fa-heart"></i></button></li>
+                                    <li><button class="Compare-btn"><i class="fas fa-exchange-alt"></i></button></li>
                                 </ul>
                                 <div class="Item-price">
                                     <p class="Old-price">$45.00</p>
@@ -254,20 +257,20 @@
                     </li>
                     <li class="New-furniture-catalog-item">
                         <div class="New-furniture-item-top">
-                            <img src="Img/MainLogo.png" alt="" width="262" height="260">
+                            <img class="Catalog-item-img" src="Img/MainLogo.png" alt="" width="262" height="260">
                             <div class="New-furniture-item-buttons">
                                 <button class="Quick-view-btn">Quick View</button>
-                                <button class="Add-to-cart-btn">ADD TO CART</button>
+                                <button class="Add-to-cart-btn"><i class="fas fa-shopping-basket"></i>ADD TO CART</button>
                             </div>
                         </div>
                         <div class="New-furniture-item-bottom">
-                            <h3 class="Item-header">Aenean Ru Bristique</h3>
-                            <span class="Item-rating">SS</span>
+                            <a class="item-header-link" href="#"><h3 class="Item-header">Aenean Ru Bristique</h3></a>
+                            <span class="Item-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
                             <div class="Item-decorative-line"></div>
                             <div class="Item-controls-and-price">
                                 <ul class="Item-controls">
-                                    <li><button class="Like-btn"></button></li>
-                                    <li><button class="Compare-btn"></button></li>
+                                    <li><button class="Like-btn"><i class="far fa-heart"></i></button></li>
+                                    <li><button class="Compare-btn"><i class="fas fa-exchange-alt"></i></button></li>
                                 </ul>
                                 <div class="Item-price">
                                     <p class="Old-price">$45.00</p>
@@ -278,20 +281,20 @@
                     </li>
                     <li class="New-furniture-catalog-item">
                         <div class="New-furniture-item-top">
-                            <img src="Img/MainLogo.png" alt="" width="262" height="260">
+                            <img class="Catalog-item-img" src="Img/MainLogo.png" alt="" width="262" height="260">
                             <div class="New-furniture-item-buttons">
                                 <button class="Quick-view-btn">Quick View</button>
-                                <button class="Add-to-cart-btn">ADD TO CART</button>
+                                <button class="Add-to-cart-btn"><i class="fas fa-shopping-basket"></i>ADD TO CART</button>
                             </div>
                         </div>
                         <div class="New-furniture-item-bottom">
-                            <h3 class="Item-header">Aenean Ru Bristique</h3>
-                            <span class="Item-rating">SS</span>
+                            <a class="item-header-link" href="#"><h3 class="Item-header">Aenean Ru Bristique</h3></a>
+                            <span class="Item-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
                             <div class="Item-decorative-line"></div>
                             <div class="Item-controls-and-price">
                                 <ul class="Item-controls">
-                                    <li><button class="Like-btn"></button></li>
-                                    <li><button class="Compare-btn"></button></li>
+                                    <li><button class="Like-btn"><i class="far fa-heart"></i></button></li>
+                                    <li><button class="Compare-btn"><i class="fas fa-exchange-alt"></i></button></li>
                                 </ul>
                                 <div class="Item-price">
                                     <p class="Old-price">$45.00</p>
@@ -299,7 +302,7 @@
                                 </div>
                             </div>
                         </div>
-                    </li>                                   
+                    </li>                                 
                 </ul>
             </section>   
             <div class="User-news-subscriber-form-wrapper">
@@ -310,9 +313,9 @@
                                 NEWSLETTER:
                             </label>
                             <div class="User-news-email-wrapper">
-                                <div class="Email-icon-wrapper"></div>
-                                <input type="email" class="User-news-email" placeholder="Enter your email address">
-                                <input type="submit" class="User-news-submit-btn" value="">
+                                <input type="email" class="User-news-email" name="User-mail" id="User-news-email-field" placeholder="Enter your email address">
+                                <div class="Email-icon-wrapper"><label for="User-news-email-field"><i class="fas fa-envelope"></i></label></div>
+                                <div class="User-news-submit-btn-wrapper"><input type="submit" class="User-news-submit-btn" value=""><i class="fas fa-arrow-right"></i></div>
                             </div>
                         </div>
                     </form>
@@ -364,14 +367,8 @@
                             <li><a href="#">Shipping and delivery</a></li>
                             <li><a href="#">Returns</a></li>
                             <li><a href="#">Shipping</a></li>
-                            <li>
-                                <ul class="Footer-avaliable-payment-ways">
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                </ul>
+                            <li class="Payments-types">
+                                <img src="Img/Card Image.png" alt="" width="240" height="35">
                             </li>
                         </ul>
                     </li>
@@ -381,17 +378,17 @@
                 <div class="Footer-bottom">
                     <p></p>
                     <p class="Footer-copyright">
-                            ©Copyright 2016 Bazar | All Rights Reserved
+                        ©Copyright 2016 Bazar | All Rights Reserved
                     </p>
                     <ul class="Footer-media-list">
-                        <li class="Footer-media-element"></li>
-                        <li class="Footer-media-element"></li>
-                        <li class="Footer-media-element"></li>
-                        <li class="Footer-media-element"></li>
-                        <li class="Footer-media-element"></li>
+                        <li class="Footer-media-element"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li class="Footer-media-element"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li class="Footer-media-element"><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        <li class="Footer-media-element"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li class="Footer-media-element"><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
                     </ul>                    
                 </div>
             </div>
-        </footer>       
+        </footer>     
     </body>
 </html>
