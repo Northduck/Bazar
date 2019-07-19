@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bazar</title>
+        <link rel="stylesheet" type="text/css" href="Css/MainStyle.css">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap" rel="stylesheet">
+        <link href="Css/all.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <header class="Header">
+            <div class="Header-top-wrapper">
+                <div class="Header-top">
+                    <div class="Top-config">
+                        <div class="Config-money">
+                            <a class="Current-config-tab Current-money-tab" href="#">USD<i class="fas fa-caret-down"></i></a>
+                            <ul class="Config-money-list">
+                                <li><a class="Config-money-usd"  href="#">USD</a></li>
+                                <li><a class="Config-money-euro"  href="#">EUR</a></li>
+                                <li><a class="Config-money-rubles" href="#">RUB</a></li>
+                            </ul>
+                        </div>
+                        <div class="Config-language">
+                            <a class="Current-config-tab Current-language-tab" href="#">English<i class="fas fa-caret-down"></i></a>
+                                <ul class="Config-language-list">
+                                    <li><a href="#">English</a></li>
+                                    <li><a href="#">Russian</a></li>
+                                </ul>
+                        </div>
+                        <div class="Config-help">
+                            <a class="Current-config-tab Current-help-tab" href="#">Help<i class="fas fa-caret-down"></i></a>
+                                <ul class="Config-help-list">
+                                    <li><a href="#">First variant</a></li>
+                                    <li><a href="#">Second variant</a></li>
+                                    <li><a href="#">Thrird variant</a></li>
+                                </ul>                  
+                        </div>
+                    </div>
+                    <ul class="User-profile">
+                        <li><a class="Profile-login" href="#"><i class="fas fa-user"></i>Login</a></li>
+                        <li><a class="Profile-register" href="#"><i class="fas fa-lock"></i>Register</a></li>
+                        <li><a class="Profile-burger" href="#"><i class="fas fa-bars"></i><span class="visually-hidden">Burger</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="Header-middle-wrapper">
+                <ul class="Header-middle">
+                    <li><a class="Middle-phone" href="tel:+23003560222"><i class="fas fa-mobile-alt"></i>2300 - 3560 - 222</a></li>
+                    <li><a class="Middle-logo" href="#"><img src="Img/MainLogo.png" alt="Logo" width="165" height="77"></a></li>
+                    <li><a class="Middle-cart" href="#"><i class="fas fa-shopping-basket"></i></a></li>
+                </ul>
+            </div>
+            <div class="Header-bottom-wrapper">
+                <div class="Header-bottom">
+                    <div class="Header-Bottom-accurate-nav">
+                        <button class="Nav-catalog-btn"><i class="fas fa-list"></i>Select a category<i class="fas fa-caret-down"></i></button>
+                        <div class="Nav-search">
+                            <form class="Nav-search-form" action="" method="POST"><input class="Nav-search-field" type="search" name="Search-field" id="Header-nav-search-field" placeholder="Search products..."><i class="fas fa-search"></i></form>
+                        </div>
+                    </div>
+                    <ul class="Main-nav">
+                        <li><a class="Сurrent-tab" href="#">HOME</a></li>
+                        <li><a href="#">FURNITURE</a></li>   
+                        <li><a href="#">CHAIR</a></li> 
+                        <li><a href="#">TABLE</a></li> 
+                        <li><a href="#">SOFA</a></li> 
+                        <li><a href="#">BEDROOM</a></li> 
+                        <li><a href="#">BLOG</a></li>                        
+                    </ul>                    
+                </div>
+            </div>
+        </header>
+        <main class="Shop-main">
+            <div class="Product-category-nav-wrapper">
+                <div class="Product-category-nav">
+                    <h3 class="Category-header">FURNITURE</h3>
+                    <ul class="Category-nesting-nav">
+                        <li><a href="#">Home</a><i class="fas fa-chevron-right"></i></li>
+                        <li><a href="#">Furniture</a><i class="fas fa-chevron-right"></i></li>
+                        <li><a href="#">Chair</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="Shop-page-product-item">
+                <div class="Shop-page-product-left-column">
+                    <div class="Product-active-img">
+                        <img src="" alt="" width="436" height="493">
+                        <button class="Expand-img-btn"><i class="far fa-expand-alt"></i></button>
+                    </div>
+                    <div class="Product-img-slider">
+                        <button class="Slide-left-btn"><i class="fas fa-chevron-left"></i></button>
+                        <ul class="Product-imgs-list">
+                            <li><a href="#"><img src="" alt="" width="88" height="104"></a></li>
+                            <li><a href="#"><img src="" alt="" width="88" height="104"></a></li>
+                            <li><a href="#"><img src="" alt="" width="88" height="104"></a></li>
+                            <li><a href="#"><img src="" alt="" width="88" height="104"></a></li>
+                        </ul>
+                        <button class="Slide-right-btn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <ul class="Shop-page-product-right-column">
+                    <li class="Product-header-subsection">
+                        <div class="Product-header-row">
+                            <h1 class="Product-name-header">Sunbaby Magic Bear Chair</h1>
+                            <div class="Change-product-btn-wrapper">
+                                <button class="Change-product-btn-left"><i class="fas fa-chevron-left"></i></button>
+                                <button class="Change-product-btn-right"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                        <div class="Product-users-rating-row">
+                            <span class="Product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span><a href="#" class="Product-reviews-counter">0 reviews</a>
+                            <a href="#" class="Product-to-adding-review-link">Add Your Review</a>
+                        </div>
+                    </li>
+                    <li class="Product-price-subsection">
+                        <p class="Old-price">$350.00</p>
+                        <p class="New-price">$250.00</p>
+                    </li>
+                    <li class="Product-controls-btns-subsection">
+                        <form action="" method="GET">
+                            <ul class="Controls-btns">
+                                <li><button class="Add-to-cart-btn"><i class="fas fa-shopping-basket"></i>ADD TO CARD</button></li>
+                                <li><button class="Control-btn Hot-deal-look"><i class="far fa-eye"></i></button></li>
+                                <li><button class="Control-btn Hot-deal-like"><i class="far fa-heart"></i></button></li>
+                                <li><button class="Control-btn Hot-deal-compare"><i class="fas fa-exchange-alt"></i></button></li>
+                            </ul>
+                            <div class="Quantity-controls">
+                                <label for="">Quantity:</label>
+                                <button class="Quantity-minus-btn"><i class="fas fa-minus"></i></button>
+                                <input type="text" value="2">
+                                <button class="Quantity-plus-btn"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </form>
+                    </li>
+                    <li class="Product-overview-subsection">
+                        <h3 class="Product-overview-par-header">Quick Overview</h3>
+                        <p class="Product-overview-par">Nam tristique porta ligula, vel viverra sem eleifend nec. Nulla sed purus augue, eu euis mod tellus. Nam mattis eros tis sagittis. Vestibulum suscipit cursus biben.</p>
+                    </li>
+                    <li class="Product-special-info-subsection">
+                        <table class="Product-special-table">
+                            <tr>
+                                <td class="Product-special-table-head">Avaliability:</td>
+                                <td class="Product-special-table-value">In Stock</td>
+                            </tr>
+                            <tr>
+                                <td class="Product-special-table-head">Category:</td>
+                                <td class="Product-special-table-value">Furniture</td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li class="Product-share-subsection">
+                        <ul class="Product-share-list">
+                            <li><a class="Share-facebook" href="#"><i class="fab fa-facebook-f"></i></i>Facebook</a></li>
+                            <li><a class="Share-twitter" href="#"><i class="fab fa-twitter"></i>Tweet</a></li>
+                            <li><a class="Share-pinterest" href="#"><i class="fab fa-pinterest-p"></i>Pinterest</a></li>
+                            <li><a class="Share-linkedin" href="#"><i class="fab fa-linkedin-in"></i>Linkedin</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="Product-info-wrapper">
+                <ul class="Product-info-nav">
+                    <li><a href="#">DESCRIPTION</a></li>
+                    <li><a href="#" class="Product-info-active-tab">REVIEWS (<span>0</span>)</a></li>
+                    <li><a href="#">SPECIFICATION</a></li>
+                </ul>
+                <ul class="Product-info-content">
+                    <li class="Product-info-content-reviews-wrapper">
+                        <ul class="Product-reviews">
+                            <li class="No-reviews-plug">There are no reviews for this product.</li>
+                        </ul>
+                        <div class="New-user-review">
+                            <h4 class="New-user-review-header">Add a review</h4>
+                            <fieldset class="New-user-review-rating-fieldset">
+                                <label class="New-user-review-rating-caption">Your Rating</label>
+                                <div class="New-user-review-rating-group">
+                                    <input class="Rating-star" type="radio" name="product-rating" value="1" aria-label="awful">
+                                    <input class="Rating-star" type="radio" name="product-rating" value="2" aria-label="bad">
+                                    <input class="Rating-star" type="radio" name="product-rating" value="3" aria-label="normal">
+                                    <input class="Rating-star" type="radio" name="product-rating" value="4" aria-label="good">
+                                    <input class="Rating-star" type="radio" name="product-rating" value="5" aria-label="exelent">
+                                    <div class="Rating-focus"></div>
+                                </div>
+                            </fieldset>
+                            <form action="" method="POST" class="User-review-form">
+                                <label class="Review-text-label">
+                                    Your review
+                                    <textarea name="" id="" rows="5" class="New-user-revier-text"></textarea>
+                                </label>
+                                <div class="User-info-wrapper">
+                                    <input type="text" placeholder="Name*" class="User-info-user-name">
+                                    <input type="email" placeholder="Email*" class="User-info-email">
+                                    <input type="submit" value="POST" class="User-info-submit-btn">
+                                </div>        
+                            </form>
+                        </div>
+                    </li>
+                    <li></li>
+                </ul>
+            </div>
+            <section class="Products-catalog">
+                <div class="Products-catalog-head">
+                        <h2 class="Section-header">NEW FURNITURE</h2>
+                    <div class="Catalog-slider-btn-wrapper">
+                        <button class="Slider-btn Active-slide-btn"></button>
+                        <button class="Slider-btn"></button>
+                        <button class="Slider-btn"></button>
+                    </div>
+                </div>
+                <ul class="Products-catalog-list">
+                    <li class="Products-catalog-item">
+                        <div class="Product-catalog-item-top Sale-item">
+                            <img class="Catalog-item-img" src="Img/MainLogo.png" alt="" width="262" height="260">
+                            <div class="Product-catalog-item-buttons">
+                                <button class="Quick-view-btn">Quick View</button>
+                                <button class="Add-to-cart-btn"><i class="fas fa-shopping-basket"></i>ADD TO CART</button>
+                            </div>
+                        </div>
+                        <div class="Product-catalog-item-bottom">
+                            <a class="item-header-link" href="#"><h3 class="Item-header">Aenean Ru Bristique</h3></a>
+                            <span class="Item-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+                            <div class="Item-decorative-line"></div>
+                            <div class="Item-controls-and-price">
+                                <ul class="Item-controls">
+                                    <li><button class="Like-btn"><i class="far fa-heart"></i></button></li>
+                                    <li><button class="Compare-btn"><i class="fas fa-exchange-alt"></i></button></li>
+                                </ul>
+                                <div class="Item-price">
+                                    <p class="Old-price">$45.00</p>
+                                    <p class="New-price">$30.00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="Products-catalog-item">
+                        <div class="Product-catalog-item-top">
+                            <img class="Catalog-item-img" src="Img/MainLogo.png" alt="" width="262" height="260">
+                            <div class="Product-catalog-item-buttons">
+                                <button class="Quick-view-btn">Quick View</button>
+                                <button class="Add-to-cart-btn"><i class="fas fa-shopping-basket"></i>ADD TO CART</button>
+                            </div>
+                        </div>
+                        <div class="Product-catalog-item-bottom">
+                            <a class="item-header-link" href="#"><h3 class="Item-header">Aenean Ru Bristique</h3></a>
+                            <span class="Item-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+                            <div class="Item-decorative-line"></div>
+                            <div class="Item-controls-and-price">
+                                <ul class="Item-controls">
+                                    <li><button class="Like-btn"><i class="far fa-heart"></i></button></li>
+                                    <li><button class="Compare-btn"><i class="fas fa-exchange-alt"></i></button></li>
+                                </ul>
+                                <div class="Item-price">
+                                    <p class="Old-price">$45.00</p>
+                                    <p class="New-price">$30.00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="Products-catalog-item">
+                        <div class="Product-catalog-item-top">
+                            <img class="Catalog-item-img" src="Img/MainLogo.png" alt="" width="262" height="260">
+                            <div class="Product-catalog-item-buttons">
+                                <button class="Quick-view-btn">Quick View</button>
+                                <button class="Add-to-cart-btn"><i class="fas fa-shopping-basket"></i>ADD TO CART</button>
+                            </div>
+                        </div>
+                        <div class="Product-catalog-item-bottom">
+                            <a class="item-header-link" href="#"><h3 class="Item-header">Aenean Ru Bristique</h3></a>
+                            <span class="Item-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+                            <div class="Item-decorative-line"></div>
+                            <div class="Item-controls-and-price">
+                                <ul class="Item-controls">
+                                    <li><button class="Like-btn"><i class="far fa-heart"></i></button></li>
+                                    <li><button class="Compare-btn"><i class="fas fa-exchange-alt"></i></button></li>
+                                </ul>
+                                <div class="Item-price">
+                                    <p class="Old-price">$45.00</p>
+                                    <p class="New-price">$30.00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="Products-catalog-item">
+                        <div class="Product-catalog-item-top">
+                            <img class="Catalog-item-img" src="Img/MainLogo.png" alt="" width="262" height="260">
+                            <div class="Product-catalog-item-buttons">
+                                <button class="Quick-view-btn">Quick View</button>
+                                <button class="Add-to-cart-btn"><i class="fas fa-shopping-basket"></i>ADD TO CART</button>
+                            </div>
+                        </div>
+                        <div class="Product-catalog-item-bottom">
+                            <a class="item-header-link" href="#"><h3 class="Item-header">Aenean Ru Bristique</h3></a>
+                            <span class="Item-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+                            <div class="Item-decorative-line"></div>
+                            <div class="Item-controls-and-price">
+                                <ul class="Item-controls">
+                                    <li><button class="Like-btn"><i class="far fa-heart"></i></button></li>
+                                    <li><button class="Compare-btn"><i class="fas fa-exchange-alt"></i></button></li>
+                                </ul>
+                                <div class="Item-price">
+                                    <p class="Old-price">$45.00</p>
+                                    <p class="New-price">$30.00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>                                 
+                </ul>
+            </section>   
+            <div class="User-news-subscriber-form-wrapper">
+                <div class="User-news-subscriber-form-centerer">
+                    <form action="" method="POST">
+                        <div class="User-news-form-content-wrapper">
+                            <label for="" class="User-news-form-header">
+                                NEWSLETTER:
+                            </label>
+                            <div class="User-news-email-wrapper">
+                                <input type="email" class="User-news-email" name="User-mail" id="User-news-email-field" placeholder="Enter your email address">
+                                <div class="Email-icon-wrapper"><label for="User-news-email-field"><i class="fas fa-envelope"></i></label></div>
+                                <div class="User-news-submit-btn-wrapper"><input type="submit" class="User-news-submit-btn" value=""><i class="fas fa-arrow-right"></i></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>         
+        </main>   
+        <footer class="Footer">
+            <div class="Footer-top">
+                <ul class="Footer-information-lists">
+                    <li class="Footer-information-element">
+                        <ul class="Footer-info-list">
+                            <li>
+                                <h3 class="Footer-header">F.A.Q.</h3>
+                            </li>
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Privacy</a></li>
+                            <li><a href="#">Conditions</a></li>
+                            <li><a href="#">Online support</a></li>
+                        </ul>
+                    </li>
+                    <li class="Footer-information-element">
+                        <ul class="Footer-info-list">
+                            <li>
+                                <h3 class="Footer-header">MY ACCOUNT</h3>
+                            </li>
+                            <li><a href="#">Login</a></li>
+                            <li><a href="#">My Cart</a></li>
+                            <li><a href="#">Wishlist</a></li>
+                            <li><a href="#">Checkout</a></li>
+                        </ul>
+                    </li>
+                    <li class="Footer-information-element">
+                        <ul class="Footer-info-list">
+                            <li>
+                                <h3 class="Footer-header">INFORMATION</h3>
+                            </li>
+                            <li><a href="#">Specials</a></li>
+                            <li><a href="#">New Products</a></li>
+                            <li><a href="#">Best Sellers</a></li>
+                            <li><a href="#">Our Store</a></li>
+                        </ul>
+                    </li>
+                    <li class="Footer-information-element">
+                        <ul class="Footer-info-list">
+                            <li>
+                                <h3 class="Footer-header">ORDERS</h3>
+                            </li>                            
+                            <li><a href="#">Payment options</a></li>
+                            <li><a href="#">Shipping and delivery</a></li>
+                            <li><a href="#">Returns</a></li>
+                            <li><a href="#">Shipping</a></li>
+                            <li class="Payments-types">
+                                <img src="Img/Card Image.png" alt="" width="240" height="35">
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="Footer-bottom-wrapper">
+                <div class="Footer-bottom">
+                    <p></p>
+                    <p class="Footer-copyright">
+                        ©Copyright 2016 Bazar | All Rights Reserved
+                    </p>
+                    <ul class="Footer-media-list">
+                        <li class="Footer-media-element"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li class="Footer-media-element"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li class="Footer-media-element"><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        <li class="Footer-media-element"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li class="Footer-media-element"><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                    </ul>                    
+                </div>
+            </div>
+        </footer>     
+    </body>
+</html>
