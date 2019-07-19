@@ -498,11 +498,13 @@ color: #d58e32;
     border: 1px solid #2a2a2a;
 }
 .Item-controls button:hover,
-.Controls-btns button:hover{
+.Controls-btns button:hover,
+.Products-btn-list button:hover{
     color: #d58e32;
 }
 .Item-controls i,
-.Controls-btns i{
+.Controls-btns i,
+.Products-btn-list i{
     font-size: 16px;
     top: 8px;
     left: 8px;
@@ -2124,9 +2126,16 @@ h1,h4{
     background-color: #e2e2e2;
 }
 .Catalog-nested-nav li:not(:last-child){
+    position: relative;
     margin-right: 32px;
 }
-.Last-nested-tab{
+.Catalog-nested-nav a .fas{
+    font-size: 13px;
+    top: 5px;
+    right: -19px;
+    color: #2a2a2a;
+}
+.Catalog-nested-nav a:hover{
     color: #d58e32;
 }
 .Products-catalog-section{
@@ -2199,6 +2208,7 @@ h1,h4{
 }
 .Catalog-view-btn-wrapper{
     display: flex;
+    position: relative;
     justify-content: space-between;
     box-sizing: border-box;
     padding: 8px;
@@ -2212,7 +2222,16 @@ h1,h4{
     border: none;
     height: 16px;
     width: 16px;
-    background-color: #d58e32;
+}
+.Catalog-view-btn-wrapper .fas{
+    font-size: 18px;
+    top: 7px;
+}
+.Catalog-view-btn{
+    cursor: pointer;
+}
+.Catalog-view-btn:hover{
+    color: #d58e32;
 }
 .Catalog-main .Products-catalog-grid{
     display: none;
@@ -2254,7 +2273,11 @@ h1,h4{
     display: flex;
     margin-top: 29px;
 }
-.Products-btn-list li:not(:last-child){
+.Products-btn-list button{
+    position: relative;
+    cursor: pointer;
+}
+.Products-btn-list li:not(:last-child) button{
     display: block;
     width: 35px;
     height: 35px;
@@ -2271,14 +2294,20 @@ h1,h4{
     border-bottom: 1px solid #2a2a2a;
 }
 .Filter-subcategory-categories-list li{
-    display: flex;
-    justify-content: space-between;
+    position: relative;
+}
+.Filter-subcategory-categories-list label{
+    cursor: pointer;
+}
+.Filter-subcategory-categories-list label .fas{
+    position: static;
+    font-size: 13px;
+    margin-right: 10px;
 }
 .Filter-subcategory-categories-list li:not(:last-child){
     margin-bottom: 5px;
 }
 .Filter-subcategory-categories-list .Filter-subcategory-categories-variant{
-    padding-left: 10px;
     font-size: 13px;
     line-height: 33px;
     font-weight: 500;
@@ -2287,6 +2316,10 @@ h1,h4{
     margin-top: 25px;
 }
 .Subcategory-categories-product-quantity{
+    position: absolute;
+    display: block;
+    right: 0px;
+    top: 5px;
     height: 23px;
     width: 23px;
     color: white;
@@ -2296,9 +2329,32 @@ h1,h4{
     font-size: 13px;
     line-height: 23px;
 }
-.Filter-subcategory-categories-list .Active-categories-variant{
-    padding-left: 20px;
+.Color-checkbox-name::before{
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 8px;
+    width: 13px;
+    height: 13px;
+    border-radius: 1px;
+    background-color: #d58e32;
+}
+.Categories-filter-checkbox:checked ~ i{
+    padding-left: 10px;
     color: #d58e32;
+}
+.Color-filter-checkbox:checked ~ .Color-checkbox-name{
+    padding-left: 10px;
+}
+.Color-filter-checkbox:checked ~ .Color-checkbox-name::before{
+    left: 10px;
+} 
+.Categories-checkbox-name:hover{
+    color: #d58e32;
+}
+.Categories-checkbox-name:hover ~ .Subcategory-categories-product-quantity,
+.Subcategory-categories-product-quantity:hover{
+    background-color: #d58e32;
 }
 .Active-categories-variant-quan{
     background-color: #d58e32;
@@ -2366,28 +2422,22 @@ h1,h4{
 .Subcategory-color-variant{
     position: relative;
     display: block;
+    cursor: pointer;
     padding-left: 24px;
     font-size: 13px;
     line-height: 30px;
-}
-.Subcategory-color-variant::before{
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 8px;
-    width: 13px;
-    height: 13px;
-    border-radius: 1px;
-    background-color: #d58e32;
 }
 .Subcategory-color-list li:not(:last-of-type),
 .Subcategory-size-variant li:not(:last-of-type){
     margin-bottom: 5px;
 }
 .Subcategory-size-variant{
-    padding-left: 24px;
     font-size: 13px;
     line-height: 30px;    
+    cursor: pointer;
+}
+.Subcategory-size-variant:hover{
+    color: #d58e32;
 }
 .Active-color-variant,
 .Active-size-variant{
@@ -2404,21 +2454,58 @@ h1,h4{
     display: flex;
     justify-content: space-between;
 }
+.Subcategory-size-list .Checkbox{
+    position: relative;
+    margin-right: 10px;
+}
+.Subcategory-size-list .fa-square{
+    font-size: 18px;
+    position: static;
+}
+.Subcategory-size-list .fa-check{
+    visibility: hidden;
+    font-size: 10px;
+}
+.Size-filter-checkbox:checked ~ .Checkbox{
+    padding-left: 10px;
+}
+.Size-filter-checkbox:checked ~ .Checkbox>.fa-check{
+    visibility: visible;
+    top: 2px;
+    left: 13px;
+}
 .Subcategory-tag-list{
     display: flex;
     flex-wrap: wrap;
     margin-top: 30px;
 }
-.Subcategory-tag-list a{
+.Subcategory-tag-list label{
     display: block;
+    position: relative;
     height: 33px;
     border: 1px solid #d7d7d7;
+    color: #959595;
     line-height: 33px;
     padding: 0px 15px 0px 34px;
     margin-right: 16px;
 }
+.Subcategory-tag-list label .fas{
+    font-size: 14px;
+    left: 11px;
+    top: 10px;
+}
+.Tag-filter-checkbox:checked ~ .Tag-checkbox-name i{
+    color: #d58e32;
+}
+.Subcategory-tag-list label:hover{
+    color: #d58e32;
+    border-color: #d58e32;
+}
 .Subcategory-tag-list li:not(:last-of-type){
     margin-bottom: 12px;
+}
+.Subcategory-tag-variant{
+    cursor: pointer;
 }
 .Featured-products-subsection{
     margin-top: 61px;
@@ -2446,7 +2533,6 @@ h1,h4{
     display: flex;
     flex-direction: column;
     margin-left: 14px;
-    margin-top: 15px;
 }
 .Featured-products-header{
     font-size: 14px;
@@ -2456,6 +2542,9 @@ h1,h4{
     font-weight: 600;
     font-size: 18px;
     line-height: 41px;    
+}
+.Featured-products-rating{
+    margin-bottom: 19px;
 }
 .Featured-products-about .Add-to-cart-btn{
     width: 115px;
