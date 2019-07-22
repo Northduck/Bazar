@@ -14,13 +14,13 @@ a{
 	text-decoration: none;
 	color: inherit;
 }
-.visually-hidden {
+body .visually-hidden {
 	position: absolute;
 	clip: rect(1px 1px 1px 1px);
 	clip: rect(1px, 1px, 1px, 1px);
 	padding:0;
 	border:0;
-	height: 1px ; 
+	height: 1px; 
 	width: 1px; 
 	overflow: hidden;
 }
@@ -224,6 +224,7 @@ ul,p,h2,h3, button{
     left: 10px;
     top: 11px;
     font-size: 25px;
+    color: #ffffff;
 }
 .Header-bottom-wrapper{
     height: 84px;
@@ -298,6 +299,7 @@ ul,p,h2,h3, button{
     border-right: 1px solid #2a2a2a;
 }
 .Nav-search{
+    position: relative;
     width:100%;
     border-bottom: 1px solid #e3e3e3;
 }
@@ -311,18 +313,35 @@ ul,p,h2,h3, button{
     line-height: 42px;
     color: #2a2a2a;
 }
+.Nav-search-field:hover + .fa-search,
+.Nav-search-field:focus + .fa-search{
+    color: #d58e32;
+}
 .Nav-search-form{
     position: relative;
 }
 .Nav-search-form .fa-search{
-    top: 14px;
-    right: 14px;
     font-size: 16px;    
+    left: 0px;
+    top: 0px;
+}
+.Nav-search-submit{
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    border: none;
+    width: 16px;
+    height: 16px;
+    top: 15px;
+    right: 14px;
 }
 .Nav-catalog-btn .fa-caret-down{
     font-size: 16px;
-    top: 14px;
+    top: 12px;
     right: 12px;
+}
+.Nav-search-submit:hover{
+    color: #d58e32;
 }
 .Nav-catalog-btn:focus,
 .Nav-catalog-btn:hover{
@@ -336,7 +355,7 @@ color: #d58e32;
 }
 .Hot-deals-slider{
     width: 360px;
-    height: 505px;
+    margin-bottom: 70px;
 }
 .Hot-deals-top{
     display: flex;
@@ -374,12 +393,14 @@ color: #d58e32;
 .Active-slide-btn{
     background-color: #d58e32;
 }
-.Hot-deaal-1, .Hot-deaal-2, .Hot-deaal-3{
+.Hot-deals-middle>div{
     display: flex;
     flex-direction: column;
 }
 .Hot-deal-img-wrapper{
     position: relative;
+    width: 360px;
+    height: 289px;
     background-color: #f4f5f7;
 }
 .Hot-deal-img-wrapper:hover > .Adding-to-cart,
@@ -444,11 +465,11 @@ color: #d58e32;
     flex-direction: column;
     align-items: center;
     width: 358px;
-    height: 165px;
     border: 1px solid #e2e2e2;
 }
 .Hot-deal-name{
     margin-top: 16px;
+    padding: 0 10px;
     font-size: 16px;
     line-height: 41px;
 }
@@ -482,6 +503,7 @@ color: #d58e32;
 .Hot-deal-bottom{
     display: flex;
     width: 100%;
+    padding-bottom: 17px;
     justify-content: space-between;
 }
 .Item-controls{
@@ -551,6 +573,10 @@ color: #d58e32;
 .Special-offers-slider .Special-offer-slider-item-1{
     display: block;
 }
+.Special-offer-slider-item{
+    width:751px;
+    height:466px;
+}
 .Active-offer{
     display: flex;
     flex-direction: column;
@@ -595,6 +621,9 @@ color: #d58e32;
 .Special-offer-slider-item-3:hover>.Catalog-link{
     visibility: visible;
 }
+.Catalog-link:hover{
+    opacity: 0.5;
+}
 .Special-offer-slider-btn{
     display: flex;
     width: 750px;
@@ -624,7 +653,6 @@ color: #d58e32;
 .Our-advantages{  
     width: 1141px;
     margin: 0 auto;
-    margin-top: 70px;  
     margin-bottom: 30px;
     display: flex;
     align-items: center;
@@ -853,6 +881,8 @@ color: #d58e32;
 }
 .Product-catalog-item-top{
     position: relative;
+    width:262px;
+    height:260px;
 }
 .Products-catalog-item:not(:nth-child(4n)){
     margin-right: 31px;
@@ -924,6 +954,7 @@ color: #d58e32;
     border-top: none;
 }
 .Product-catalog-item-bottom .Item-header{
+    padding: 0 10px;
     font-size: 16px;
     line-height: 42px;
     font-weight: 600;
@@ -1026,6 +1057,8 @@ color: #d58e32;
 }
 .Gallery-content{
     position: relative;
+    width: 553px;
+    height: 408px;
     border: 1px solid #e2e2e2;
     border-top: none;
 }
@@ -1153,6 +1186,7 @@ color: #d58e32;
     display: flex;
 }
 .Gallery-img-list .Gallery-item{
+    display: block;
     width: 70px;
     height: 70px;
     margin-right: 7px;
@@ -1451,7 +1485,11 @@ color: #d58e32;
     font-size: 18px;
     color: #a1a1a1;
 }
-.Footer-media-list li:not(:last-child){
+.Footer-media-element{
+    width: 18px;
+    height: 18px;
+}
+.Footer-media-element:not(:last-of-type){
     margin-right: 23px;
 }
 .Footer-media-element:hover{
