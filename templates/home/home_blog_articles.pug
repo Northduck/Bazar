@@ -1,0 +1,30 @@
+mixin aricleContent(i,quan)
+    -for(let j=i;j<i+quan;j++){
+    li.Blog-articles-element
+        .Article-img-wrapper
+            img.Article-img(src= "/img/home_page_articles_preview/"+blogArticles[j].article_id+".jpeg" alt='' width='360' height='290')
+        .Blog-article
+            .Article-top
+                span.Article-date
+                    i.far.fa-calendar-alt
+                    | #{blogArticles[j].article_creation_date.toISOString().substring(0,10)}
+                span.Article-comments-count
+                    i.fas.fa-comments
+                    | 4 Comments
+            .Article-content
+                h3.Article-header= blogArticles[j].article_header
+                p.Article-par
+                    | #{blogArticles[j].article_introductory}
+        a.Article-button-read-more Read More
+    -}
+mixin articlesPages(quantity)
+    ul.Articles-pages
+        -console.log(quantity);
+        -for(let i=0;quantity>0;quantity-=3,i+=3){
+        li(class= i===0 ? "Articles-page": "Articles-page visually-hidden")
+            ul.Blog-list
+                +aricleContent(i, quantity>=3 ? 3 : quantity)
+        -}
++articlesPages(blogArticles.length)
+
+

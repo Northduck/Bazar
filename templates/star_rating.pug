@@ -1,0 +1,10 @@
+mixin makeStarRating(data)
+    -for(var i=0;i<5;i++,data-=1.0){
+    -if(data>=1.0){
+        i.fas.fa-star
+    -}else{
+    -if(data>0.0){
+        i.fas.fa-star-half-alt
+    -}else{
+        i.far.fa-star
+    -}}}

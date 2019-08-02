@@ -1,0 +1,9 @@
+mixin new_products_nav(data, className)
+    li
+        a(href='#' class= className)= data
+-for(var i=0;i<newProductsCatalogNav.length;i++){
+-if(i!=0){
++new_products_nav(newProductsCatalogNav[i].category_name,"")
+-}else{
++new_products_nav(newProductsCatalogNav[i].category_name,"Active-tab")
+-}}

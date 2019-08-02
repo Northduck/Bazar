@@ -1,0 +1,53 @@
+mixin hotDeal(data, className)
+    div(class= className)
+        .Hot-deal-img-wrapper
+          -var imgDir="/img/products/"+data.category_id+"_"+data.product_id+"/"+data.category_id+"_"+data.product_id+"_1.jpeg";
+          img.Hot-deal-image(src= imgDir alt='' width='360' height='289')
+          ul.Hot-deals-timer(data-end-date= data.product_hot_deal_end.toISOString().substring(0,10))
+            li
+              span.Hot-deals-timer-value.Hot-deals-timer-days
+              br
+              span.Hot-deals-timer-unit DAYS
+            li
+              span.Hot-deals-timer-value.Hot-deals-timer-hrs
+              br
+              span.Hot-deals-timer-unit HRS
+            li
+              span.Hot-deals-timer-value.Hot-deals-timer-mins
+              br
+              span.Hot-deals-timer-unit MINS
+            li
+              span.Hot-deals-timer-value.Hot-deals-timer-secs
+              br
+              span.Hot-deals-timer-unit SECS
+          button.Add-to-cart-btn.Adding-to-cart
+            i.fas.fa-shopping-basket
+            | ADD TO CART
+        .Hot-deal-about
+          a.Item-header-link(href='#')
+            h3.Hot-deal-name= data.product_name
+          span.Hot-deal-rating
+            include /templates/star_rating.pug
+            +makeStarRating(data.product_rating)
+          .Hot-deal-decorative-line
+          .Hot-deal-bottom
+            ul.Item-controls
+              li
+                button.Hot-deal-look
+                  i.far.fa-eye
+              li
+                button.Hot-deal-like
+                  i.far.fa-heart
+              li
+                button.Hot-deal-compare
+                  i.fas.fa-exchange-alt
+            .About-prices
+              .Old-price= data.product_static_price
+              .New-price= data.product_onsale_price
+-var i=0;
+-for(i=0;i<hotDeals.length;i++){
+-if(i==0){
++hotDeal(hotDeals[i],"Hot-deal")
+-}else{
++hotDeal(hotDeals[i],"Hot-deal"+" visually-hidden")
+-}}

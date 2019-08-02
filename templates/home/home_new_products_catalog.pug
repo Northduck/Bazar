@@ -1,0 +1,55 @@
+mixin productsItems(data)
+    li.Products-catalog-item
+        -var isSaleClass="Product-catalog-item-top";
+        -isSaleClass+=data.product_onsale_price===null ? "":" Sale-item";
+        div(class= isSaleClass)
+            -var imgDir="/img/products/"+data.category_id+"_"+data.product_id+"/"+data.category_id+"_"+data.product_id+"_1.jpeg";
+            img.Catalog-item-img(src= imgDir alt='' width='262' height='260')
+            .Product-catalog-item-buttons
+              button.Quick-view-btn Quick View
+              button.Add-to-cart-btn
+                i.fas.fa-shopping-basket
+                | ADD TO CART
+        .Product-catalog-item-bottom
+            a.Item-header-link(href='#')
+                h3.Item-header= data.product_name
+            span.Item-rating
+                include /templates/star_rating.pug
+                +makeStarRating(data.product_rating)
+            .Item-decorative-line
+            .Item-controls-and-price
+                ul.Item-controls
+                    li
+                        button.Like-btn
+                            i.far.fa-heart
+                    li
+                        button.Compare-btn
+                            i.fas.fa-exchange-alt
+                .Item-price
+                    -if(data.product_onsale_price==null){
+                    p.New-price= data.product_static_price
+                    -}else{
+                    p.Old-price= data.product_static_price
+                    p.New-price= data.product_onsale_price
+                    -}
+            
+mixin productsCategoriesElement(data, classname, categoryNumb)      
+      li(class= classname)
+        ul(class='Products-category-pages-list' data-category-name= data.category_name data-category-pages-count= Math.ceil(data.count/8))
+            -for(var i= data.count;i>=0;i-=8){
+            li
+                ul(class='Products-category-page-items-list')
+                    -for(var limiter=8;newProductsCatalogNav[categoryNumb].count>0;newProductsCatalogNav[categoryNumb].count--,limiter--){
+                    -if(limiter==0){
+                    -break;
+                    -}
+                        +productsItems(newProductsCatalog[0])
+                    -newProductsCatalog.shift();
+                    -}
+            -}
+-for(var j=0;j<newProductsCatalogNav.length;j++){
+-if(j!=0){
++productsCategoriesElement(newProductsCatalogNav[j],"visually-hidden", j)
+-}else{
++productsCategoriesElement(newProductsCatalogNav[j],"", j)
+-}}

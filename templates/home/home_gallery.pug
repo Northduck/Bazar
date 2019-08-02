@@ -1,0 +1,62 @@
+mixin homePageGalleryContent(data)
+    -var mainImgDir="/img/products/"+data.category_id+"_"+data.product_id+"/"+data.category_id+"_"+data.product_id+"_1.jpeg";
+    img.Gallery-img(src= mainImgDir alt=data.product_name width='553' height='408')
+    ul.Item-controls
+      li
+        button.Hot-deal-look
+          i.far.fa-eye
+      li
+        button.Hot-deal-like
+          i.far.fa-heart
+      li
+        button.Hot-deal-compare
+          i.fas.fa-exchange-alt
+      li
+        button.Hot-deal-compare
+          i.fas.fa-shopping-basket
+    div.Gallery-item-prices
+        -if(data.product_onsale_price==null){
+            p.Gallery-item-new-price= data.product_static_price
+        -}else{
+            p.Gallery-item-old-price= data.product_static_price
+            p.Gallery-item-new-price= data.product_onsale_price
+        -}
+    .Gallery-item-about
+      a.Item-header-link(href='#')
+        h3.Gallery-item-header= data.product_name.length>40 ? data.product_name.slice(0,40)+" ...":data.product_name
+      span.Item-rating
+            include /templates/star_rating.pug
+            +makeStarRating(data.product_rating)
+    .Gallery-slider
+        button.Slider-scroll-left-btn
+            i.fas.fa-chevron-left
+        ul.Gallery-img-list
+            -var imgsDir="/img/products/"+data.category_id+"_"+data.product_id+"/"+data.category_id+"_"+data.product_id;
+            -for(var i=1;i<=data.imgQuan;i++){
+                li(class=i>6 ? "visually-hidden Gallery-item": "Gallery-item")
+                    a(href='#')
+                        img.Gallery-photo(src= imgsDir+"_"+i+".jpeg" alt='' width='70' height='70')
+            -}
+        button.Slider-scroll-right-btn
+            i.fas.fa-chevron-right
+mixin homePageGallery()
+    article.Extra-promotion-furniture-gallery
+        h2.Section-header FURNITURE GALLERY
+        ul.Gallery-nav
+            -for(var i=0;i<topProducts.length;i++){
+            li
+                -if(i!=0){
+                a.Gallery-nav-element(href='#')= topProducts[i].product_top_header
+                -}else{
+                a.Gallery-nav-element.Active-gallery-element(href='#')= topProducts[i].product_top_header
+                -}}
+        ul.Gallery-content
+                -for(var i=0;i<topProducts.length;i++){
+                -if(i!=0){
+                    li(class="visually-hidden" data-top-product-category-name= topProducts[i].product_top_header)
+                        +homePageGalleryContent(topProducts[i])
+                -}else{
+                    li(data-top-product-category-name= topProducts[i].product_top_header)
+                        +homePageGalleryContent(topProducts[i])
+                -}}       
++homePageGallery()
