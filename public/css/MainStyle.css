@@ -15,14 +15,14 @@ a{
 	color: inherit;
 }
 body .visually-hidden {
-	position: absolute;
-	clip: rect(1px 1px 1px 1px);
-	clip: rect(1px, 1px, 1px, 1px);
-	padding:0;
-	border:0;
-	height: 1px; 
-	width: 1px; 
-	overflow: hidden;
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px) !important;
+	clip: rect(1px, 1px, 1px, 1px) !important;
+	padding:0 !important;
+	border:0 !important;
+	height: 1px !important; 
+	width: 1px !important; 
+	overflow: hidden !important;
 }
 ul,p,h2,h3, button{
     margin:0;
@@ -465,22 +465,28 @@ color: #d58e32;
     flex-direction: column;
     align-items: center;
     width: 358px;
+    min-height: 210px;
+    padding-top: 5px;
     border: 1px solid #e2e2e2;
 }
 .Hot-deal-name{
     margin-top: 16px;
     padding: 0 10px;
     font-size: 16px;
-    line-height: 41px;
+    line-height: 25px;
 }
-.item-header-link:hover{
+.Hot-deal-about .Item-header-link{
+    margin-bottom: auto;
+}
+.Item-header-link:hover{
     color: #d58e32;
 }
 .Hot-deal-rating{
     position: relative;
     margin-bottom: 14px;
 }
-.fa-star{
+.fa-star,
+.fa-star-half-alt{
     position: static;
     font-size: 16px;
 }
@@ -506,9 +512,9 @@ color: #d58e32;
     padding-bottom: 17px;
     justify-content: space-between;
 }
-.Item-controls{
+.Hot-deal-bottom .Item-controls{
     display: flex;
-    padding-left: 13px;
+    margin-left: 10px;
 }
 .Item-controls button{
     display: block;
@@ -577,7 +583,7 @@ color: #d58e32;
     width:751px;
     height:466px;
 }
-.Active-offer{
+.Special-offer{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -614,6 +620,7 @@ color: #d58e32;
     font-size: 14px;
     font-weight: 600;
     border-radius: 3px;
+    color: rgba(42, 42, 42, 1);
     background-color: white;
 }
 .Special-offer-slider-item-1:hover>.Catalog-link,
@@ -622,7 +629,7 @@ color: #d58e32;
     visibility: visible;
 }
 .Catalog-link:hover{
-    opacity: 0.5;
+    color: rgba(42, 42, 42, 0.5);
 }
 .Special-offer-slider-btn{
     display: flex;
@@ -726,6 +733,9 @@ color: #d58e32;
 .Fixed-two-column-special-offers .Special-offer-left-column{
     width: 555px;
     height: 420px;
+    background-image: url("/img/special_offers/b902.jpeg");
+    background-repeat: no-repeat;
+    background-size: 555px 420px;
 }
 .Fixed-two-column-special-offers .Special-offer-left-column .Special-offer-about{
     margin-left: 33px;
@@ -766,12 +776,20 @@ color: #d58e32;
     height: 420px;
 }
 .Fixed-two-column-special-offers .Special-offer-right-column .Special-offer-top{
-    background-color: #e8edf7;
+    background-color: rgba(232, 237, 247, 0.2);
     height: 195px;
+    background-image: url("/img/special_offers/office-desks-3.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: -70px;
 }
 .Fixed-two-column-special-offers .Special-offer-right-column .Special-offer-bottom{
-    background-color: #fbf3f7;
+    background-color: rgba(251, 243, 24, 0.2);
     height: 195px;
+    background-image: url("/img/special_offers/mc1388.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: -150px;
 }
 .Fixed-two-column-special-offers .Special-offer-top .Special-offer-header{
     margin-top: 45px;
@@ -875,14 +893,23 @@ color: #d58e32;
     display: flex;
     flex-wrap: wrap;
 }
+.Products-category-pages-list{
+    display: flex;
+    width: 100%;
+}
+.Products-category-page-items-list{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
 .Products-catalog-item{
     width: 262px;
-    height: 410px;
 }
 .Product-catalog-item-top{
     position: relative;
     width:262px;
     height:260px;
+    background-color: #f4f5f7;
 }
 .Products-catalog-item:not(:nth-child(4n)){
     margin-right: 31px;
@@ -949,15 +976,19 @@ color: #d58e32;
     flex-direction: column;
     align-items: center;
     width: 260px;
-    height: 143px;
+    min-height: 220px;
     border: 1px solid #e2e2e2;
     border-top: none;
 }
 .Product-catalog-item-bottom .Item-header{
+    margin-top: 10px;
     padding: 0 10px;
     font-size: 16px;
-    line-height: 42px;
+    line-height: 25px;
     font-weight: 600;
+}
+.Product-catalog-item-bottom .Item-header-link{
+    margin-bottom: auto;
 }
 .Product-catalog-item-bottom .Item-rating{
     line-height: 20px;
@@ -981,8 +1012,11 @@ color: #d58e32;
 }
 .Item-controls-and-price{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 0 10px;
+    box-sizing: border-box;
     width: 260px;
+    margin-bottom: 10px;
 }
 .Item-controls-and-price .Item-controls{
     display: flex;
@@ -1021,10 +1055,10 @@ color: #d58e32;
 .Extra-promotion-furniture-Gallery{
     width: 554px;
 }
-.Extra-promotion-furniture-Gallery .Section-header{
+.Extra-promotion-furniture-gallery .Section-header{
     width: 100%;
     border-bottom: 3px solid #e2e2e2;
-    margin-bottom: 30px;
+    margin-bottom: 31px;
 }
 .Gallery-nav{
     display: flex;
@@ -1035,8 +1069,7 @@ color: #d58e32;
     font-weight: 600;
 }
 .Gallery-nav-element{
-    box-sizing: border-box;
-    width: 138.25px;
+    width: 137.5px;
     text-align: center;
     border: 1px solid #e2e2e2;
     border-left: none;
@@ -1047,6 +1080,7 @@ color: #d58e32;
 .Gallery-nav-element{
     display: block;
     height: 100%;
+    padding-top: 3px;
 }
 .Gallery-nav-element:not(.Active-gallery-element):hover{
     color: #d58e32;
@@ -1054,6 +1088,9 @@ color: #d58e32;
 .Gallery-nav .Active-gallery-element{
     border-top: 3px solid #d58e32;
     border-bottom: none;
+    height: 40px;
+    padding-top: 0px;
+    padding-bottom: 3px;
 }
 .Gallery-content{
     position: relative;
@@ -1064,20 +1101,27 @@ color: #d58e32;
 }
 .Gallery-content .Item-controls{
     flex-direction: column;
-
     position: absolute;
     top: 118px;
     left: 8px;
 }
 .Gallery-content .Item-controls button{
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.2);
     margin-bottom: 8px;
+}
+.Gallery-content:hover .Item-controls button,
+.Item-controls button:hover{
+    background-color: rgba(255, 255, 255, 0.8);
 }
 .Gallery-item-prices{
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 105px;
     height: 105px;
-    top: 181px;
+    top: 160px;
     left: 376px;
     border-radius: 50%;
     background-color: rgba(0, 0, 0, 0.5);
@@ -1087,17 +1131,17 @@ color: #d58e32;
 }
 .Gallery-item-prices .Gallery-item-new-price{
     display: inline-block;
-    font-size: 20px;
+    font-size: 15px;
     line-height: 20px;
-    margin-top: 37px;
     font-weight: 600;
 }
 .Gallery-item-prices .Gallery-item-old-price{
     display: inline-block;
     position: relative;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 400;
     line-height: 20px;
+    margin-bottom: 10px;
 }
 .Gallery-item-prices .Gallery-item-old-price::after{
     content: "";
@@ -1111,9 +1155,9 @@ color: #d58e32;
 .Gallery-item-about{
     position: absolute;
     left: 304px;
-    top: 271px;
+    bottom: 30px;
     width: 249px;
-    height: 106px;
+    height: 120px;
     z-index: 1;
     background-color: white;
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.24); 
@@ -1145,10 +1189,13 @@ color: #d58e32;
     line-height: 30px;
 }
 .Gallery-item-about .Gallery-item-header{
-    margin-top: 32px;
+    margin-top: 20px;
+    font-size: 25px;
+    font-size: 16px;
 }
 .Gallery-slider{
     display: flex;
+    justify-content: space-between;
     width: 554px;
     height: 86px;
     border: 1px solid #e2e2e2;
@@ -1173,7 +1220,7 @@ color: #d58e32;
 .Gallery-slider .fa-chevron-right{
     font-size: 13px;
     top: 30px;
-    left: 14px;
+    left: 10px;
     color: white;
 }
 .Gallery-slider .Slider-scroll-left-btn:hover .fa-chevron-left,
@@ -1184,20 +1231,36 @@ color: #d58e32;
 }
 .Gallery-img-list{
     display: flex;
+    flex-basis: 100%;
+    justify-content: flex-start;
 }
-.Gallery-img-list .Gallery-item{
+.Gallery-img-list li:not(:last-of-type){
+    margin-right: 8.5px;
+}
+.Gallery-img-list .Gallery-item,
+.Gallery-img-list .Gallery-item a{
     display: block;
     width: 70px;
     height: 70px;
-    margin-right: 7px;
 }
 .Gallery-img-list .Gallery-item:hover{
     opacity: 0.9;
 }
 .Extra-promotion-special-offer{
+    position: relative;
     width: 556px;
     height: 615px;
-    background-color: #e8edf7;
+    background-image: url("/img/special_offers/erut3.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: -230px;
+}
+.Extra-promotion-special-offer .Over-img-filter{
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(198, 211, 235, 0.5);
 }
 .Extra-promotion-special-par{
     margin-left: 62px;
@@ -1267,7 +1330,9 @@ color: #d58e32;
 }
 .Blog-articles-element{
     position: relative;
-    height: 603px;
+    display: flex;
+    flex-direction: column;
+    min-height: 550px;
     width: 360px;
 }
 .Article-img-wrapper{
@@ -1321,9 +1386,9 @@ color: #d58e32;
 }
 .Article-button-read-more{
     display: block;
-    position: absolute;
-    bottom: -96px;
-    left: calc(50% - 82px);
+    margin-top: auto;
+    align-self: center;
+    text-align: center;
     border: none;
     cursor: pointer;
     width: 165px;
@@ -1336,6 +1401,7 @@ color: #d58e32;
 .Brands-list-section{
     width: 1141px;
     margin: 0 auto;
+    margin-top: 50px;
     margin-bottom: 58px;
     border: 1px solid #e2e2e2;
     border-left: none;
