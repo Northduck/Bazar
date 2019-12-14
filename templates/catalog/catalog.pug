@@ -9,7 +9,7 @@ html(lang="en")
   body
     header.Header
       .Header-top-wrapper
-        .Header-top
+        .Header-top.Section-centerer
           .Top-config
             .Config-money
               a.Current-config-tab.Current-money-tab(href='#')
@@ -56,7 +56,7 @@ html(lang="en")
                 i.fas.fa-bars
                 span.visually-hidden Burger
       .Header-middle-wrapper
-        ul.Header-middle
+        ul.Header-middle.Section-centerer
           li
             a.Middle-phone(href='tel:+23003560222')
               i.fas.fa-mobile-alt
@@ -68,7 +68,7 @@ html(lang="en")
             a.Middle-cart(href='#')
               i.fas.fa-shopping-basket
       .Header-bottom-wrapper
-        .Header-bottom
+        .Header-bottom.Section-centerer
           .Header-Bottom-accurate-nav
             button.Nav-catalog-btn
               i.fas.fa-list
@@ -95,7 +95,7 @@ html(lang="en")
             li
               a(href='#') BLOG
     main.Catalog-main
-      section.Catalog-special-offer
+      section.Catalog-special-offer.Section-centerer
         h3.Catalog-special-offer-header
           span.Light-text BEDROOM 
           span.Regular-text FURNITURE
@@ -103,7 +103,7 @@ html(lang="en")
           | ALWAYS
           span.Special-text  25% 
           | OFF OR MORE
-      ul.Catalog-nested-nav
+      ul.Catalog-nested-nav.Section-centerer
         li
           a(href="#")
             | Home
@@ -113,7 +113,7 @@ html(lang="en")
             i.fas.fa-chevron-right       
         li.Last-nested-tab
           a(href="#")= category_name
-      section.Products-catalog-section
+      section.Products-catalog-section.Section-centerer
         .Products-result-column
           .Products-head
             h2.Products-catalog-header FURNITURE
@@ -197,7 +197,7 @@ html(lang="en")
                         | Clothes
             div(class="Show-results visually-hidden" style="left:-150px; top: 0px;")
               button(class="Show-results-btn" type="submit") Show results
-      section.Brands-list-section
+      section.Brands-list-section.Section-centerer
         button.List-scroll-left-btn
           i.fas.fa-chevron-left
         ul.Brands-list
@@ -216,7 +216,7 @@ html(lang="en")
         button.List-scroll-right-btn
           i.fas.fa-chevron-right
       .User-news-subscriber-form-wrapper
-        .User-news-subscriber-form-centerer
+        .Section-centerer
           form(action="" method="POST")
             .User-news-form-content-wrapper
               label.User-news-form-header(for="User-news-email-field")
@@ -231,7 +231,7 @@ html(lang="en")
                   i.fas.fa-arrow-right
     footer.Footer
       .Footer-top
-        ul.Footer-information-lists
+        ul.Footer-information-lists.Section-centerer
           li.Footer-information-element
             ul.Footer-info-list
               li
@@ -283,7 +283,7 @@ html(lang="en")
               li.Payments-types
                 img(src="/img/Card_image.png" alt="" width="240" height="35")
       .Footer-bottom-wrapper
-        .Footer-bottom
+        .Footer-bottom.Section-centerer
           p
           p.Footer-copyright
             | ©Copyright 2016 Bazar | All Rights Reserved

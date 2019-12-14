@@ -34,8 +34,7 @@ mixin homePageGalleryContent(data)
             -var imgsDir="/img/products/"+data.category_id+"_"+data.product_id+"/"+data.category_id+"_"+data.product_id;
             -for(var i=1;i<=data.imgQuan;i++){
                 li(class=i>6 ? "visually-hidden Gallery-item": "Gallery-item")
-                    a(href='#')
-                        img.Gallery-photo(src= imgsDir+"_"+i+".jpeg" alt='' width='70' height='70')
+                    img.Gallery-photo(src= imgsDir+"_"+i+".jpeg" alt='' width='70' height='70')
             -}
         button.Slider-scroll-right-btn
             i.fas.fa-chevron-right

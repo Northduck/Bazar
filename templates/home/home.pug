@@ -6,55 +6,9 @@ head
   link(href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap' rel='stylesheet')
   link(rel='stylesheet' type='text/css' href='css/all.min.css')
 header.Header
-  .Header-top-wrapper
-    .Header-top
-      .Top-config
-        .Config-money
-          a.Current-config-tab.Current-money-tab(href='#')
-            | USD
-            i.fas.fa-caret-down
-          ul.Config-money-list
-            li
-              a.Config-money-usd(href='#') USD
-            li
-              a.Config-money-euro(href='#') EUR
-            li
-              a.Config-money-rubles(href='#') RUB
-        .Config-language
-          a.Current-config-tab.Current-language-tab(href='#')
-            | English
-            i.fas.fa-caret-down
-          ul.Config-language-list
-            li
-              a(href='#') English
-            li
-              a(href='#') Russian
-        .Config-help
-          a.Current-config-tab.Current-help-tab(href='#')
-            | Help
-            i.fas.fa-caret-down
-          ul.Config-help-list
-            li
-              a(href='#') First variant
-            li
-              a(href='#') Second variant
-            li
-              a(href='#') Thrird variant
-      ul.User-profile
-        li
-          a.Profile-login(href='#')
-            i.fas.fa-user
-            | Login
-        li
-          a.Profile-register(href='#')
-            i.fas.fa-lock
-            | Register
-        li
-          a.Profile-burger(href='#')
-            i.fas.fa-bars
-            span.visually-hidden Burger
+  include /templates/top_header.pug
   .Header-middle-wrapper
-    ul.Header-middle
+    ul.Header-middle.Section-centerer
       li
         a.Middle-phone(href='tel:+23003560222')
           i.fas.fa-mobile-alt
@@ -66,7 +20,7 @@ header.Header
         a.Middle-cart(href='#')
           i.fas.fa-shopping-basket
   .Header-bottom-wrapper
-    .Header-bottom
+    .Header-bottom.Section-centerer
       .Header-Bottom-accurate-nav
         button.Nav-catalog-btn
           i.fas.fa-list
@@ -94,7 +48,7 @@ header.Header
           a(href='#') BLOG
 main.Home-main
   .Hot-deals-special-offers-sliders-wrapper
-    section.Hot-deals-special-offers-sliders
+    section.Hot-deals-special-offers-sliders.Section-centerer
       .Hot-deals-slider
         .Hot-deals-top
           .Hot-deals-header
@@ -133,7 +87,7 @@ main.Home-main
             i.fas.fa-chevron-left
           button.Slider-next-btn.slider-btn
             i.fas.fa-chevron-right
-  ul.Our-advantages
+  ul.Our-advantages.Section-centerer
     li
       a.Our-advantages-article-link(href='#')
         h3.Advantages-header FREE SHIPPING
@@ -162,7 +116,7 @@ main.Home-main
         .Advantages-icons
           .Advantage-icons-inside
             i.fas.fa-bullhorn
-  section.Fixed-two-column-special-offers
+  section.Fixed-two-column-special-offers.Section-centerer
     a.Special-offer-left-column(href='#')
       .Special-offer-about
         h3.Special-offer-header
@@ -183,7 +137,7 @@ main.Home-main
           span.Bold-part SPECIAL 
           span.Light-part COLLECTION
         p.Special-offer-par SAVE UP 45% OF FURNIUTURE
-  section.Products-catalog
+  section.Products-catalog.Section-centerer
     .Products-catalog-head
       .Catalog-nav-wrapper
         h2.Section-header NEW FURNITURE
@@ -195,7 +149,7 @@ main.Home-main
         button.Slider-btn
     ul.Products-category-list
       include /templates/home/home_new_products_catalog.pug
-  section.Extra-promotion
+  section.Extra-promotion.Section-centerer
     include /templates/home/home_gallery.pug
     .Extra-promotion-special-offer
       .Over-img-filter
@@ -205,7 +159,7 @@ main.Home-main
           br
           span.Offer-name Bedroom Bed
         a.Extra-promotion-special-shop-now-btn SHOP NOW
-  section.Latest-blog-articles
+  section.Latest-blog-articles.Section-centerer
     .Blog-top
       h2.Section-header LATEST BLOG
       .Catalog-slider-btn-wrapper
@@ -213,7 +167,7 @@ main.Home-main
         button.Slider-btn
         button.Slider-btn
     include /templates/home/home_blog_articles.pug
-  section.Brands-list-section
+  section.Brands-list-section.Section-centerer
     button.List-scroll-left-btn
       i.fas.fa-chevron-left
     ul.Brands-list
@@ -231,7 +185,7 @@ main.Home-main
         a.List-item(href='#')
     button.List-scroll-right-btn
       i.fas.fa-chevron-right
-  section.Client-feedback-wrapper
+  section.Section-centerer
     .Feedback-section-top
       h2.Section-header CLIENT FEEDBACK
       .Catalog-slider-btn-wrapper
@@ -274,7 +228,7 @@ main.Home-main
             span.Author-occupation Furniture client
 footer.Footer
   .Footer-top
-    ul.Footer-information-lists
+    ul.Footer-information-lists.Section-centerer
       li.Footer-information-element
         ul.Footer-info-list
           li
@@ -326,7 +280,7 @@ footer.Footer
           li.Payments-types
             img(src='img/Card_image.png' alt='' width='240' height='35')
   .Footer-bottom-wrapper
-    .Footer-bottom
+    .Footer-bottom.Section-centerer
       p
       p.Footer-copyright
         | &copy;Copyright 2016 Bazar | All Rights Reserved
@@ -346,4 +300,4 @@ footer.Footer
         li.Footer-media-element
           a(href='#')
             i.fab.fa-pinterest-p
-script(src="/js/index.js")
+script(src="/js/main_index.js")
