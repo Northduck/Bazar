@@ -1,0 +1,256 @@
+doctype html
+head
+    meta(charset="utf-8")
+    title Goods
+    link(rel='stylesheet' type='text/css' href='/css/MainStyle.css')
+    link(href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap' rel='stylesheet')
+    link(rel='stylesheet' type='text/css' href='/css/all.min.css')
+header.Header
+  .Header-top-wrapper
+    .Header-top.Section-centerer
+      .Top-config
+        .Config-money
+          a.Current-config-tab.Current-money-tab(href='#')
+            | USD
+            i.fas.fa-caret-down
+          ul.Config-money-list
+            li
+              a.Config-money-usd(href='#') USD
+            li
+              a.Config-money-euro(href='#') EUR
+            li
+              a.Config-money-rubles(href='#') RUB
+        .Config-language
+          a.Current-config-tab.Current-language-tab(href='#')
+            | English
+            i.fas.fa-caret-down
+          ul.Config-language-list
+            li
+              a(href='#') English
+            li
+              a(href='#') Russian
+        .Config-help
+          a.Current-config-tab.Current-help-tab(href='#')
+            | Help
+            i.fas.fa-caret-down
+          ul.Config-help-list
+            li
+              a(href='#') First variant
+            li
+              a(href='#') Second variant
+            li
+              a(href='#') Thrird variant
+      ul.User-profile
+        li
+          a.Profile-login(href='#')
+            i.fas.fa-user
+            | Login
+        li
+          a.Profile-register(href='#')
+            i.fas.fa-lock
+            | Register
+        li
+          a.Profile-burger(href='#')
+            i.fas.fa-bars
+            span.visually-hidden Burger
+  .Header-middle-wrapper
+    ul.Header-middle.Section-centerer
+      li
+        a.Middle-phone(href='tel:+23003560222')
+          i.fas.fa-mobile-alt
+          | 2300 - 3560 - 222
+      li
+        a.Middle-logo(href='#')
+          img(src='/img/MainLogo.png' alt='Logo' width='165' height='77')
+      li
+        a.Middle-cart(href='#')
+          i.fas.fa-shopping-basket
+  .Header-bottom-wrapper
+    .Header-bottom.Section-centerer
+      .Header-Bottom-accurate-nav
+        button.Nav-catalog-btn
+          i.fas.fa-list
+          | Select a category
+          i.fas.fa-caret-down
+        .Nav-search
+          form.Nav-search-form(action='' method='POST')
+            input#Header-nav-search-field.Nav-search-field(type='search' name='Search-field' placeholder='Search products...')
+            button#Nav-search-submit-btn.Nav-search-submit(type='submit')
+              i.fas.fa-search
+      ul.Main-nav
+        li
+          a(class='Сurrent-tab' href='#') HOME
+        li
+          a(href='#') FURNITURE
+        li
+          a(href='#') CHAIR
+        li
+          a(href='#') TABLE
+        li
+          a(href='#') SOFA
+        li
+          a(href='#') BEDROOM
+        li
+          a(href='#') BLOG
+main.Shop-main
+  .Product-category-nav-wrapper
+    .Product-category-nav.Section-centerer
+      h3.Category-header FURNITURE
+      ul.Category-nesting-nav
+        li
+          a(href='#') Home
+          i.fas.fa-chevron-right
+        li
+          a(href='#') Furniture
+          i.fas.fa-chevron-right
+        li
+          a(href='#') Chair
+  include /templates/goods/goods_card.pug
+  .Product-info-wrapper
+    ul.Product-info-nav
+      li DESCRIPTION
+      li.Product-info-active-tab
+          | REVIEWS (
+          span.Reviews-count= reviewsCount[0].count
+          | )
+      li SPECIFICATION
+    ul.Product-info-content
+      li.Product-description-wrapper.visually-hidden
+        h4.New-user-review-header Product Description
+        p.Product-description= goodMainInformation[0].product_description
+      li.Product-info-content-reviews-wrapper
+        include /templates/goods/goods_reviews.pug
+        .New-user-review
+          h4.New-user-review-header Add a review
+          div(class="Add-review-wrapper")
+            form.User-review-form(action='' method='POST')
+              fieldset.New-user-review-rating-fieldset
+                label.New-user-review-rating-caption Your Rating
+                div(class="New-user-review-rating-group" tabindex="1")
+                  input.Rating-star(type='radio' name='product-rating' value='1' aria-label='awful')
+                  input.Rating-star(type='radio' name='product-rating' value='2' aria-label='bad')
+                  input.Rating-star(type='radio' name='product-rating' value='3' aria-label='normal')
+                  input.Rating-star(type='radio' name='product-rating' value='4' aria-label='good')
+                  input.Rating-star(type='radio' name='product-rating' value='5' aria-label='exelent')
+                  .Rating-focus
+              form.User-review-form(action='' method='POST')
+                label.Review-text-label(for='review-text-field')
+                  | Your review
+                  textarea#review-text-field.New-user-revier-text(name='review-text' rows='5')
+                .User-info-wrapper
+                  input.User-info-user-name(type='text' name="user-name-field" placeholder='Name*' pattern="[a-zA-z0-9]{3,}" title="Name at least with 3 symbols")
+                  input.User-info-email(type='email' name="user-email-field" placeholder='Email*')
+                  input.User-info-submit-btn(type='submit' value='POST')
+      li(class="Goods-characteristics-table-wrappper visually-hidden")
+        h4.New-user-review-header Product Characteristics
+        table
+          tr
+            td(class="Characteristic-name") Brand
+            td(class="Characteristic-value")= goodMainInformation[0].product_brand_value
+          -for(let i=0;i<characteristicValues.length;i++){
+          tr
+            td(class="Characteristic-name")= characteristicValues[i].characteristic_name
+            td(class="Characteristic-value")= characteristicValues[i].category_characteristic_value
+          -}
+          tr
+            td(class="Characteristic-name") Length
+            td(class="Characteristic-value")= goodMainInformation[0].product_length+" inches"    
+          tr
+            td(class="Characteristic-name") Width
+            td(class="Characteristic-value")= goodMainInformation[0].product_width+" inches"
+          tr
+            td(class="Characteristic-name") Height
+            td(class="Characteristic-value")= goodMainInformation[0].product_height+" inches"  
+          tr
+            td(class="Characteristic-name") Weight
+            td(class="Characteristic-value")= goodMainInformation[0].product_weight+" lbs"                            
+  include /templates/goods/goods_new_furniture.pug
+  .User-news-subscriber-form-wrapper
+    .User-news-subscriber-form-centerer.Section-centerer
+      form(action='' method='POST')
+        .User-news-form-content-wrapper
+          label.User-news-form-header(for='User-news-email-field')
+            | NEWSLETTER:
+          .User-news-email-wrapper
+            input#User-news-email-field.User-news-email(type='email' name='User-mail' placeholder='Enter your email address')
+            .Email-icon-wrapper
+              label(for='User-news-email-field')
+                i.fas.fa-envelope
+            .User-news-submit-btn-wrapper
+              input.User-news-submit-btn(type='submit' value='')
+              i.fas.fa-arrow-right
+footer.Footer
+  .Footer-top
+    ul.Footer-information-lists.Section-centerer
+      li.Footer-information-element
+        ul.Footer-info-list
+          li
+            h3.Footer-header F.A.Q.
+          li
+            a(href='#') About us
+          li
+            a(href='#') Privacy
+          li
+            a(href='#') Conditions
+          li
+            a(href='#') Online support
+      li.Footer-information-element
+        ul.Footer-info-list
+          li
+            h3.Footer-header MY ACCOUNT
+          li
+            a(href='#') Login
+          li
+            a(href='#') My Cart
+          li
+            a(href='#') Wishlist
+          li
+            a(href='#') Checkout
+      li.Footer-information-element
+        ul.Footer-info-list
+          li
+            h3.Footer-header INFORMATION
+          li
+            a(href='#') Specials
+          li
+            a(href='#') New Products
+          li
+            a(href='#') Best Sellers
+          li
+            a(href='#') Our Store
+      li.Footer-information-element
+        ul.Footer-info-list
+          li
+            h3.Footer-header ORDERS
+          li
+            a(href='#') Payment options
+          li
+            a(href='#') Shipping and delivery
+          li
+            a(href='#') Returns
+          li
+            a(href='#') Shipping
+          li.Payments-types
+            img(src='/img/Card_image.png' alt='' width='240' height='35')
+  .Footer-bottom-wrapper
+    .Footer-bottom.Section-centerer
+      p
+      p.Footer-copyright
+        | &copy;Copyright 2016 Bazar | All Rights Reserved
+      ul.Footer-media-list
+        li.Footer-media-element
+          a(href='#')
+            i.fab.fa-twitter
+        li.Footer-media-element
+          a(href='#')
+            i.fab.fa-facebook-f
+        li.Footer-media-element
+          a(href='#')
+            i.fab.fa-youtube
+        li.Footer-media-element
+          a(href='#')
+            i.fab.fa-linkedin-in
+        li.Footer-media-element
+          a(href='#')
+            i.fab.fa-pinterest-p
+  script(src="/js/goods_index.js")

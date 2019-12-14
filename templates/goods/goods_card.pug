@@ -1,0 +1,91 @@
+mixin makeCard(data,counts)    
+  .Shop-page-product-item
+    .Shop-page-product-left-column
+        .Product-active-img-wrapper
+          -let mainImgDir="/img/products/"+data.category_id+"_"+data.product_id+"/"+data.category_id+"_"+data.product_id+"_1.jpeg";
+          img(class="Product-active-img" src= mainImgDir alt='')
+          button.Expand-img-btn
+            i.far.fa-expand-alt
+        .Product-img-slider
+          button.Slide-left-btn
+            i.fas.fa-chevron-left
+          ul.Product-imgs-list
+            -var imgsDir="/img/products/"+data.category_id+"_"+data.product_id+"/"+data.category_id+"_"+data.product_id;
+            -for(var i=1;i<=data.imgQuan;i++){
+            li(class=i>4 ? "visually-hidden Gallery-item": "Gallery-item")
+              img.Gallery-photo(src= imgsDir+"_"+i+".jpeg" alt='' width='90' height='90')
+            -}
+          button.Slide-right-btn
+            i.fas.fa-chevron-right
+    ul.Shop-page-product-right-column
+      li.Product-header-subsection
+        .Product-header-row
+          h1.Product-name-header= data.product_name
+          .Change-product-btn-wrapper
+            button.Change-product-btn-left
+              i.fas.fa-chevron-left
+            button.Change-product-btn-right
+              i.fas.fa-chevron-right
+        .Product-users-rating-row
+          span(class="Product-rating" data-value-rating= data.product_rating)
+            include /templates/star_rating.pug
+            +makeStarRating(data.product_rating)
+          a.Product-reviews-counter(href='#')= counts+" reviews" 
+          a.Product-to-adding-review-link(href='#') Add Your Review
+      li.Product-price-subsection
+        -if(data.product_onsale_price==null){
+        p.New-price= data.product_static_price
+        -}else{
+        p.Old-price= data.product_static_price
+        p.New-price= data.product_onsale_price
+        -}
+      li.Product-controls-btns-subsection
+        ul.Controls-btns
+          li
+            button.Add-to-cart-btn
+              i.fas.fa-shopping-basket
+              | ADD TO CARD
+          li
+            button.Control-btn.Hot-deal-like
+              i.far.fa-heart
+          li
+            button.Control-btn.Hot-deal-compare
+              i.fas.fa-exchange-alt
+        .Quantity-controls
+          label(for='Product-quantity-field') Quantity:
+          button.Quantity-minus-btn
+            i.fas.fa-minus
+          input#Product-quantity-field(class="Product-quantity-value" type='text' name='product-quantity' data-previous-value="1" value='1' )
+          button.Quantity-plus-btn
+            i.fas.fa-plus
+      li.Product-overview-subsection
+        h3.Product-overview-par-header Quick Overview
+        p.Product-overview-par
+          | Nam tristique porta ligula, vel viverra sem eleifend nec. Nulla sed purus augue, eu euis mod tellus. Nam mattis eros tis sagittis. Vestibulum suscipit cursus biben.
+      li.Product-special-info-subsection
+        table.Product-special-table
+          tr
+            td.Product-special-table-head Avaliability:
+            td.Product-special-table-value In Stock
+          tr
+            td.Product-special-table-head Category:
+            td.Product-special-table-value Furniture
+      li.Product-share-subsection
+        ul.Product-share-list
+          li
+            a.Share-facebook(href='#')
+              i.fab.fa-facebook-f
+              | Facebook
+          li
+            a.Share-twitter(href='#')
+              i.fab.fa-twitter
+              | Tweet
+          li
+            a.Share-pinterest(href='#')
+              i.fab.fa-pinterest-p
+              | Pinterest
+          li
+            a.Share-linkedin(href='#')
+              i.fab.fa-linkedin-in
+              | Linkedin
++makeCard(goodMainInformation[0],reviewsCount[0].count)
