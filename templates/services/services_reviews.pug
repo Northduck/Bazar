@@ -1,0 +1,18 @@
+mixin reviewsList(data)
+    ul.Product-reviews
+        -if(data.length>0){
+        -for(let i=0;i<data.length;i++){
+        li.Product-review
+            div(class="Review-about")
+                span.Item-rating
+                    include /templates/star_rating.pug
+                    +makeStarRating(data[i].service_rating)
+                p.User-name-header=i18n.__("User name")
+                p.User-name= data[i].user_name
+            p(class="Review-content")= data[i].review_text
+            p(class="Review-date")= data[i].review_date.toISOString().substring(0,10)
+        -}
+        -}else{
+        li.No-reviews-plug=i18n.__("no reviews")
+        -}
++reviewsList(serviceReviews)

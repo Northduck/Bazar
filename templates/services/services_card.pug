@@ -1,0 +1,66 @@
+mixin makeCard(data,counts)    
+  .Shop-page-product-item
+    .Shop-page-product-left-column
+        .Product-active-img-wrapper
+          -let mainImgDir="/img/services/"+Number(data.service_id)+"/"+Number(data.service_id)+"_1.jpg";
+          img(class="Product-active-img" src= mainImgDir alt='')
+          button.Expand-img-btn
+            i.far.fa-expand-alt
+        .Product-img-slider
+          button.Slide-left-btn
+            i.fas.fa-chevron-left
+          ul.Product-imgs-list
+            -var imgsDir="/img/services/"+Number(data.service_id)+"/"+Number(data.service_id)+"_";
+            -for(var i=1;i<=data.imgQuan;i++){
+            li(class=i>4 ? "visually-hidden Gallery-item": "Gallery-item")
+              img.Gallery-photo(src= imgsDir+i+".jpg" alt='' width='90' height='90')
+            -}
+          button.Slide-right-btn
+            i.fas.fa-chevron-right
+    ul.Shop-page-product-right-column
+      li.Product-header-subsection
+        .Product-header-row
+          h1.Product-name-header= data["service_name_"+i18n.locale]
+          .Change-product-btn-wrapper
+            button.Change-product-btn-left
+              i.fas.fa-chevron-left
+            button.Change-product-btn-right
+              i.fas.fa-chevron-right
+        .Product-users-rating-row
+          span(class="Product-rating" data-value-rating= data.service_rating)
+            include /templates/star_rating.pug
+            +makeStarRating(data.service_rating)
+          a.Product-reviews-counter(href='#')= counts+" reviews" 
+          a.Product-to-adding-review-link(href='#')=i18n.__("Add Your Review")
+      li.Product-price-subsection
+        -if(data.service_previous_price==null){
+        p.New-price= data.service_current_price
+        -}else{
+        p.New-price= data.service_current_price
+        p.Old-price= data.service_previous_price
+        -}
+      li.Product-controls-btns-subsection
+        ul.Controls-btns
+          li
+            button(class="Checkout-service-btn" data-service-id=data.service_id)
+              i.fas.fa-shopping-basket
+              =i18n.__("Order service")
+      li.Product-share-subsection
+        ul.Product-share-list
+          li
+            a.Share-facebook(href='#')
+              i.fab.fa-facebook-f
+              | Facebook
+          li
+            a.Share-twitter(href='#')
+              i.fab.fa-twitter
+              | Tweet
+          li
+            a.Share-pinterest(href='#')
+              i.fab.fa-pinterest-p
+              | Pinterest
+          li
+            a.Share-linkedin(href='#')
+              i.fab.fa-linkedin-in
+              | Linkedin
++makeCard(serviceMainInformation[0],reviewsCount[0].count)

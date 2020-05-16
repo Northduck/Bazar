@@ -1,0 +1,57 @@
+mixin productsItems(data)
+    li.Products-catalog-item
+        -let isSaleClass="Product-catalog-item-top";
+        -let productCompositeID=(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id));
+        -isSaleClass+=data.product_previous_price===null ? "":"Sale-item";
+        div(class= isSaleClass)
+            -let imgDir="/img/products/"+productCompositeID+"/"+productCompositeID+"1.jpg";
+            img.Catalog-item-img(src= imgDir alt='' width='262' height='260')
+            .Product-catalog-item-buttons
+              button.Quick-view-btn=i18n.__("Quick View")
+              button(class="Add-to-cart-btn" data-product-id=data.product_id)
+                i.fas.fa-shopping-basket
+                =i18n.__("add to cart")
+        .Product-catalog-item-bottom
+            a.Item-header-link(href=`/goods/${productCompositeID}`)
+                h3.Item-header= data["product_name_"+i18n.locale]
+            span.Item-rating
+                include /templates/star_rating.pug
+                +makeStarRating(data.product_rating)
+            .Item-decorative-line
+            .Item-controls-and-price
+                ul.Item-controls
+                    li
+                        button(class="Control-btn Good-like-btn" data-product-id=data.product_id)
+                    li
+                        button.Compare-btn
+                            i.fas.fa-exchange-alt
+                .Item-price
+                    -if(data.product_previous_price==null){
+                    p.New-price= data.product_current_price
+                    -}else{
+                    p.New-price= data.product_current_price
+                    p.Old-price= data.product_previous_price
+                    -}
+            
+mixin productsCategoriesElement(data)     
+    section.New-products-catalog.Section-centerer
+        .Products-catalog-head
+            h2.Section-header=i18n.__("new furniture")
+            .Catalog-slider-btn-wrapper
+                button.Slider-btn.Active-slide-btn
+                -for(let len=data.length-4;len>0;len-=4){
+                button.Slider-btn
+                -}
+        ul.Products-catalog-list
+            li
+                ul(class='Products-category-pages-list')
+                    -let initialLength=Math.ceil(data.length/4);
+                    -for(var i=initialLength;i>0;i--){
+                    li(class=i==initialLength ? "New-furniture-page":"New-furniture-page visually-hidden")
+                        ul(class='Products-category-page-items-list') 
+                            -for(var limiter=4;data.length!=0&&limiter>0;limiter--){ 
+                            +productsItems(data[0])
+                            -data.shift();
+                            -}
+                    -}
++productsCategoriesElement(top12NewestFurniture)

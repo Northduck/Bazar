@@ -1,0 +1,80 @@
+doctype html
+html(lang="en")
+  head
+      meta(charset="utf-8")
+      title= serviceMainInformation[0]["service_name_"+i18n.locale]
+      link(rel='stylesheet' type='text/css' href='/css/MainStyle.css')
+      link(href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap' rel='stylesheet')
+      link(rel='stylesheet' type='text/css' href='/css/all.min.css')
+      link(rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png")
+      link(rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png")
+      link(rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png")
+      link(rel="manifest" href="/img/favicon/site.webmanifest")
+      link(rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#5bbad5")
+      meta(name="msapplication-TileColor" content="#da532c")
+      meta(name="theme-color" content="#ffffff")
+  body
+    header.Header
+      include /templates/top_header.pug
+      include /templates/middle_header.pug
+      include /templates/bottom_header.pug
+    main.Shop-main
+      .Product-category-nav-wrapper
+        .Product-category-nav.Section-centerer
+          h3.Category-header=i18n.__("Services")
+          ul.Category-nesting-nav
+            li
+              a(href='/')=i18n.__("Home")
+              i.fas.fa-chevron-right
+            li
+              a(href='')=i18n.__("Services")
+              i.fas.fa-chevron-right
+            li
+              a(href='catalog/product_category_id')=serviceMainInformation[0]["service_category_name_"+i18n.locale]
+      include /templates/services/services_card.pug
+      .Product-info-wrapper
+        ul.Product-info-nav
+          li
+            a(href='#')=i18n.__("DESCRIPTION")
+          li.Product-info-active-tab
+            a(href='#') 
+              =i18n.__("REVIEWS")
+              span.Reviews-count= reviewsCount[0].count
+              | )
+          li 
+            a(href='#')=i18n.__("SPECIFICATION")
+        ul.Product-info-content
+          li.Product-description-wrapper.visually-hidden
+            h4.New-user-review-header=i18n.__("Service Description")
+            p.Product-description= serviceMainInformation[0]["service_description_"+i18n.locale]
+          li.Product-info-content-reviews-wrapper
+            include /templates/services/services_reviews.pug
+            .New-user-review
+              h4.New-user-review-header=i18n.__("Add a review")
+              div(class="Add-review-wrapper")
+                form.User-review-form(action='' method='POST')
+                  fieldset.New-user-review-rating-fieldset
+                    label.New-user-review-rating-caption=i18n.__("Your Rating")
+                    div(class="New-user-review-rating-group" tabindex="1")
+                      input.Rating-star(type='radio' name='product-rating' value='1' aria-label='awful')
+                      input.Rating-star(type='radio' name='product-rating' value='2' aria-label='bad')
+                      input.Rating-star(type='radio' name='product-rating' value='3' aria-label='normal')
+                      input.Rating-star(type='radio' name='product-rating' value='4' aria-label='good')
+                      input.Rating-star(type='radio' name='product-rating' value='5' aria-label='exelent')
+                      .Rating-focus
+                  form.User-review-form(action='' method='POST')
+                    label.Review-text-label(for='review-text-field')
+                      =i18n.__("Your review")
+                      textarea#review-text-field.New-user-revier-text(name='review-text' rows='5')
+                    .User-info-wrapper
+                      input.User-info-user-name(type='text' name="user-name-field" placeholder='Name*' pattern="[a-zA-z0-9]{3,}" title="Name at least with 3 symbols")
+                      input.User-info-email(type='email' name="user-email-field" placeholder='Email*')
+                      input.User-info-submit-btn(type='submit' value='POST')
+          li(class="Goods-characteristics-table-wrappper visually-hidden")
+            h4.New-user-review-header=i18n.__("Service Characteristics")                         
+      include /templates/newsletter_form.pug
+    footer.Footer
+      include /templates/footer_top.pug
+      include /templates/footer_bottom.pug
+    script(src="/js/goods_index.js")
+    script(type="module" src="/js/common_script.js")
