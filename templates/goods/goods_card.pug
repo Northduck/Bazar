@@ -2,7 +2,7 @@ mixin makeCard(data,counts)
   .Shop-page-product-item
     .Shop-page-product-left-column
         .Product-active-img-wrapper
-          -let mainImgDir="/img/products/"+data.category_id+"_"+data.product_id+"/"+data.category_id+"_"+data.product_id+"_1.jpeg";
+          -let mainImgDir="/img/products/"+(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id))+"/"+(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id))+"1.jpg";
           img(class="Product-active-img" src= mainImgDir alt='')
           button.Expand-img-btn
             i.far.fa-expand-alt
@@ -10,17 +10,17 @@ mixin makeCard(data,counts)
           button.Slide-left-btn
             i.fas.fa-chevron-left
           ul.Product-imgs-list
-            -var imgsDir="/img/products/"+data.category_id+"_"+data.product_id+"/"+data.category_id+"_"+data.product_id;
+            -var imgsDir="/img/products/"+(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id))+"/"+(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id));
             -for(var i=1;i<=data.imgQuan;i++){
             li(class=i>4 ? "visually-hidden Gallery-item": "Gallery-item")
-              img.Gallery-photo(src= imgsDir+"_"+i+".jpeg" alt='' width='90' height='90')
+              img.Gallery-photo(src= imgsDir+i+".jpg" alt='' width='90' height='90')
             -}
           button.Slide-right-btn
             i.fas.fa-chevron-right
     ul.Shop-page-product-right-column
       li.Product-header-subsection
         .Product-header-row
-          h1.Product-name-header= data.product_name
+          h1.Product-name-header= data["product_name_"+i18n.locale]
           .Change-product-btn-wrapper
             button.Change-product-btn-left
               i.fas.fa-chevron-left
@@ -31,45 +31,41 @@ mixin makeCard(data,counts)
             include /templates/star_rating.pug
             +makeStarRating(data.product_rating)
           a.Product-reviews-counter(href='#')= counts+" reviews" 
-          a.Product-to-adding-review-link(href='#') Add Your Review
+          a.Product-to-adding-review-link(href='#')=i18n.__("Add Your Review")
       li.Product-price-subsection
-        -if(data.product_onsale_price==null){
-        p.New-price= data.product_static_price
+        -if(data.product_previous_price==null){
+        p.New-price= data.product_current_price
         -}else{
-        p.Old-price= data.product_static_price
-        p.New-price= data.product_onsale_price
+        p.New-price= data.product_current_price
+        p.Old-price= data.product_previous_price
         -}
       li.Product-controls-btns-subsection
         ul.Controls-btns
           li
-            button.Add-to-cart-btn
+            button(class="Add-to-cart-btn" data-product-id=data.product_id)
               i.fas.fa-shopping-basket
-              | ADD TO CARD
+              =i18n.__("add to cart")
           li
-            button.Control-btn.Hot-deal-like
+            button(class="Control-btn Good-like-btn" data-product-id=data.product_id)
               i.far.fa-heart
           li
             button.Control-btn.Hot-deal-compare
               i.fas.fa-exchange-alt
         .Quantity-controls
-          label(for='Product-quantity-field') Quantity:
+          label(for='Product-quantity-field')=i18n.__("Quantity")
           button.Quantity-minus-btn
             i.fas.fa-minus
           input#Product-quantity-field(class="Product-quantity-value" type='text' name='product-quantity' data-previous-value="1" value='1' )
           button.Quantity-plus-btn
             i.fas.fa-plus
-      li.Product-overview-subsection
-        h3.Product-overview-par-header Quick Overview
-        p.Product-overview-par
-          | Nam tristique porta ligula, vel viverra sem eleifend nec. Nulla sed purus augue, eu euis mod tellus. Nam mattis eros tis sagittis. Vestibulum suscipit cursus biben.
       li.Product-special-info-subsection
         table.Product-special-table
           tr
-            td.Product-special-table-head Avaliability:
-            td.Product-special-table-value In Stock
+            td.Product-special-table-head=i18n.__("Avaliability")
+            td.Product-special-table-value=i18n.__("In Stock")
           tr
-            td.Product-special-table-head Category:
-            td.Product-special-table-value Furniture
+            td.Product-special-table-head=i18n.__("Category")
+            td.Product-special-table-value=goodMainInformation[0]["product_category_name_"+i18n.locale]
       li.Product-share-subsection
         ul.Product-share-list
           li
