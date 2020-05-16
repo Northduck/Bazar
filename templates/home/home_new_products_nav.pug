@@ -3,7 +3,7 @@ mixin new_products_nav(data, className)
         a(href='#' class= className)= data
 -for(var i=0;i<newProductsCatalogNav.length;i++){
 -if(i!=0){
-+new_products_nav(newProductsCatalogNav[i].category_name,"")
++new_products_nav(newProductsCatalogNav[i]["product_category_name_"+i18n.locale],"")
 -}else{
-+new_products_nav(newProductsCatalogNav[i].category_name,"Active-tab")
++new_products_nav(newProductsCatalogNav[i]["product_category_name_"+i18n.locale],"Active-tab")
 -}}

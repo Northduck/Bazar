@@ -1,303 +1,206 @@
 doctype html
-head
-  meta(charset='utf-8')
-  title Bazar
-  link(rel='stylesheet' type='text/css' href='css/MainStyle.css')
-  link(href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap' rel='stylesheet')
-  link(rel='stylesheet' type='text/css' href='css/all.min.css')
-header.Header
-  include /templates/top_header.pug
-  .Header-middle-wrapper
-    ul.Header-middle.Section-centerer
-      li
-        a.Middle-phone(href='tel:+23003560222')
-          i.fas.fa-mobile-alt
-          | 2300 - 3560 - 222
-      li
-        a.Middle-logo(href='#')
-          img(src='img/MainLogo.png' alt='Logo' width='165' height='77')
-      li
-        a.Middle-cart(href='#')
-          i.fas.fa-shopping-basket
-  .Header-bottom-wrapper
-    .Header-bottom.Section-centerer
-      .Header-Bottom-accurate-nav
-        button.Nav-catalog-btn
-          i.fas.fa-list
-          | Select a category
-          i.fas.fa-caret-down
-        .Nav-search
-          form.Nav-search-form(action='' method='POST')
-            input#Header-nav-search-field.Nav-search-field(type='search' name='Search-field' placeholder='Search products...')
-            button#Nav-search-submit-btn.Nav-search-submit(type='submit')
-              i.fas.fa-search
-      ul.Main-nav
+html(lang="en")
+  head
+    meta(charset='utf-8')
+    title=i18n.__("Bazar Online shopping")
+    link(rel='stylesheet' type='text/css' href='css/MainStyle.css')
+    link(href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap' rel='stylesheet')
+    link(rel='stylesheet' type='text/css' href='css/all.min.css')
+    link(rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png")
+    link(rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png")
+    link(rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png")
+    link(rel="manifest" href="/img/favicon/site.webmanifest")
+    link(rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#5bbad5")
+    meta(name="msapplication-TileColor" content="#da532c")
+    meta(name="theme-color" content="#ffffff")
+  body
+    header.Header
+      include /templates/top_header.pug
+      include /templates/middle_header.pug
+      include /templates/bottom_header.pug
+    main.Home-main
+      .Hot-deals-special-offers-sliders-wrapper
+        section.Hot-deals-special-offers-sliders.Section-centerer
+          .Hot-deals-slider
+            .Hot-deals-top
+              .Hot-deals-header
+                h2=i18n.__("hot deals")
+              .Hot-deals-slider-btn-wrapper
+                button.Slider-btn.Active-slide-btn
+                button.Slider-btn
+                button.Slider-btn
+            .Hot-deals-middle
+              include /templates/home/home_hot_deals.pug
+          .Special-offers-slider
+            -let specialOffer=i18n.__("special offers content")
+            .Special-offer-slider-item-1.Special-offer-slider-item
+              img(class="Special-offer-slider-img" src='img/special_offers/213ds32ds.jpg' alt='' width='751' height='466')
+              .Special-offer
+                h3.Special-offer-header
+                  span.Light-word=specialOffer[0]["light word"]
+                  span.Bold-word=specialOffer[0]["bold word"]
+                p.Special-offer-about=specialOffer[0]["about"]
+              a.Catalog-link(href='')=i18n.__("special offer link text")
+            .Special-offer-slider-item-2.Special-offer-slider-item.visually-hidden
+              img(src='img/special_offers/st2387.jpg' alt='' width='751' height='466')
+              .Special-offer
+                h3.Special-offer-header
+                  span.Light-word=specialOffer[1]["light word"]
+                p.Special-offer-about=specialOffer[1]["about"]
+              a.Catalog-link(href='')=i18n.__("special offer link text")
+            .Special-offer-slider-item-3.Special-offer-slider-item.visually-hidden
+              img(src='img/special_offers/ss274830.jpg' alt='' width='751' height='466')
+              .Special-offer
+                h3.Special-offer-header
+                  span.Bold-word=specialOffer[2]["bold word"]
+                p.Special-offer-about=specialOffer[2]["about"]
+              a.Catalog-link(href='')=i18n.__("special offer link text")
+            .Special-offer-slider-btn
+              button.Slider-previous-btn.slider-btn
+                i.fas.fa-chevron-left
+              button.Slider-next-btn.slider-btn
+                i.fas.fa-chevron-right
+      ul.Our-advantages.Section-centerer
+        -let advantages=i18n.__("our advantages")
         li
-          a(class='Сurrent-tab' href='#') HOME
+          a.Our-advantages-article-link(href='#')
+            h3.Advantages-header=advantages[0]["advantage head"]
+            p.Advantages-par=advantages[0]["advantage par"]
+            .Advantages-icons
+              .Advantage-icons-inside
+                i.fas.fa-truck
         li
-          a(href='#') FURNITURE
+          a.Our-advantages-article-link(href='#')
+            h3.Advantages-header=advantages[1]["advantage head"]
+            p.Advantages-par=advantages[1]["advantage par"]
+            .Advantages-icons
+              .Advantage-icons-inside
+                i.fas.fa-headphones
         li
-          a(href='#') CHAIR
+          a.Our-advantages-article-link(href='#')
+            h3.Advantages-header=advantages[2]["advantage head"]
+            p.Advantages-par=advantages[2]["advantage par"]
+            .Advantages-icons
+              .Advantage-icons-inside
+                i.fas.fa-reply-all
         li
-          a(href='#') TABLE
-        li
-          a(href='#') SOFA
-        li
-          a(href='#') BEDROOM
-        li
-          a(href='#') BLOG
-main.Home-main
-  .Hot-deals-special-offers-sliders-wrapper
-    section.Hot-deals-special-offers-sliders.Section-centerer
-      .Hot-deals-slider
-        .Hot-deals-top
-          .Hot-deals-header
-            h2 HOT DEALS
-          .Hot-deals-slider-btn-wrapper
+          a.Our-advantages-article-link(href='#')
+            h3.Advantages-header=advantages[3]["advantage head"]
+            p.Advantages-par=advantages[3]["advantage par"]
+            .Advantages-icons
+              .Advantage-icons-inside
+                i.fas.fa-bullhorn
+      section.Fixed-two-column-special-offers.Section-centerer
+        a.Special-offer-left-column(href='#')
+          -let fixedSpecials=i18n.__("fixed special offers")
+          .Special-offer-about
+            h3.Special-offer-header
+              span.Top-line=fixedSpecials[0]["top line"]
+              br
+              span.Bottom-line=fixedSpecials[0]["bottom line"]
+            p.Special-offer-par=fixedSpecials[0]["special offer par"]
+        .Special-offer-right-column
+          a.Special-offer-top(href='#')
+            h3.Special-offer-header
+              span.Top-line=fixedSpecials[1]["top line"]
+              br
+              span.Bottom-line=fixedSpecials[1]["bottom line"]
+            p.Special-offer-size=fixedSpecials[1]["special offer par"]
+          a.Special-offer-bottom(href='#')
+            h3.Special-offer-header
+              span.Bold-part=fixedSpecials[2]["top line"] 
+              span.Light-part=fixedSpecials[2]["bottom line"]
+            p.Special-offer-par=fixedSpecials[2]["special offer par"]
+      section.Products-catalog.Section-centerer
+        .Products-catalog-head
+          .Catalog-nav-wrapper
+            h2.Section-header=i18n.__("new furniture")
+            ul.Products-catalog-nav
+              include /templates/home/home_new_products_nav.pug
+          .Catalog-slider-btn-wrapper
             button.Slider-btn.Active-slide-btn
             button.Slider-btn
             button.Slider-btn
-        .Hot-deals-middle
-          include /templates/home/home_hot_deals.pug
-      .Special-offers-slider
-        .Special-offer-slider-item-1.Special-offer-slider-item
-          img(src='img/special_offers/213ds32ds.jpeg' alt='' width='751' height='466')
-          .Special-offer
-            h3.Special-offer-header
-              span.Light-word INDOOR 
-              span.Bold-word FURNITURE
-            p.Special-offer-about SAVE UP TO 50% OF ALL FURNITURE
-          a.Catalog-link(href='') SHOP NOW
-        .Special-offer-slider-item-2.Special-offer-slider-item.visually-hidden
-          img(src='img/special_offers/st2387.jpeg' alt='' width='751' height='466')
-          .Special-offer
-            h3.Special-offer-header
-              span.Light-word LIVING ROOM
-            p.Special-offer-about MAKE YOUR OWN MODERN PLACE TO LIVE
-          a.Catalog-link(href='') SHOP NOW
-        .Special-offer-slider-item-3.Special-offer-slider-item.visually-hidden
-          img(src='img/special_offers/ss274830.jpeg' alt='' width='751' height='466')
-          .Special-offer
-            h3.Special-offer-header
-              span.Bold-word BEDS
-            p.Special-offer-about SLEEP WITH STYLE
-          a.Catalog-link(href='') SHOP NOW
-        .Special-offer-slider-btn
-          button.Slider-previous-btn.slider-btn
-            i.fas.fa-chevron-left
-          button.Slider-next-btn.slider-btn
-            i.fas.fa-chevron-right
-  ul.Our-advantages.Section-centerer
-    li
-      a.Our-advantages-article-link(href='#')
-        h3.Advantages-header FREE SHIPPING
-        p.Advantages-par ALL ORDER
-        .Advantages-icons
-          .Advantage-icons-inside
-            i.fas.fa-truck
-    li
-      a.Our-advantages-article-link(href='#')
-        h3.Advantages-header 24&frasl;7 COSTUMER
-        p.Advantages-par SUPPORT
-        .Advantages-icons
-          .Advantage-icons-inside
-            i.fas.fa-headphones
-    li
-      a.Our-advantages-article-link(href='#')
-        h3.Advantages-header MONEY BACK
-        p.Advantages-par GUARANTEE
-        .Advantages-icons
-          .Advantage-icons-inside
-            i.fas.fa-reply-all
-    li
-      a.Our-advantages-article-link(href='#')
-        h3.Advantages-header MEMBER DISCOUNT
-        p.Advantages-par FIRST ORDER
-        .Advantages-icons
-          .Advantage-icons-inside
-            i.fas.fa-bullhorn
-  section.Fixed-two-column-special-offers.Section-centerer
-    a.Special-offer-left-column(href='#')
-      .Special-offer-about
-        h3.Special-offer-header
-          span.Top-line GUEST ROOM
-          br
-          span.Bottom-line SOFA
-        p.Special-offer-par -20%
-    .Special-offer-right-column
-      a.Special-offer-top(href='#')
-        h3.Special-offer-header
-          span.Bold-part OFFICE 
-          span.Light-part CHAIR
-          br
-          span.Bottom-line COLLECTION
-        p.Special-offer-size $200.00
-      a.Special-offer-bottom(href='#')
-        h3.Special-offer-header
-          span.Bold-part SPECIAL 
-          span.Light-part COLLECTION
-        p.Special-offer-par SAVE UP 45% OF FURNIUTURE
-  section.Products-catalog.Section-centerer
-    .Products-catalog-head
-      .Catalog-nav-wrapper
-        h2.Section-header NEW FURNITURE
-        ul.Products-catalog-nav
-          include /templates/home/home_new_products_nav.pug
-      .Catalog-slider-btn-wrapper
-        button.Slider-btn.Active-slide-btn
-        button.Slider-btn
-        button.Slider-btn
-    ul.Products-category-list
-      include /templates/home/home_new_products_catalog.pug
-  section.Extra-promotion.Section-centerer
-    include /templates/home/home_gallery.pug
-    .Extra-promotion-special-offer
-      .Over-img-filter
-        p.Extra-promotion-special-par
-          span.Small-word FROM
-          span.Offer-price $50.80
-          br
-          span.Offer-name Bedroom Bed
-        a.Extra-promotion-special-shop-now-btn SHOP NOW
-  section.Latest-blog-articles.Section-centerer
-    .Blog-top
-      h2.Section-header LATEST BLOG
-      .Catalog-slider-btn-wrapper
-        button.Slider-btn.Active-slide-btn
-        button.Slider-btn
-        button.Slider-btn
-    include /templates/home/home_blog_articles.pug
-  section.Brands-list-section.Section-centerer
-    button.List-scroll-left-btn
-      i.fas.fa-chevron-left
-    ul.Brands-list
-      li
-        a.List-item(href='#')
-      li
-        a.List-item(href='#')
-      li
-        a.List-item(href='#')
-      li
-        a.List-item(href='#')
-      li
-        a.List-item(href='#')
-      li
-        a.List-item(href='#')
-    button.List-scroll-right-btn
-      i.fas.fa-chevron-right
-  section.Section-centerer
-    .Feedback-section-top
-      h2.Section-header CLIENT FEEDBACK
-      .Catalog-slider-btn-wrapper
-        button.Slider-btn.Active-slide-btn
-        button.Slider-btn
-        button.Slider-btn
-    ul.Feedback-list
-      li.Feedback-content
-        i.fas.fa-quote-right
-        p.Feedback-text
-          | Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.
-        .Feedback-author
-          .Feedback-author-avatar-wrapper
-            img.Feedback-author-avatar(src='' alt='' width='60' height='52')
-          p.Feedback-about-author
-            span.Author-name John Smith
-            br
-            span.Author-occupation Furniture client
-      li.Feedback-content.visually-hidden
-        i.fas.fa-quote-right
-        p.Feedback-text
-          | Greatest shop ever.
-        .Feedback-author
-          .Feedback-author-avatar-wrapper
-            img.Feedback-author-avatar(src='' alt='' width='60' height='52')
-          p.Feedback-about-author
-            span.Author-name Bob Black
-            br
-            span.Author-occupation Best client
-      li.Feedback-content.visually-hidden
-        i.fas.fa-quote-right
-        p.Feedback-text
-          | I only buy furniture there!
-        .Feedback-author
-          .Feedback-author-avatar-wrapper
-            img.Feedback-author-avatar(src='' alt='' width='60' height='52')
-          p.Feedback-about-author
-            span.Author-name Kate Mackcormak
-            br
-            span.Author-occupation Furniture client
-footer.Footer
-  .Footer-top
-    ul.Footer-information-lists.Section-centerer
-      li.Footer-information-element
-        ul.Footer-info-list
+        ul.Products-category-list
+          include /templates/home/home_new_products_catalog.pug
+      section.Extra-promotion.Section-centerer
+        include /templates/home/home_gallery.pug
+        .Extra-promotion-special-offer
+          -let extraPromotion=i18n.__("extra promotion")
+          .Over-img-filter
+            p.Extra-promotion-special-par
+              span.Small-word=extraPromotion["small word"]
+              span.Offer-price=extraPromotion["price"]
+              br
+              span.Offer-name=extraPromotion["name"]
+            a.Extra-promotion-special-shop-now-btn=i18n.__("special offer link text")
+      section.Latest-blog-articles.Section-centerer
+        .Blog-top
+          h2.Section-header=i18n.__("latest blog")
+          .Catalog-slider-btn-wrapper
+            button.Slider-btn.Active-slide-btn
+            button.Slider-btn
+            button.Slider-btn
+        include /templates/home/home_blog_articles.pug
+      section.Brands-list-section.Section-centerer
+        button.List-scroll-left-btn
+          i.fas.fa-chevron-left
+        ul.Brands-list
           li
-            h3.Footer-header F.A.Q.
+            a.List-item(href='#')
           li
-            a(href='#') About us
+            a.List-item(href='#')
           li
-            a(href='#') Privacy
+            a.List-item(href='#')
           li
-            a(href='#') Conditions
+            a.List-item(href='#')
           li
-            a(href='#') Online support
-      li.Footer-information-element
-        ul.Footer-info-list
+            a.List-item(href='#')
           li
-            h3.Footer-header MY ACCOUNT
-          li
-            a(href='#') Login
-          li
-            a(href='#') My Cart
-          li
-            a(href='#') Wishlist
-          li
-            a(href='#') Checkout
-      li.Footer-information-element
-        ul.Footer-info-list
-          li
-            h3.Footer-header INFORMATION
-          li
-            a(href='#') Specials
-          li
-            a(href='#') New Products
-          li
-            a(href='#') Best Sellers
-          li
-            a(href='#') Our Store
-      li.Footer-information-element
-        ul.Footer-info-list
-          li
-            h3.Footer-header ORDERS
-          li
-            a(href='#') Payment options
-          li
-            a(href='#') Shipping and delivery
-          li
-            a(href='#') Returns
-          li
-            a(href='#') Shipping
-          li.Payments-types
-            img(src='img/Card_image.png' alt='' width='240' height='35')
-  .Footer-bottom-wrapper
-    .Footer-bottom.Section-centerer
-      p
-      p.Footer-copyright
-        | &copy;Copyright 2016 Bazar | All Rights Reserved
-      ul.Footer-media-list
-        li.Footer-media-element
-          a(href='#')
-            i.fab.fa-twitter
-        li.Footer-media-element
-          a(href='#')
-            i.fab.fa-facebook-f
-        li.Footer-media-element
-          a(href='#')
-            i.fab.fa-youtube
-        li.Footer-media-element
-          a(href='#')
-            i.fab.fa-linkedin-in
-        li.Footer-media-element
-          a(href='#')
-            i.fab.fa-pinterest-p
-script(src="/js/main_index.js")
+            a.List-item(href='#')
+        button.List-scroll-right-btn
+          i.fas.fa-chevron-right
+      section.Section-centerer
+        .Feedback-section-top
+          h2.Section-header=i18n.__("client feedback header")
+          .Catalog-slider-btn-wrapper
+            button.Slider-btn.Active-slide-btn
+            button.Slider-btn
+            button.Slider-btn
+        ul.Feedback-list
+          -let feedbacks=i18n.__("client feedback content")
+          li.Feedback-content
+            i.fas.fa-quote-right
+            p.Feedback-text=feedbacks[0]["feedback text"]
+            .Feedback-author
+              .Feedback-author-avatar-wrapper
+                img.Feedback-author-avatar(src='/img/homepage_users_reviews/user_1.jpg' alt='' width='120' height='120')
+              p.Feedback-about-author
+                span.Author-name=feedbacks[0]["author name"]
+                br
+                span.Author-occupation=feedbacks[0]["author occupation"]
+          li.Feedback-content.visually-hidden
+            i.fas.fa-quote-right
+            p.Feedback-text=feedbacks[1]["feedback text"]
+            .Feedback-author
+              .Feedback-author-avatar-wrapper
+                img.Feedback-author-avatar(src='/img/homepage_users_reviews/user_2.jpg' alt='' width='120' height='120')
+              p.Feedback-about-author
+                span.Author-name=feedbacks[1]["author name"]
+                br
+                span.Author-occupation=feedbacks[1]["author occupation"]
+          li.Feedback-content.visually-hidden
+            i.fas.fa-quote-right
+            p.Feedback-text=feedbacks[2]["feedback text"]
+            .Feedback-author
+              .Feedback-author-avatar-wrapper
+                img.Feedback-author-avatar(src='/img/homepage_users_reviews/user_3.jpg' alt='' width='120' height='120')
+              p.Feedback-about-author
+                span.Author-name=feedbacks[2]["author name"]
+                br
+                span.Author-occupation=feedbacks[2]["author occupation"]
+    footer.Footer
+      include /templates/footer_top.pug
+      include /templates/footer_bottom.pug
+    script(src="/js/main_index.js")
+    script(type="module" src="/js/common_script.js")

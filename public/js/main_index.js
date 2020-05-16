@@ -8,6 +8,10 @@ function makeSliderWithNavListeners(navElements, content, toggleNavClass, toggle
     }
     navElements.forEach((navEl, i) => {
         navEl.addEventListener("click",event=>{
+            console.log("content",content,"i",i);
+            if(i>=content.length){
+                return;
+            }
             event.preventDefault();
             content[currentEl].classList.add(toggleContentClass);
             content[i].classList.remove(toggleContentClass);
@@ -56,11 +60,11 @@ specialOffersControls.forEach((controlEl,j)=>{
 let galleryContent=document.querySelectorAll(".Gallery-content>li");
 let galleryMainImages=document.getElementsByClassName("Gallery-img");
 galleryContent.forEach((galleryEl,i)=>{
-    galleryEl.querySelectorAll(".Gallery-item a").forEach((linkListEl,j)=>{
-        let galleryListImg=linkListEl.getElementsByClassName("Gallery-photo");
+    galleryEl.querySelectorAll(".Gallery-item").forEach((linkListEl,j)=>{
+        let galleryListImg=linkListEl.firstChild;
         linkListEl.addEventListener("click",event=>{
             event.preventDefault();
-            galleryMainImages[i].src=galleryListImg[0].src;
+            galleryMainImages[i].src=galleryListImg.src;
         });
     });
 });
@@ -107,7 +111,7 @@ timers.forEach((el,i)=>{
 });
 let clock=setInterval(()=>{
     for(let i=0;i<timersValues.length;i++){
-        if(--timersValues[i].secs.textContent==0){
+        if(--timersValues[i].secs.textContent<=0){
             if(--timersValues[i].mins.textContent<0){
                 if(--timersValues[i].hours.textContent<0){
                     if(((timersValues[i].days.textContent-1)<0)&&(timersValues[i].hours.textContent<=0)&&(timersValues[i].mins.textContent<=0)&&(timersValues[i].secs.textContent<=0)){
