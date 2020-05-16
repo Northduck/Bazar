@@ -1,0 +1,30 @@
+mixin productsItems(data)
+    li(class="Products-catalog-item")
+        -var isSaleClass="Product-catalog-item-top";
+        -isSaleClass+=data.service_previous_price===null ? "":" Sale-item";
+        div(class= isSaleClass)
+            -var imgDir="/img/services/"+data.service_id+"/"+data.service_id+"_1.jpg";
+            img.Catalog-item-img(src= imgDir alt='' width='262' height='260')
+            .Product-catalog-item-buttons
+              button.Quick-view-btn=i18n.__("Quick View")
+              button(class="Checkout-service-btn" data-service-id=data.service_id)
+                =i18n.__("Order service")
+        .Product-catalog-item-bottom
+            a(href=`/services/${data.service_id}` class="Item-header-link")
+                h3.Item-header= data["service_name_"+i18n.locale]
+            span(class="Item-rating" data-value-rating= data.service_rating)
+                include /templates/star_rating.pug
+                +makeStarRating(data.service_rating)
+            .Item-decorative-line
+            .Item-controls-and-price
+                .Item-price
+                    span.Item-price-from-span=i18n.__("From")
+                    -if(data.service_previous_price==null){
+                    p.New-price= data.service_current_price
+                    -}else{
+                    p.New-price= data.service_current_price
+                    p.Old-price= data.service_previous_price
+                    -}
+-for(let i=0;i<servicesInfo.length;i++){
+  +productsItems(servicesInfo[i])
+-}

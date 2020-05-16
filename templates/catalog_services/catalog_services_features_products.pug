@@ -1,0 +1,24 @@
+mixin featuredProducts(data)  
+  li
+    -let productCompositeID=(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id));
+    -let mainImgDir="/img/products/"+productCompositeID+"/"+productCompositeID+"1.jpg";
+    img(src= mainImgDir alt="" width="116" height="116")
+    .Featured-products-about
+      a.Item-header-link(href=`/goods/${productCompositeID}`)
+        h4.Featured-products-header= data["product_name_"+i18n.locale]
+      -if(data.product_previous_price){
+      p.New-price= data.product_current_price
+      p.Old-price= data.product_previous_price
+      -}else{
+      p.New-price= data.product_current_price
+      -}
+      span.Featured-products-rating
+        include /templates/star_rating.pug
+        +makeStarRating(data.product_rating)
+      button(class="Add-to-cart-btn" data-product-id=data.product_id) ADD TO CART
+li.Featured-products-subsection
+  h3.Featured-products-subsection-header FEATURED PRODUCTS
+  ul.Featured-products-subsection-list
+    -for(let i=0;i<topProducts.length;i++){
+    +featuredProducts(topProducts[i])
+    -}

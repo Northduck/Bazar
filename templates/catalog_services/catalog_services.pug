@@ -1,0 +1,103 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    title=i18n.__("Services catalog")
+    link(rel='stylesheet' type='text/css' href='../css/MainStyle.css')
+    link(href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap' rel='stylesheet')
+    link(rel='stylesheet' type='text/css' href='../css/all.min.css')
+    link(rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png")
+    link(rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png")
+    link(rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png")
+    link(rel="manifest" href="/img/favicon/site.webmanifest")
+    link(rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#5bbad5")
+    meta(name="msapplication-TileColor" content="#da532c")
+    meta(name="theme-color" content="#ffffff")
+  body
+    header.Header
+      include /templates/top_header.pug
+      include /templates/middle_header.pug
+      include /templates/bottom_header.pug
+    main.Catalog-main
+      div.Section-centerer
+        h2.Service-catalog-header=i18n.__("Services") 
+      ul.Catalog-nested-nav.Section-centerer
+        li
+          a(href="/")
+            =i18n.__("Home")
+            i.fas.fa-chevron-right
+        li
+          a(href="#")=i18n.__("Services") 
+            i.fas.fa-chevron-right       
+      section.Products-catalog-section.Section-centerer
+        .Products-result-column
+          .Products-head
+            .Products-catalog-view-output
+              .Sort-by
+                label.Sorting-by-label(for="Catalog-roducts-sorting=select")=i18n.__("Sort By")
+                .custom-select
+                  -let sortingTypesMas=i18n.__("sorting types")
+                  select.Products-sorting-type.visually-hidden(name="Catalog-roducts-sorting" id="Catalog-roducts-sorting=select")
+                    option(value="1")=sortingTypesMas[0]
+                    option(value="2")=sortingTypesMas[1]
+                    option(value="3")=sortingTypesMas[2]
+                    option(value="4")=sortingTypesMas[3]
+                    option(value="5")=sortingTypesMas[4]
+              .Per-page
+                label.Elements-per-page-label(for="Products-per-page-select")=i18n.__("Show")
+                .custom-select
+                  select#Products-per-page-select.visually-hidden(name="Products-per-page")
+                    option(value="1") 12
+                    option(value="2") 24
+                    option(value="3") 36
+              .Catalog-view-btn-wrapper
+                span.Catalog-view-btn
+                  i.fas.fa-th-large
+                  input(type="button")
+                span.Catalog-view-btn
+                  i.fas.fa-list
+                  input(type="button")
+          ul.Products-catalog-grid
+            include /templates/catalog_services/catalog_services_product_grid.pug
+          ul.Products-catalog-grid-new.visually-hidden
+        .Products-filters-wrapper
+          form(class="Filters-form")
+            ul.Products-filters
+              li.Products-filter-subcategory
+                h3.Filter-subcategory-header=i18n.__("Category")
+                ul.Subcategory-checkbox-list
+                  -for(let i=0;i<typeCategoryInfo.length;i++){
+                  li
+                    label.Subcategory-checbox-variant
+                      input.Checkbox-filter-checkbox.visually-hidden(type="checkbox" name=+"category_"+typeCategoryInfo[i]["service_category_name_en"])
+                      span.Checkbox
+                        i.far.fa-square
+                        i.fas.fa-check
+                      span.Variant-checkbox-name= typeCategoryInfo[i]["service_category_name_"+i18n.locale]
+                  -}
+          div(class="Show-results visually-hidden" style="left:-150px; top: 0px;")
+              button(class="Show-results-btn" type="submit")=i18n.__("Show results")
+      section.Brands-list-section.Section-centerer
+        button.List-scroll-left-btn
+          i.fas.fa-chevron-left
+        ul.Brands-list
+          li
+            a.List-item(href="#")
+          li
+            a.List-item(href="#")
+          li
+            a.List-item(href="#")
+          li
+            a.List-item(href="#")
+          li
+            a.List-item(href="#")
+          li
+            a.List-item(href="#")
+        button.List-scroll-right-btn
+          i.fas.fa-chevron-right
+      include /templates/newsletter_form.pug
+    footer.Footer
+      include /templates/footer_top.pug
+      include /templates/footer_bottom.pug
+    script(src="/js/catalog_index.js")
+    script(type="module" src="/js/common_script.js")
