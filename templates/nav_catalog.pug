@@ -1,0 +1,27 @@
+
+mixin categoryElement(data)
+  li(class='Nav-catalog-categories-el')
+    -let preparedcategory=data["product_category_name_en"].replace(/ /g,"_");
+      a(href=`/catalog_goods/${preparedcategory}`)=data["product_category_name_"+i18n.locale]
+
+ul(class="Nav-catalog-list")
+  -let typeId=-1;
+  -for(let i=0;navCatalogCategories!==undefined&&i<navCatalogCategories.length;i++){
+    -if(navCatalogCategories[i]["type_id"]!==typeId){
+      -typeId=navCatalogCategories[i]["type_id"];
+      li(class='Nav-catalog-type-el')
+        p=navCatalogCategories[i]["type_name_"+i18n.locale]
+        i(class="Nav-chevron far fa-chevron-right")
+        .Nav-catalog-categories-wrapper
+          h3.Nav-catalog-categories-header=navCatalogCategories[i]["type_name_"+i18n.locale]
+          ul(class='Nav-catalog-categories-list')
+            -for(let j=i;j<navCatalogCategories.length;j++){
+              -if(navCatalogCategories[j]["type_id"]!==typeId){
+                -i=j-1;
+                -break;
+              -}else{
+                +categoryElement(navCatalogCategories[j])
+              -}
+            -}
+    -}
+  -}

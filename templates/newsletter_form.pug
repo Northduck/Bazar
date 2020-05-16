@@ -1,0 +1,14 @@
+.User-news-subscriber-form-wrapper
+    .User-news-subscriber-form-centerer.Section-centerer
+        form(action='' method='POST')
+            .User-news-form-content-wrapper
+                label.User-news-form-header(for='User-news-email-field')
+                    =i18n.__("NEWSLETTER")
+                .User-news-email-wrapper
+                    input#User-news-email-field.User-news-email(type='email' name='User-mail' placeholder=i18n.__("Enter your email address"))
+                    .Email-icon-wrapper
+                        label(for='User-news-email-field')
+                            i.fas.fa-envelope
+                    .User-news-submit-btn-wrapper
+                        input.User-news-submit-btn(type='submit' value='')
+                        i.fas.fa-arrow-right

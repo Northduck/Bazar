@@ -1,0 +1,13 @@
+mixin makeFilter(filterName,filterNameLocal,variantsStart, filtersMas)  
+  li.Products-filter-subcategory
+    h3.Filter-subcategory-header= filterNameLocal
+    ul.Subcategory-checkbox-list
+      -for(let i=variantsStart;i<filtersMas.length&&filtersMas[i]["product_characteristic_name_en"]===filterName;i++){
+      li
+        label.Subcategory-checbox-variant
+          input.Checkbox-filter-checkbox.visually-hidden(type="checkbox" name=filterName+"_"+filtersMas[i]["product_characteristic_value_en"])
+          span.Checkbox
+            i.far.fa-square
+            i.fas.fa-check
+          span.Variant-checkbox-name= filtersMas[i]["product_characteristic_value_"+i18n.locale]
+      -}

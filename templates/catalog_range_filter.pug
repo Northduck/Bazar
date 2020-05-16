@@ -1,0 +1,15 @@
+mixin rangeFilter(rangeName, rangeNameLocal, minValue, maxValue)
+  li.Products-filter-subcategory.Range-subcategory
+    h3.Filter-subcategory-header= rangeNameLocal
+    .Range-silder-wrapper
+      .Range-silder-full
+        button(class="Left-slider-btn" type="button" style="left:-1px; top: -6px;")
+        button(class="Right-slider-btn" type="button" style="left: 241px; top: -6px;")
+        div(class="Range-silder-active-part" style="left: 0px; width: 243px;")
+    .Products-filter-range-form-wrapper
+      div
+        span.Range-span=i18n.__("From")
+        input.Products-filter-range-value.Min-value(type="text" value= Math.floor(minValue-1) data-value= Math.floor(minValue-1) id=rangeName+"_min_field" name=rangeName+"_min")
+      div
+        span.Range-span=i18n.__("To")
+        input.Products-filter-range-value.Max-value(type="text" value= Math.floor(maxValue+1) data-value= Math.floor(maxValue+1) id=rangeName+"_max_field" name=rangeName+"_max")
