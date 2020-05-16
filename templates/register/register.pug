@@ -1,0 +1,49 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    title=i18n.__("Registration")
+    link(rel='stylesheet' type='text/css' href='../css/MainStyle.css')
+    link(href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap' rel='stylesheet')
+    link(rel='stylesheet' type='text/css' href='../css/all.min.css')
+    link(rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png")
+    link(rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png")
+    link(rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png")
+    link(rel="manifest" href="/img/favicon/site.webmanifest")
+    link(rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#5bbad5")
+    meta(name="msapplication-TileColor" content="#da532c")
+    meta(name="theme-color" content="#ffffff")
+  body
+    header.Header
+      include /templates/top_header.pug
+      include /templates/middle_header.pug
+      include /templates/bottom_header.pug
+    main.Catalog-main
+        div(class="Register-form-wrappper")
+            h1.Registration-header=i18n.__("Registration")
+            span.Needed-input-explanation=i18n.__("Required field")
+            form(class="Register-form" action="" method="POST")
+              ul(class="Registration-inputs-list")
+                li.Register-login-section
+                  label(for="Register-login-input-field" class="Register-label Register-needed")=i18n.__("Login_field")
+                  input(id="Register-login-input-field" class="Register-login-input" type="text" name="User-login")
+                li.Register-email-section
+                  label(for="Register-email-input-field" class="Register-label Register-needed")=i18n.__("Email")
+                  input(id="Register-email-input-field" class="Register-email-input" type="email" name="User-email")
+                li.Register-password-section
+                  label(for="Register-password-input-field" class="Register-label Register-needed")=i18n.__("Password") 
+                  input(id="Register-password-input-field" class="Register-password-input" type="password", name="User-password")
+                  span.Register-password-about
+                    =i18n.__("Password should be at least")
+                    br
+                    =i18n.__("7 symbols with uppercase and digit")
+                li
+                  label(for="Register-name-input-field" class="Register-label")=i18n.__("Name") 
+                  input(id="Register-name-input-field" class="Register-name-input" type="text" name="User-name")        
+                li
+                  input(class="Register-submit-btn" type="submit" value=i18n.__("Register"))                                       
+    footer.Footer
+      include /templates/footer_top.pug
+      include /templates/footer_bottom.pug
+    script(type="module" src="/js/register_index.js")
+    script(type="module" src="/js/common_script.js")
