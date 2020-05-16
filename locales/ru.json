@@ -1,0 +1,314 @@
+{
+	"variants": [
+		"О нас",
+		"F.A.Q",
+		"Клиентская поддержка"
+	],
+	"Bazar Online shopping": "Bazar интернет-магазин",
+	"variants_header": "Помощь",
+	"language_header": "Русский",
+	"current_header": "РУБ",
+	"user_controls_header": {
+		"logout_link_text": "Выйти",
+		"login_link_text": "Войти",
+		"register_link_text": "Зарегистрироваться",
+		"favorites_link_text": "Закладки",
+		"compare_link_text": "Сравнить"
+	},
+	"Select a category": "Выберете категорию",
+	"Home": "Домой",
+	"Find a product": "Найдите товар",
+	"Furniture": "Мебель",
+	"Services": "Услуги",
+	"Blog": "Блог",
+	"Footer F.A.Q.": {
+		"header": "F.A.Q.",
+		"About us": "О нас",
+		"Privacy": "Конфиденциальность",
+		"Conditions": "Условия",
+		"Online support": "Онлайн поддержка"
+	},
+	"Footer MY ACCOUNT": {
+		"header": "Мой Аккаунт",
+		"Account": "Аккаунт",
+		"Cart": "Корзина",
+		"Favorites": "Закладки",
+		"Compare": "Сравнить"
+	},
+	"Footer INFORMATION": {
+		"header": "Полезная информация",
+		"Specials": "Специальные предложения",
+		"New Products": "Новые поступления",
+		"Best Sellers": "Бестселлеры",
+		"Our Store": "Наш магазин"
+	},
+	"Footer ORDERS": {
+		"header": "Заказы",
+		"Payment options": "Методы оплаты",
+		"Returns": "Возврат",
+		"Shipping": "Доставка"
+	},
+	"hot deals": "Горячие предложения",
+	"special offers content": [
+		{
+			"light word": "ДОМАШНЯЯ ",
+			"bold word": " МЕБЕЛЬ",
+			"about": "Сэкономьте до 50% на всей мебели"
+		},
+		{
+			"light word": "ГОСТИНАЯ",
+			"bold word": "",
+			"about": "СОЗДАЙ СВОЮ СОВРЕМЕННУЮ ГОСТИНУЮ"
+		},
+		{
+			"light word": "",
+			"bold word": "КРОВАТИ",
+			"about": "СПИ СО СТИЛЕМ"
+		}
+	],
+	"special offer link text": "КУПИТЕ СЕЙЧАС",
+	"our advantages": [
+		{
+			"advantage head": "БЕСПЛАТНАЯ ДОСТАВКА",
+			"advantage par": "ВСЕ ЗАКАЗЫ"
+		},
+		{
+			"advantage head": "24/7 КЛИЕНТСКАЯ",
+			"advantage par": "ПОДДЕРЖКА"
+		},
+		{
+			"advantage head": "ВОЗВРАТ ДЕНЕГ",
+			"advantage par": "ГАРАНТИРОВАН"
+		},
+		{
+			"advantage head": "СКИДКА",
+			"advantage par": "НА ПЕРВЫЙ ЗАКАЗ"
+		}
+	],
+	"fixed special offers": [
+		{
+			"top line": "ГОСТЕВАЯ КОМНАТА",
+			"bottom line": "ДИВАНЫ",
+			"special offer par": "-20%"
+		},
+		{
+			"top line": "ОФИСНЫЕ СТУЛЬЯ",
+			"bottom line": "КОЛЛЕКЦИЯ",
+			"special offer par": "$200.00"
+		},
+		{
+			"top line": "СПЕЦИАЛЬНАЯ ",
+			"bottom line": " КОЛЛЕКЦИЯ",
+			"special offer par": "Сэкономьте до 45% на всей мебели"
+		}
+	],
+	"new furniture": "НОВАЯ МЕБЕЛЬ",
+	"extra promotion": {
+		"small word": "ОТ",
+		"price": "$50.80",
+		"name": "КРОВАТИ"
+	},
+	"latest blog": "ПОСЛЕДНЕЕ В БЛОГЕ",
+	"client feedback header": "КЛИЕНТСКИЕ ОТЗЫВЫ",
+	"client feedback content": [
+		{
+			"feedback text": "Удобство на высочайшем уровне!",
+			"author name": "John Smith",
+			"author occupation": "Покупатель мебели"
+		},
+		{
+			"feedback text": "Лучший магазин!",
+			"author name": "Bob Black",
+			"author occupation": "Лучший клиент"
+		},
+		{
+			"feedback text": "Я покупаю мебель только здесь!",
+			"author name": "Kate Mackcormak",
+			"author occupation": "Покупатель мебели"
+		}
+	],
+	"timer values": {
+		"DAYS": "ДНЕЙ",
+		"HRS": "ЧАСОВ",
+		"MINS": "МИН",
+		"SECS": "СЕК"
+	},
+	"add to cart": "В КОРЗИНУ",
+	"FURNITURE GALLERY": "МЕБЕЛЬНАЯ ГАЛЕРЕЯ",
+	"read more": "ЧИТАТЬ ДАЛЬШЕ",
+	"Your account": "ВАШ АККАУНТ",
+	"account nav buttons": {
+		"My orders": "Мои заказы",
+		"My reviews": "Мои отзывы",
+		"My profive": "Мой профиль",
+		"Preferences": "Настройки"
+	},
+	"account orders buttons": {
+		"Products": "Товары",
+		"Services": "Услуги"
+	},
+	"account orders info": {
+		"Payment type": "Способ оплаты:",
+		"Receiving type": "Способ получения:",
+		"Order date": "Дата заказа:",
+		"Order summ": "Сумма заказа:"
+	},
+	"account orders products": {
+		"Product Name": "Название товара:",
+		"Product price": "Цена товара:",
+		"Product quantity": "Количество товара:"
+	},
+	"no orders": "Ваша история заказов пуста",
+	"Show ordered products": "Показать товары",
+	"Your cart": "Ваша корзина: ",
+	"Your order": "Ваш заказ:",
+	"items": "товаров",
+	"items local":" товара (-ов) ",
+	"Subtotal": "Промежуточный итог (",
+	"Subtotalitems": "товара (-ов) )",
+	"Est. total": "Всего",
+	"Total": "Всего",
+	"Check-Out": "Оформить покупку",
+	"Quantity": "Количество:",
+	"Summ": "Сумма: ",
+	"catalog special offer": {
+		"light text": "МЕБЕЛЬ ",
+		"regular text": " ДЛЯ СПАЛЬНИ",
+		"special offer par left": "ВСЕГДА",
+		"special offer par right": "ИЛИ БОЛЬШЕ",
+		"Special text": "25%"
+	},
+	"Sort By": "Отсортировать по",
+	"sorting types": [
+		"Рейтингу",
+		"Цене: Сначала дешевые",
+		"Цене: Сначала дорогие",
+		"Алфавиту",
+		"Новизне"
+	],
+	"Show": "Показвать",
+	"Quick View": "Быстрый просмотр",
+	"FEATURED PRODUCTS": "Особые предложения",
+	"Checkout": "Оформление покупки",
+	"Fulfillment stages head": [
+		"Способ получения",
+		"Контактная информация",
+		"Способ оплаты",
+		"Финал"
+	],
+	"Choose receiving method": "Выберете способ получения",
+	"Pickup": "Самовывоз",
+	"Shipment": "Доставка",
+	"Change": "Изменить",
+	"pickup places": [
+		{
+			"place info": "1919 Davis St, San Leandro",
+			"place date": "Завтра с 12-45"
+		},
+		{
+			"place info": "365 Broadway, Millbrae",
+			"place date": "Суббота"
+		},
+		{
+			"place info": "1578 12 lane street",
+			"place date": "Понедельник"
+		}
+	],
+	"Choose": "Выбрать",
+	"Enter shipment address": "Введите адрес доставки",
+	"Required field": "Необходимые поля",
+	"shipment form": {
+		"City": "Город",
+		"Street": "Улица",
+		"House": "Дом",
+		"Apartment": "Квартира"
+	},
+	"Contact information": "Контактная информация",
+	"Fulfillment contact information": {
+		"Phone number": "Телефонный номер",
+		"Email": "Email",
+		"Name": "Имя"
+	},
+	"Choose payment method": "Выберете способ оплаты",
+	"Fulfillment payment type": {
+		"In store": "В магазине",
+		"Online": "Онлайн"
+	},
+	"Fulfillment stages btns": {
+		"Back": "Назад",
+		"Next": "Вперед"
+	},
+	"Fulfillment-info": {
+		"Your order:": "Ваш заказ:",
+		"Order list:": "Список заказа:",
+		"items": " товара (-ов) ",
+		"Receiving method:": "Способ получения:",
+		"pickup from": "Самовывоз ",
+		"Receipt date:": "Дата получения:",
+		"Total": "В итоге"
+	},
+	"Order service": "Закажите услугу",
+	"Your favorites": "Ваши закладки",
+	"The list:": "Список:",
+	"products": "товары",
+	"Buy all": "Купить всё",
+	"Clear list": "Очистить список",
+	"favorites emptyness plug": "Вы не добавили еще ни одного товара в закладки.",
+	"DESCRIPTION": "ОПИСАНИЕ",
+	"REVIEWS": "ОТЗЫВЫ (",
+	"SPECIFICATION": "СПЕЦИФИКАЦИЯ",
+	"Product Description": "Описание товара",
+	"Add a review": "Добавить отзыв",
+	"Your Rating": "Ваш рейтинг",
+	"Your review": "Ваш отзыв",
+	"Product Characteristics": "Характеристики товара",
+	"User name": "Имя пользователя:",
+	"no reviews": "Отсутствуют отзывы на данные товар.",
+	"Add Your Review": "Добавьте ваш отзыв",
+	"Quick Overview": "Краткая информация",
+	"Avaliability": "Доступность:",
+	"In Stock": "На складе",
+	"Category": "Категория:",
+	"Login_field": "Логин",
+	"Login_header": "Войти",
+	"Email": "Email",
+	"Password": "Пароль",
+	"Sign In": "Войти",
+	"Sign in to": "Войти в",
+	"your account": "ваш аккаунт",
+	"Forgot password": "Забыли пароль?",
+	"Don't have an account": "Еще не зарегестрировались?",
+	"Create Account": "Создать аккаунт",
+	"Registration": "Регистрация",
+	"Password should be at least": "Пароль должен иметь как минимум",
+	"7 symbols with uppercase and digit": "7 символов",
+	"Name": "ФИО",
+	"Service Description": "Описание услуги",
+	"Service Characteristics": "Характеристики услуги",
+	"NEWSLETTER": "НОВОСТНАЯ РАССЫЛКА: ",
+	"blog artice comments quantity": "4 комментария",
+	"Enter your email address": "Введите ваш email адрес",
+	"Shop by room": "Выберете комнату",
+	"types names": [
+		{
+			"Living room": "Гостиная комната",
+			"Bedroom": "Спальня",
+			"tv stands & entertainment centers": "подставки под телевизор и развлекательные центры",
+			"kitchen & dining furniture": "Кухня и столовая",
+			"mattresses & accessories": "матрасы и аксессуары",
+			"office furniture": "офисная мебель",
+			"kids’ furniture": "мебель для детской",
+			"other": "Другое"
+		}
+	],
+	"Compare goods": "Сравни товары",
+	"Register": "Зарегистрироваться",
+	"Enter login or email": "Введите логин или email",
+	"Enter password": "Введите пароль",
+	"From": "От",
+	"To": "До",
+	"Services catalog": "Каталог услуг",
+	"Show results": "Show results",
+	"BLOG ARTICLES LIST":"СПИСОК СТАТЕЙ",
+	"About us": "О нас"
+}
