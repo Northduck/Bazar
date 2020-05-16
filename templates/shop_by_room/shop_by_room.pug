@@ -1,0 +1,86 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        title=i18n.__("Shop by room")
+        link(rel='stylesheet' type='text/css' href='../css/MainStyle.css')
+        link(href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap' rel='stylesheet')
+        link(rel='stylesheet' type='text/css' href='../css/all.min.css')
+        link(rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png")
+        link(rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png")
+        link(rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png")
+        link(rel="manifest" href="/img/favicon/site.webmanifest")
+        link(rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#5bbad5")
+        meta(name="msapplication-TileColor" content="#da532c")
+        meta(name="theme-color" content="#ffffff")
+    body
+        header.Header
+            include /templates/top_header.pug
+            include /templates/middle_header.pug
+            include /templates/bottom_header.pug
+        main.Shop-by-room-main
+            section.Shop-by-room-section.Section-centerer
+                -let typeNames=i18n.__("types names")[0]
+                -console.log(typeNames);
+                h1.Shop-by-room-header
+                    =i18n.__("Shop by room")
+                .Rooms-wrapper
+                    ul.Rooms-first-row
+                        li.Left-column
+                            .Room-element.Living-room
+                                a(class="Room-link" href="/rooms_categories/living_room_furniture")
+                                    .Room-img-wrapper
+                                        img(src="/img/rooms/living_room.jpg", alt="")
+                                    p.Room-name
+                                        =typeNames["Living room"]
+                        li.Right-column
+                            .Room-element.Bedroom
+                                a(class="Room-link" href="/rooms_categories/bedroom_furniture")
+                                    .Room-img-wrapper
+                                        img(src="/img/rooms/bedroom.jpg", alt="")
+                                    p.Room-name
+                                        =typeNames["Bedroom"]
+                            .Room-element.Entertainment
+                                a(class="Room-link" href="/rooms_categories/tv stands_&_entertainmentcenters")
+                                    .Room-img-wrapper
+                                        img(src="/img/rooms/entertainment.jpg", alt="")
+                                    p.Room-name   
+                                        =typeNames["tv stands & entertainment centers"]
+                    ul.Rooms-second-row
+                        li.Left-column
+                            .Room-element.Kitchen
+                                a(class="Room-link" href="/rooms_categories/kitchen_&_dining_furniture")
+                                    .Room-img-wrapper
+                                        img(src="/img/rooms/kitchen.jpg", alt="")
+                                    p.Room-name
+                                        =typeNames["kitchen & dining furniture"]
+                            .Room-element.Mattresses
+                                a(class="Room-link" href="/rooms_categories/")
+                                    .Room-img-wrapper
+                                        img(src="/img/rooms/mattresses.jpg", alt="")
+                                    p.Room-name
+                                        =typeNames["mattresses & accessories"]
+                        li.Right-column
+                            .Room-element.Office
+                                a(class="Room-link" href="/rooms_categories/office_furniture")
+                                    .Room-img-wrapper
+                                        img(src="/img/rooms/office.jpg", alt="")
+                                    p.Room-name
+                                        =typeNames["office furniture"]
+                            .Room-element.Kids
+                                a(class="Room-link" href="/rooms_categories/kids’_furniture")
+                                    .Room-img-wrapper
+                                        img(src="/img/rooms/kid's_room.jpg", alt="")
+                                    p.Room-name   
+                                        =typeNames["kids’ furniture"]
+                            .Room-element.Other
+                                a(class="Room-link" href="/rooms_categories/other")
+                                    .Room-img-wrapper
+                                        img(src="/img/rooms/other.jpg", alt="")
+                                    p.Room-name   
+                                        =typeNames["other"]
+        footer.Footer
+            include /templates/footer_top.pug
+            include /templates/footer_bottom.pug
+        script(src="/js/login_index.js")
+        script(type="module" src="/js/common_script.js")  
