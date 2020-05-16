@@ -1,0 +1,54 @@
+.Footer-top
+    ul.Footer-information-lists.Section-centerer
+      li.Footer-information-element
+        ul.Footer-info-list
+          -let footerFAQ=i18n.__("Footer F.A.Q.");
+          li
+            h3.Footer-header=footerFAQ["header"]
+          li
+            a(href='#')=footerFAQ["About us"]
+          li
+            a(href='#')=footerFAQ["Privacy"]
+          li
+            a(href='#')=footerFAQ["Conditions"]
+          li
+            a(href='#')=footerFAQ["Online support"]
+      li.Footer-information-element
+        ul.Footer-info-list
+          -let footerAccount=i18n.__("Footer MY ACCOUNT");
+          li
+            h3.Footer-header=footerAccount["header"]
+          li
+            a(href='#')=footerAccount["Account"]
+          li
+            a(href='#')=footerAccount["Cart"]
+          li
+            a(href='#')=footerAccount["Favorites"]
+          li
+            a(href='#')=footerAccount["Compare"]
+      li.Footer-information-element
+        ul.Footer-info-list
+          -let footerInformation=i18n.__("Footer INFORMATION");
+          li
+            h3.Footer-header=footerInformation["header"]
+          li
+            a(href='#')=footerInformation["Specials"]
+          li
+            a(href='#')=footerInformation["New Products"]
+          li
+            a(href='#')=footerInformation["Best Sellers"]
+          li
+            a(href='#')=footerInformation["Our Store"]
+      li.Footer-information-element
+        ul.Footer-info-list
+          -let footerOrders=i18n.__("Footer ORDERS");
+          li
+            h3.Footer-header=footerOrders["header"]
+          li
+            a(href='#')=footerOrders["Payment options"]
+          li
+            a(href='#')=footerOrders["Returns"]
+          li
+            a(href='#')=footerOrders["Shipping"]
+          li.Payments-types
+            img(src='/img/Card_image.png' alt='' width='240' height='35')

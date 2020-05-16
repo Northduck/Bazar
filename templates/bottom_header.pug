@@ -1,0 +1,23 @@
+.Header-bottom-wrapper
+  .Header-bottom.Section-centerer
+    .Header-Bottom-accurate-nav
+      .Nav-catalog
+        button.Nav-catalog-btn
+          i.fas.fa-list
+          =i18n.__("Select a category")
+          i.fas.fa-caret-down
+        include /templates/nav_catalog.pug
+      .Nav-search
+        form.Nav-search-form(action='' method='POST')
+          input#Header-nav-search-field.Nav-search-field(type='search' name='Search-field' placeholder=i18n.__("Find a product"))
+          button#Nav-search-submit-btn.Nav-search-submit(type='submit')
+            i.fas.fa-search
+    ul.Main-nav
+      li
+        a(class='Сurrent-tab' href='/')=i18n.__("Home")
+      li
+        a(href='/shop_by_room')=i18n.__("Furniture")
+      li
+        a(href='/catalog_services')=i18n.__("Services")
+      li
+        a(href='/blog')=i18n.__("Blog")

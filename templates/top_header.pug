@@ -1,0 +1,58 @@
+.Header-top-wrapper
+  .Header-top.Section-centerer
+    .Top-config
+      .Config-money
+        a.Current-config-tab.Current-money-tab(href='#')=i18n.__("current_header")
+          i.fas.fa-caret-down
+        ul.Config-money-list
+          li
+            a.Config-money-usd(href='#') USD
+          li
+            a.Config-money-euro(href='#') EUR
+          li
+            a.Config-money-rubles(href='#') RUB
+      .Config-language
+        a.Current-config-tab.Current-language-tab(href='#')=i18n.__("language_header")
+          i.fas.fa-caret-down
+        ul.Config-language-list
+          li
+            button(class="Change-language-link" data-language-value="en") English
+          li
+            button(class="Change-language-link" data-language-value="ru") Русский
+      .Config-help
+        a.Current-config-tab.Current-help-tab(href='#')=i18n.__("variants_header")
+          i.fas.fa-caret-down
+        ul.Config-help-list
+          li
+            a(href='http://localhost:3000/add_product')=i18n.__("variants")[0]
+          li
+            a(href='#')=i18n.__("variants")[1]
+          li
+            a(href='#')=i18n.__("variants")[2]
+    ul.User-profile
+      -if(session&&session.userInfo){
+      li.Profile-user
+        a(href="/account")
+          =session.userInfo.user_login
+          i.fas.fa-user
+      li.Profile-logout
+        a(href="/logout")=i18n.__("user_controls_header")["logout_link_text"]
+          i.fas.fa-sign-out-alt
+      -}else{
+      li.Profile-login
+        a(href="/login")
+          i.fas.fa-user
+          =i18n.__("user_controls_header")["login_link_text"]
+      li.Profile-register
+        a(href="/register")
+          i.fas.fa-lock
+          =i18n.__("user_controls_header")["register_link_text"]
+      -}
+      li.Profile-favorite
+        a(href="/favorites")
+          i.fas.fa-heart
+          =i18n.__("user_controls_header")["favorites_link_text"]
+      li.Profile-compare
+        a(href="#")
+          i.fas.fa-exchange-alt
+          =i18n.__("user_controls_header")["compare_link_text"]
