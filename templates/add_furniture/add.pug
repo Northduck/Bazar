@@ -1,0 +1,61 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        title
+        link(rel='stylesheet' type='text/css' href='../css/MainStyle.css')
+        link(href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap' rel='stylesheet')
+        link(rel='stylesheet' type='text/css' href='../css/all.min.css')
+        link(rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png")
+        link(rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png")
+        link(rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png")
+        link(rel="manifest" href="/img/favicon/site.webmanifest")
+        link(rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#5bbad5")
+        meta(name="msapplication-TileColor" content="#da532c")
+        meta(name="theme-color" content="#ffffff")
+    body
+        header.Header
+            include /templates/top_header.pug
+            include /templates/middle_header.pug
+            include /templates/bottom_header.pug
+        main.Catalog-main
+            section.Add-product-section.Section-centerer
+                h1 Add product
+                form(action="add_product", method="post")
+                    ul(class="Products-fields-list")
+                        li
+                            label
+                                |select category
+                                select(name="productCategory")
+                                    -for(let i=0;i<productsCategories.length;i++){
+                                    option(value=productsCategories[i]["product_category_id"])
+                                        =productsCategories[i]["product_category_name_en"]
+                                    -}
+                        li    
+                            label product_name_en
+                            textarea(name="product_name_en", cols="70", rows="10" required)
+                        li    
+                            label product_name_ru
+                            textarea(name="product_name_ru", cols="70", rows="10" required)
+                        li    
+                            label product_current_price
+                            input(type="text", name="product_current_price" required)
+                        li    
+                            label product_previous_price
+                            input(type="text", name="product_previous_price")
+                        li    
+                            label product_description_en
+                            textarea(name="product_description_en", cols="70", rows="10" required)
+                        li    
+                            label product_description_ru
+                            textarea(name="product_description_ru", cols="70", rows="10" required)
+                        li    
+                            label product_receipt_date
+                            input(type="date", name="product_receipt_date" required)  
+                        li
+                            input(type="submit", value="Ok")                                    
+        footer.Footer
+            include /templates/footer_top.pug
+            include /templates/footer_bottom.pug
+        script(src="/js/catalog_index.js")
+        script(type="module" src="/js/common_script.js")
