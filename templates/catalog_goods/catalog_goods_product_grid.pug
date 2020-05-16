@@ -1,0 +1,38 @@
+mixin productsItems(data)
+    li(class="Products-catalog-item" data-receipt-date= data.product_receipt_date.toISOString().substring(0,10))
+        -var isSaleClass="Product-catalog-item-top";
+        -isSaleClass+=data.product_previous_price===null ? "":" Sale-item";
+        div(class= isSaleClass)
+            -var imgDir="/img/products/"+(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id))+"/"+(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id))+"1.jpg";
+            -console.log(imgDir)
+            img.Catalog-item-img(src= imgDir alt='' width='262' height='260')
+            .Product-catalog-item-buttons
+              button.Quick-view-btn=i18n.__("Quick View")
+              button(class="Add-to-cart-btn" data-product-id=data.product_id)
+                i.fas.fa-shopping-basket
+                =i18n.__("add to cart")
+        .Product-catalog-item-bottom
+            a(href=`/goods/${data.product_id}` class="Item-header-link")
+                h3.Item-header=data["product_name_"+i18n.locale].length<=90?data["product_name_"+i18n.locale]:data["product_name_"+i18n.locale].slice(0,90)+"..."
+            span(class="Item-rating" data-value-rating= data.product_rating)
+                include /templates/star_rating.pug
+                +makeStarRating(data.product_rating)
+            .Item-decorative-line
+            .Item-controls-and-price
+                ul.Item-controls
+                    li
+                        button(class="Control-btn Good-like-btn" data-product-id=data.product_id)
+                            i.far.fa-heart
+                    li
+                        button.Compare-btn
+                            i.fas.fa-exchange-alt
+                .Item-price
+                    -if(data.product_previous_price==null){
+                    p.New-price= data.product_current_price
+                    -}else{
+                    p.New-price= data.product_current_price
+                    p.Old-price= data.product_previous_price
+                    -}
+-for(let i=0;i<productsInfo.length;i++){
+  +productsItems(productsInfo[i])
+-}
