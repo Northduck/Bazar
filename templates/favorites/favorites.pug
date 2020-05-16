@@ -1,0 +1,45 @@
+doctype html
+html(lang="en")
+  head
+      meta(charset="utf-8")
+      title=i18n.__("Your favorites")
+      link(rel='stylesheet' type='text/css' href='/css/MainStyle.css')
+      link(href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap' rel='stylesheet')
+      link(rel='stylesheet' type='text/css' href='/css/all.min.css')
+      link(rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png")
+      link(rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png")
+      link(rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png")
+      link(rel="manifest" href="/img/favicon/site.webmanifest")
+      link(rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#5bbad5")
+      meta(name="msapplication-TileColor" content="#da532c")
+      meta(name="theme-color" content="#ffffff")
+  body
+    header.Header
+      include /templates/top_header.pug
+      include /templates/middle_header.pug
+      include /templates/bottom_header.pug
+    main.Favorites-main
+        section.Favorites-section.Section-centerer
+            h1.Favorites-section-header=i18n.__("Your favorites")
+            .Favorites-section-columns
+                .Favorites-product-wrapper
+                  include /templates/favorites/favorites_items.pug
+                .Favorites-information-column-wrapper
+                  .Favorites-information-column
+                    h2.Favorites-header
+                      =i18n.__("The list:")
+                    .Favorites-total
+                      p.Favorites-total-info
+                        span.Favorites-quan= favoritesProductsQuantity+" "
+                        =i18n.__("items local")
+                    ul.Favorites-controls-container
+                      li
+                        button.Favorites-buy-all-btn
+                          =i18n.__("Buy all")
+                      li
+                        button.Favorites-delete-all-btn
+                          =i18n.__("Clear list")
+    footer.Footer
+      include /templates/footer_top.pug
+      include /templates/footer_bottom.pug
+    script(type="module" src="/js/common_script.js")

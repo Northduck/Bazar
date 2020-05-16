@@ -1,0 +1,39 @@
+mixin cartGoodItem(data)
+    -let productCompositeID=(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id));
+    li(class="Favorites-product-item" data-product-id=data.product_id)
+        .Favorites-product-information-section
+            .Favorites-product-img
+                -var mainImg="/img/products/"+productCompositeID+"/"+productCompositeID+"1.jpg";
+                img(src=mainImg, alt="" width="100" height="100")
+            .Favorites-product-information
+                p.Favorites-product-name 
+                    a(href=`/goods/${productCompositeID}`)=data["product_name_"+i18n.locale]          
+            div(class="Favorites-product-price" data-product-price=Number.parseFloat(data.product_current_price))
+                -if(data.product_previous_price==null){
+                p.Product-current-price="$"+Number.parseFloat(data.product_current_price).toFixed(2)
+                -}else{ 
+                p.Old-price="$"+Number.parseFloat(data.product_previous_price).toFixed(2)
+                p.Product-current-price="$"+Number.parseFloat(data.product_current_price).toFixed(2)
+                -}
+        .Favorites-product-total
+            ul.Favorites-product-total-buttons
+                li
+                    button.Delete-item
+                        i.fas.fa-trash-alt
+                li
+                    button.Compare-btn
+                        i.fas.fa-balance-scale
+            div(class="To-cart-wrapper")
+                button(class="Add-to-cart-btn" data-product-id=data.product_id)
+                    i.fas.fa-shopping-basket
+                    =i18n.__("add to cart")
+-if(favoritesProducts===undefined||favoritesProducts.length<=0){
+h2.Emptyness-plug
+    =i18n.__("favorites emptyness plug")
+-}else{
+ul.Favorites-products-column
+    -for(let i=0;i<favoritesProducts.length;i++){
+    +cartGoodItem(favoritesProducts[i])
+    -}
+-}
+
