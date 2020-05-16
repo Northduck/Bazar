@@ -1,0 +1,40 @@
+mixin cartGoodItem(data)
+    -let productCompositeID=(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id));
+    li(class="Cart-product-item" data-product-id=data.product_id)
+        .Cart-product-information-section
+            .Cart-product-img
+                -var mainImg="/img/products/"+productCompositeID+"/"+productCompositeID+"1.jpg";
+                img(src=mainImg, alt="" width="100" height="100")
+            .Cart-product-information
+                p.Cart-product-name 
+                    a(href=`/goods/${productCompositeID}`)=data["product_name_"+i18n.locale]
+                .Cart-product-quantity-controls
+                    label(for='Product-quantity-field')=i18n.__("Quantity")
+                    button.Quantity-minus-btn
+                        i.fas.fa-minus
+                    input(class="Product-quantity-value" type='text' name='product-quantity' data-previous-value=data.productQuantity value=data.productQuantity)
+                    button.Quantity-plus-btn
+                        i.fas.fa-plus            
+            div(class="Cart-product-price" data-product-price=Number.parseFloat(data.product_current_price))
+                -if(data.product_previous_price==null){
+                p.New-price="$"+Number.parseFloat(data.product_current_price).toFixed(2)
+                -}else{ 
+                p.Old-price="$"+Number.parseFloat(data.product_previous_price).toFixed(2)
+                p.New-price="$"+Number.parseFloat(data.product_current_price).toFixed(2)
+                -}
+        .Cart-product-total
+            ul.Cart-product-total-buttons
+                li
+                    button.Delete-item
+                        i.fas.fa-trash-alt
+                li
+                    button(class="Control-btn Good-like-btn" data-product-id=data.product_id)
+                        i.far.fa-heart
+            .Cart-product-total-price-section
+                p.Cart-product-head=i18n.__("Summ")
+                    span.Cart-product-total-price
+                        ="$"+(Number.parseFloat(data.productQuantity)*Number.parseFloat(data.product_current_price)).toFixed(2)
+-for(let i=0;i<cartProducts.length;i++){
+-cartProducts[i].productQuantity=cartProductsQuantity[i][1];
++cartGoodItem(cartProducts[i])
+-}
