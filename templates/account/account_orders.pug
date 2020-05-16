@@ -1,0 +1,100 @@
+mixin productsOrdersHistory()
+    ul.Account-orders-type-products
+        -let currentOrderId=-1;
+        -for(let i=0;i<userProductsOrders.length;i++){
+        -if(userProductsOrders[i]["product_order_id"]!==currentOrderId){
+            -currentOrderId=userProductsOrders[i]["product_order_id"];
+            li.Orders-history-order-el
+                h3(class='Orders-history-order-header')="Order #"+userProductsOrders[i]["product_order_generated_number"]
+                -let accountOrdersProductsInfo=i18n.__("account orders info")
+                ul(class='Orders-history-order-info-list')
+                    li
+                        p=accountOrdersProductsInfo["Payment type"]
+                        p=userProductsOrders[i]["product_order_payment_type"]
+                    li
+                        p=accountOrdersProductsInfo["Receiving type"]
+                        p=userProductsOrders[i]["product_order_receive_type"]
+                    li
+                        p=accountOrdersProductsInfo["Order date"]
+                        p=userProductsOrders[i]["product_order_date"].toISOString().substring(0,10)
+                    li
+                        p=accountOrdersProductsInfo["Order summ"]
+                        p=userProductsOrders[i]["product_order_summ"]
+                button(class='Order-products-open-btn')=i18n.__("Show ordered products")
+                -let orderProducts=i18n.__("account orders products")
+                ul(class='Orders-history-order-products-list visually-hidden')
+                    li(class='Order-product-header')
+                        h4(class="Order-product-nav-name")=orderProducts["Product Name"]
+                        h4(class="Order-product-nav-price")=orderProducts["Product price"]
+                        h4(class="Order-product-nav-quntity")=orderProducts["Product quantity"]
+                    -for(let j=i;j<userProductsOrders.length;j++){
+                    -if(userProductsOrders[j]["product_order_id"]!==currentOrderId){
+                    -i=j-1;
+                    -break;
+                    -}else{
+                    li(class="Order-product-card")
+                        ul(class='Order-product-list')
+                            li(class='Order-product-name')=userProductsOrders[j]["product_name_"+i18n.locale]
+                            li=userProductsOrders[j]["purchase_for_price"]
+                            li=userProductsOrders[j]["purchase_quantity"]
+                    -}
+                    -}
+        -}
+        -}
+
+mixin servicesOrdersHistory()
+    ul.Account-orders-type-products.visually-hidden
+        -let currentOrderId=-1;
+        -for(let i=0;i<userProductsOrders.length;i++){
+        -if(userProductsOrders[i]["product_order_id"]!==currentOrderId){
+            -currentOrderId=userProductsOrders[i];
+            li.Orders-history-order-el
+                h3(class='Orders-history-order-header')="Order #"+userProductsOrders[i]["product_order_generated_number"]
+                -let accountOrdersServicesInfo=i18n.__("account orders info")
+                ul(class='Orders-history-order-info-list')
+                    li
+                        p=accountOrdersServicesInfo["Payment type"]
+                        p=userProductsOrders[i]["product_order_payment_type"]
+                    li
+                        p=accountOrdersServicesInfo["Receiving type"]
+                        p=userProductsOrders[i]["product_order_receive_type"]
+                    li
+                        p=accountOrdersServicesInfo["Order date"]
+                        p=userProductsOrders[i]["product_order_date"].toISOString().substring(0,10)
+                    li
+                        p=accountOrdersServicesInfo["Order summ"]
+                        p=userProductsOrders[i]["product_order_summ"]
+                button(class='Order-products-open-btn')=i18n.__("Show ordered products")
+                -let orderServices=i18n.__("account orders products")
+                ul(class='Orders-history-order-products-list visually-hidden')
+                    li(class='Order-products-header')
+                        h4(class="Order-product-nav-name")=orderServices["Product Name"]
+                        h4(class="Order-product-nav-price")=orderServices["Product price"]
+                        h4(class="Order-product-nav-quntity")=orderServices["Product quantity"]
+                    -for(let j=i;j<navCatalogCategories.length;j++){
+                    -if(userProductsOrders[j]["product_order_id"]!==currentOrderId){
+                    -i=j-1;
+                    -break;
+                    -}else{
+                    li
+                        ul(class='Order-products-list')
+                            li(class='Order-products-name')=userProductsOrders[j]["product_name_"+i18n.locale]
+                            li(class="Order-products-price")=userProductsOrders[j]["purchase_for_price"]
+                            li(class="Order-products-quantity")=userProductsOrders[j]["purchase_quantity"]
+                    -}
+                    -}
+        -}
+        -}
+-console.log("\n\nContext",userProductsOrders);
+div.Account-products-orders
+    -if(userProductsOrders!==undefined&&userProductsOrders.length>0){
+    +productsOrdersHistory()
+    -}else{
+        p.Account-emptiness-explanation=i18n.__("no orders")
+    -}
+div.Account-services-orders.visually-hidden
+    -if(userServicesOrders!==undefined&&userServicesOrders.length>0){
+    +servicesOrdersHistory()
+    -}else{
+        p.Account-emptiness-explanation=i18n.__("no orders")
+    -}
