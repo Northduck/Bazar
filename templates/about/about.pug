@@ -1,0 +1,64 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    title=i18n.__("About us")
+    link(rel='stylesheet' type='text/css' href='../css/MainStyle.css')
+    link(href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap' rel='stylesheet')
+    link(rel='stylesheet' type='text/css' href='../css/all.min.css')
+    link(rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png")
+    link(rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png")
+    link(rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png")
+    link(rel="manifest" href="/img/favicon/site.webmanifest")
+    link(rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#5bbad5")
+    meta(name="msapplication-TileColor" content="#da532c")
+    meta(name="theme-color" content="#ffffff")
+  body
+    header.Header
+      include /templates/top_header.pug
+      include /templates/middle_header.pug
+      include /templates/bottom_header.pug
+    main.About-main
+      .Section-centerer
+        h1.About-main-header=i18n.__("About us")
+        p
+          | A better way to shop online for furniture, home d&eacute;cor and so much more!
+          | Furniture.ca is more than just an online furniture store. We hand pick and curate the best in quality and style for you and your home.
+          | Why spend days driving from store to store trying to find that perfect look or unique piece. Find everything you&apos;re looking for and more from the comfort of your own home.
+        h2.About-main-second-header Why Shop at Bazar?
+        ul.About-pros
+          li
+            div
+              i.fas.fa-user
+            div
+              h3 SERVICE
+              p
+                | You&apos;re not alone. From browsing, to ordering, to delivery... we&apos;re here to help you every step of the way. Our Customer Care Team can answer any questions you may have, as well as provide personalized assistance with: scheduling, availability, bulk orders, custom orders and delivery options.
+                | Plus we&apos;re a proudly Canadian company! All prices are in CAD currency and you won&apos;t see any surprise duty or exchange fees at checkout.
+          li
+            div
+              i.fas.fa-shopping-basket
+            div
+              h3 SELECTION
+              p
+                | Shop our extensive selection of quality furniture and home decor for every room, plus a vast assortment of mattresses, appliances and electronics at prices that can&apos;t be beat! Find everything you&apos;re looking for from the comfort of your home.
+          li
+            div
+              i.fas.fa-truck
+            div
+              h3 SATISFACTION
+              p
+                | Shop with confidence! Our Satisfaction Guarantee and Price Match Promise ensure you are always happy with your purchase.
+          li
+            div
+              i.fas.fa-check-circle
+            div
+              h3 DELIVERY
+              p
+                | Our One Of A Kind Delivery network is fast, reliable and FREE on thousands of items. Delivery is free on all purchases over $799, plus all items in the FCA COLLECTION including many home decor items qualify for FREE DELIVERY.
+                | Have more questions? Check out the FAQ&apos;S
+    footer.Footer
+      include /templates/footer_top.pug
+      include /templates/footer_bottom.pug
+    script(src="/js/login_index.js")
+    script(type="module" src="/js/common_script.js")
