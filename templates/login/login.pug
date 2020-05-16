@@ -1,0 +1,46 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    title=i18n.__("Login_header")
+    link(rel='stylesheet' type='text/css' href='../css/MainStyle.css')
+    link(href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap' rel='stylesheet')
+    link(rel='stylesheet' type='text/css' href='../css/all.min.css')
+    link(rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png")
+    link(rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png")
+    link(rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png")
+    link(rel="manifest" href="/img/favicon/site.webmanifest")
+    link(rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#5bbad5")
+    meta(name="msapplication-TileColor" content="#da532c")
+    meta(name="theme-color" content="#ffffff")
+  body
+    header.Header
+      include /templates/top_header.pug
+      include /templates/middle_header.pug
+      include /templates/bottom_header.pug
+    main.Login-main
+        div(class="Login-form-wrappper")
+            h1.Login-header
+              =i18n.__("Sign in to")
+              br
+              =i18n.__("your account")
+            form(class="Login-form" action="" method="POST")
+              ul(class="Login-inputs")
+                li.Login-login-section
+                  input(id="Login-email-input-field" class="Login-login-input" type="text" name="userLogin" placeholder=i18n.__("Enter login or email"))
+                li.Login-password-section
+                  input(id="Login-password-input-field" class="Login-password-input" type="password", name="userPassword" placeholder=i18n.__("Enter password"))
+                  span.Forger-password-field
+                    a(href="#")
+                      =i18n.__("Forgot password")
+                li.Login-submit-section
+                  input(class="Login-submit-btn" type="submit" value=i18n.__("Sign In"))   
+              .Login-unregistered         
+                h3.Login-unregistered-header
+                  =i18n.__("Don't have an account")
+                a(href="#" class="Login-unregistered-link")=i18n.__("Create Account")            
+    footer.Footer
+      include /templates/footer_top.pug
+      include /templates/footer_bottom.pug
+    script(src="/js/login_index.js")
+    script(type="module" src="/js/common_script.js")
