@@ -6,3 +6,4 @@ Css
 package*
 config
 *.sql
+.vscode
