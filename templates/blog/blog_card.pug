@@ -1,0 +1,12 @@
+mixin articleCard(data)
+    article.Article-card
+        a(href=`/blog/${data["article_template"]}` class="Article-link")
+            .Article-card-img-wrapper
+                img(src=`/img/articles/${data["article_id"]}.jpg`)
+            .Article-info-wrapper
+                p.Article-type
+                    |Article
+                p.Article-published-date=data["article_creation_date"].toISOString().substring(0,10)
+            .Article-name-wrapper
+                h3.Article-name=data["article_header_"+i18n.locale]
+
