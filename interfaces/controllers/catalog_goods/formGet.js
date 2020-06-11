@@ -108,7 +108,6 @@ module.exports=(req,res)=>{
   let filtersQuery=makeFiltersQuery(categoryIndex,req.query);
   console.log(req.url);
   console.log(req.query);
-  //res.end(filtersQuery);
   let getProductsFromFilters=[];
 
   getProductsFromFilters.push(new Promise((resolve, reject)=>{

@@ -42,15 +42,6 @@ function makeGoodsPage(id){
   {"queryValue":`select count(product_review_id) from products_reviews where product_id=${id};`,
   "contextVarName":"reviewsCount"}];
 }
-function isQueryResultOk(res){
-  for(let elName in res){
-    console.log("elName",elName,"element",res[elName]);
-    if(!res[elName]){
-      return  false;
-    }
-  }
-  return true;
-}
 module.exports=(req,res)=>{
   console.log("yews", req.url);
   console.log("params",req.params);
