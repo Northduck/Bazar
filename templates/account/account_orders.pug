@@ -5,7 +5,7 @@ mixin productsOrdersHistory()
         -if(userProductsOrders[i]["product_order_id"]!==currentOrderId){
             -currentOrderId=userProductsOrders[i]["product_order_id"];
             li.Orders-history-order-el
-                h3(class='Orders-history-order-header')="Order #"+userProductsOrders[i]["product_order_generated_number"]
+                h3(class='Orders-history-order-header')=i18n.__("Order")+" # "+userProductsOrders[i]["product_order_generated_number"]
                 -let accountOrdersProductsInfo=i18n.__("account orders info")
                 ul(class='Orders-history-order-info-list')
                     li
