@@ -29,7 +29,6 @@ makeSliderWithNavListeners(NewproductsButton,NewproductsPages,"Active-slide-btn"
 
 let quantityControls=document.querySelectorAll(".Quantity-controls button");
 let quantityInput=document.getElementsByClassName("Product-quantity-value")[0];
-console.log("ctr",quantityControls);
 for(let i=0;i<2;i++){
     quantityControls[i].addEventListener("click",function(event){
         event.preventDefault();
@@ -68,38 +67,40 @@ quantityInput.addEventListener("keyup",function(event){
     }
 });
 
-let galleryContent=document.getElementsByClassName("Shop-page-product-left-column")[0];
-let galleryMainImages=document.getElementsByClassName("Product-active-img")[0];
-    galleryContent.querySelectorAll(".Product-imgs-list li").forEach((linkListEl,j)=>{
-        let galleryListImg=linkListEl.firstChild;
-        linkListEl.addEventListener("click",event=>{
-            event.preventDefault();
-            galleryMainImages.src=galleryListImg.src;
-        });
+let galleryContent=document.querySelectorAll(".Shop-page-product-left-column")[0];
+let galleryMainImages=document.querySelectorAll(".Product-active-img")[0];
+let galleryImgElements=galleryContent.querySelectorAll(".Product-imgs-list li");
+galleryImgElements.forEach((linkListEl,j)=>{
+    let galleryListImg=linkListEl.firstChild;
+    linkListEl.addEventListener("click",event=>{
+        event.preventDefault();
+        galleryMainImages.setAttribute("data-current-element",j);
+        galleryMainImages.src=galleryListImg.src;
     });
-    let shiftInitial=0;
-    let galleryShiftBtns=galleryContent.querySelectorAll(".Product-img-slider button");
-    galleryShiftBtns.forEach((el,j)=>{
-        let imgsList=galleryContent.querySelectorAll(".Gallery-item");
-        el.addEventListener("click",event=>{
-            event.preventDefault();
-            if(j===0){
-                if(shiftInitial!==0){
-                    imgsList[shiftInitial-1].classList.remove("visually-hidden");
-                    imgsList[shiftInitial-- + 3].classList.add("visually-hidden"); 
-                }
-            }else{
-                if(imgsList.length>=4&&(4+shiftInitial)!==imgsList.length){
-                    imgsList[shiftInitial].classList.add("visually-hidden");
-                    imgsList[shiftInitial++ + 4].classList.remove("visually-hidden");
-                }
+});
+let shiftInitial=0;
+let galleryShiftBtns=galleryContent.querySelectorAll(".Product-img-slider button");
+galleryShiftBtns.forEach((el,j)=>{
+    let imgsList=galleryContent.querySelectorAll(".Gallery-item");
+    el.addEventListener("click",event=>{
+        event.preventDefault();
+        if(j===0){
+            if(shiftInitial!==0){
+                imgsList[shiftInitial-1].classList.remove("visually-hidden");
+                imgsList[shiftInitial-- + 3].classList.add("visually-hidden"); 
             }
-        });
+        }else{
+            if(imgsList.length>=4&&(4+shiftInitial)!==imgsList.length){
+                imgsList[shiftInitial].classList.add("visually-hidden");
+                imgsList[shiftInitial++ + 4].classList.remove("visually-hidden");
+            }
+        }
+    });
 });
 function serialize(formData){
     let url="?"
     for (var [key, value] of formData.entries()) { 
-      url=url+key+"="+value+"&";
+        url=url+key+"="+value+"&";
     }  
     url=url.replace(/ /g,"%20");
     url=url.substring(0,url.length-1);
@@ -114,45 +115,89 @@ function handleNewFeedbackResponse(response){
         addReviewWrapper.innerHTML=resultString;
         return;
     }
-    if(response.code===1){
-        resultString.innerHTML="Thank you for feedback";
-    }else if(response.code===2){
-        resultString.innerHTML="Your feedback has been updated";
-    }
-    addReviewWrapper.innerHTML="";
-    addReviewWrapper.appendChild(resultString);
-    let productRating=document.querySelector(".Product-users-rating-row .Product-rating");
-    let reviewsContainer=document.getElementsByClassName("Product-info-content-reviews-wrapper")[0];
-    let reviewsCountTab=document.querySelectorAll(".Product-info-nav .Reviews-count")[0];
-    let reviewsCountLink=document.getElementsByClassName("Product-reviews-counter")[0];
-    productRating.innerHTML=response.rating;
-    reviewsContainer.firstChild=response.reviews;
-    reviewsCountTab.innerHTML=response.reviewsCount;
-    reviewsCountLink.innerHTML=`${response.reviewsCount} views`;
+    location.reload();
 }
-let ratingRadio=document.getElementsByClassName("New-user-review-rating-group")[0];
-ratingRadio.addEventListener("click",(event)=>{
-    ratingRadio.classList.remove("User-rating-is-empty");
+let ratingRadio=document.getElementsByClassName(".New-user-review-rating-group");
+for (let i = 0; ratingRadio!=null&&i < ratingRadio.length; i++) {
+    ratingRadio[i].addEventListener("click",(event)=>{
+        ratingRadio[i].classList.remove("User-rating-is-empty");
+    });
+}
+
+let newReviewForm=document.getElementsByClassName("User-review-form");
+for (let i = 0; newReviewForm!=null&&i < newReviewForm.length; i++) {
+    newReviewForm[i].addEventListener("submit",async(event)=>{
+        event.preventDefault();
+        let data=new FormData(newReviewForm[i]);
+        let finalUrl=window.location.href.substring(0,window.location.href.lastIndexOf("/"))+"/newfeedback/";
+        console.log(window.location.pathname.match(/[0-9]*/));
+        finalUrl+=window.location.pathname.match(/[\d]+/)[0]+serialize(data);
+        if(finalUrl.indexOf("review-rating")===-1){
+            ratingRadio.classList.add("User-rating-is-empty");
+            return;
+        }
+        let serverResponse=await fetch(finalUrl,{
+            method:"POST"
+        });
+        let serverResponseContent=await serverResponse.json();
+        console.log(serverResponseContent);
+        handleNewFeedbackResponse(serverResponseContent);
+    
+    });
+}
+
+function openModal(modal,overlay) {
+    if (modal == null) return
+    modal.classList.add('active');
+    overlay.classList.add('active');
+    bodyElement.classList.add('active');
+}
+function closeModal(modal,overlay) {
+    if (modal == null) return
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
+    bodyElement.classList.remove('active');
+}
+
+let expandImgSliderBtn=document.querySelector(".Expand-img-btn");
+let overlayWindow=document.querySelector(".Overlay");
+let modalWindowSlider=document.querySelector(".Modal-img-slider-wrapper");
+let bodyElement=document.querySelector("body");
+let modalWindowImg=document.querySelector(".Modal-img-wrapper img");
+let activeSliderImg=document.querySelector(".Product-active-img");
+let modalWindowSliderBtns=document.querySelectorAll(".Modal-img-slider-wrapper button.Slide");
+let galleryImgs=galleryContent.querySelectorAll(".Product-imgs-list li img");
+let cloaseModalBtn=modalWindowSlider.querySelector(".Close-modal-window");
+
+modalWindowSliderBtns.forEach((sliderBtn,i)=>{
+    sliderBtn.addEventListener("click",(event)=>{
+        let currentModalImg=Number.parseInt(galleryMainImages.getAttribute("data-current-element"));
+        let newCurrentImg=currentModalImg;
+        if(i===0){
+            if(currentModalImg-1>=0){
+                --newCurrentImg;
+                modalWindowImg.src=galleryImgs[newCurrentImg].src;
+                galleryMainImages.src=galleryImgs[newCurrentImg].src;
+            }
+        }else{
+            if(currentModalImg+1<galleryImgElements.length){
+                ++newCurrentImg;
+                modalWindowImg.src=galleryImgs[newCurrentImg].src;
+                galleryMainImages.src=galleryImgs[newCurrentImg].src;
+            }
+        }
+        galleryMainImages.setAttribute("data-current-element",newCurrentImg);
+    });
 });
-let newReviewForm=document.getElementsByClassName("User-review-form")[0];
-newReviewForm.addEventListener("submit",(event)=>{
+expandImgSliderBtn.addEventListener("click",(event)=>{
     event.preventDefault();
-    let data=new FormData(newReviewForm);
-    let finalUrl=window.location.href.substring(0,window.location.href.lastIndexOf("/"))+"/newfeedback/";
-    finalUrl+=window.location.href.match(/[0-9]*\_[0-9]*/)[0]+serialize(data);
-    if(finalUrl.indexOf("product-rating")===-1){
-        ratingRadio.classList.add("User-rating-is-empty");
-        return;
-    }
-    fetch(finalUrl,{
-      method:"POST"
-    })
-    .then(response=>{ 
-        return response.json();
-    })
-    .then(data=>{
-        console.log(data);
-        handleNewFeedbackResponse(data);
-    })
-    .catch(error => console.error(error));
+    openModal(modalWindowSlider,overlayWindow,bodyElement);
+    modalWindowImg.src=activeSliderImg.src;
+});
+overlayWindow.addEventListener('click', () => {
+    closeModal(modalWindowSlider,overlayWindow,bodyElement);
+});
+
+cloaseModalBtn.addEventListener('click', () => {
+    closeModal(modalWindowSlider,overlayWindow,bodyElement);
 });

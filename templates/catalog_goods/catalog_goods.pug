@@ -2,7 +2,8 @@ doctype html
 html(lang=i18n.locale)
   head
     meta(charset="utf-8")
-    title=typeCategoryInfo[0]["product_category_name_"+i18n.locale]
+    -let pageTitle=typeCategoryInfo[0]["product_category_name_"+i18n.locale]
+    title=pageTitle.charAt(0).toUpperCase() + pageTitle.slice(1)
     link(rel='stylesheet' type='text/css' href='../css/MainStyle.css')
     link(href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap' rel='stylesheet')
     link(rel='stylesheet' type='text/css' href='../css/all.min.css')
@@ -18,7 +19,6 @@ html(lang=i18n.locale)
       include /templates/top_header.pug
       include /templates/middle_header.pug
       include /templates/bottom_header.pug
-          
     main.Catalog-main
       section.Catalog-special-offer.Section-centerer
         -let catalogSpecialOffer=i18n.__("catalog special offer")
@@ -31,14 +31,14 @@ html(lang=i18n.locale)
           =catalogSpecialOffer["Special text"]
       ul.Catalog-nested-nav.Section-centerer
         li
-          a(href="/")
-            =i18n.__("Home")
+          a(href="/shop_by_room")
+            =i18n.__("Furniture")
             i.fas.fa-chevron-right
         li
-          a(href="#")=typeCategoryInfo[0]["type_name_"+i18n.locale]   
+          a(href=`/rooms_categories/${typeCategoryInfo[0]["type_name_en"]}`)=typeCategoryInfo[0]["type_name_"+i18n.locale]   
             i.fas.fa-chevron-right       
         li.Last-nested-tab
-          a(href="#")=typeCategoryInfo[0]["product_category_name_"+i18n.locale]
+          a(href=`/catalog_goods/${typeCategoryInfo[0]["product_category_name_en"]}`)=typeCategoryInfo[0]["product_category_name_"+i18n.locale]
       section.Products-catalog-section.Section-centerer
         .Products-result-column
           .Products-head
@@ -61,18 +61,23 @@ html(lang=i18n.locale)
                     option(value="1") 12
                     option(value="2") 24
                     option(value="3") 36
-              .Catalog-view-btn-wrapper
-                span.Catalog-view-btn
+              div(class="Catalog-view-btn-wrapper")
+                span(class="Catalog-view-btn Catalog-grid-view", data-view-type="grid")
                   i.fas.fa-th-large
                   input(type="button")
-                span.Catalog-view-btn
+                span(class="Catalog-view-btn Catalog-list-view", data-view-type="list")
                   i.fas.fa-list
                   input(type="button")
           ul.Products-catalog-grid
-            include /templates/catalog_goods/catalog_goods_product_grid.pug
+            -if(catalogViewType==="list"){
+              include /templates/catalog_goods/catalog_goods_product_list.pug
+            -}else{
+              include /templates/catalog_goods/catalog_goods_product_grid.pug
+            -}
           ul.Products-catalog-grid-new.visually-hidden
         .Products-filters-wrapper
           form(class="Filters-form")
+            input( id="view-type-field",type="hidden", name="viewType" value="grid")
             ul.Products-filters
               include /templates/catalog_checkbox_filter.pug
               include /templates/catalog_range_filter.pug
@@ -122,24 +127,7 @@ html(lang=i18n.locale)
                         | Clothes
             div(class="Show-results visually-hidden" style="left:-150px; top: 0px;")
               button(class="Show-results-btn" type="submit")=i18n.__("Show results")
-      section.Brands-list-section.Section-centerer
-        button.List-scroll-left-btn
-          i.fas.fa-chevron-left
-        ul.Brands-list
-          li
-            a.List-item(href="#")
-          li
-            a.List-item(href="#")
-          li
-            a.List-item(href="#")
-          li
-            a.List-item(href="#")
-          li
-            a.List-item(href="#")
-          li
-            a.List-item(href="#")
-        button.List-scroll-right-btn
-          i.fas.fa-chevron-right
+      include /templates/brands.pug
       include /templates/newsletter_form.pug
     footer.Footer
       include /templates/footer_top.pug

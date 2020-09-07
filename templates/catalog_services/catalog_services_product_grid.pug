@@ -6,9 +6,10 @@ mixin productsItems(data)
             -var imgDir="/img/services/"+data.service_id+"/"+data.service_id+"_1.jpg";
             img.Catalog-item-img(src= imgDir alt='' width='262' height='260')
             .Product-catalog-item-buttons
-              button.Quick-view-btn=i18n.__("Quick View")
-              button(class="Checkout-service-btn" data-service-id=data.service_id)
-                =i18n.__("Order service")
+                button.Quick-view-btn=i18n.__("Quick View")
+                button(class="Checkout-service-btn" data-service-id=data.service_id)
+                    i.fas.fa-shopping-basket
+                    =i18n.__("Order service")
         .Product-catalog-item-bottom
             a(href=`/services/${data.service_id}` class="Item-header-link")
                 h3.Item-header= data["service_name_"+i18n.locale]
@@ -17,13 +18,15 @@ mixin productsItems(data)
                 +makeStarRating(data.service_rating)
             .Item-decorative-line
             .Item-controls-and-price
+                span.Item-price-from-span=i18n.__("From")
                 .Item-price
-                    span.Item-price-from-span=i18n.__("From")
+                    -let currentPriceConverted=money.convertTo(money({amount:Number.parseInt(data.service_current_price*100)}),session["currency"],currencyRates);
                     -if(data.service_previous_price==null){
-                    p.New-price= data.service_current_price
+                        p.New-price=currentPriceConverted.toFormat("$0,0.00")
                     -}else{
-                    p.New-price= data.service_current_price
-                    p.Old-price= data.service_previous_price
+                        -let oldPriceConverted=money.convertTo(money({amount:Number.parseInt(data.service_previous_price*100)}),session["currency"],currencyRates);
+                        p.New-price=currentPriceConverted.toFormat("$0,0.00")
+                        p.Old-price=oldPriceConverted.toFormat("$0,0.00")
                     -}
 -for(let i=0;i<servicesInfo.length;i++){
   +productsItems(servicesInfo[i])

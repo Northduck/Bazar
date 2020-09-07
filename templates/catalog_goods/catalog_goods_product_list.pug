@@ -1,57 +1,38 @@
-            li.Products-catalog-list-element
-              .Products-catalog-list-image-wrapper
-                img(src="Img/MainLogo.png" alt="" width="262" height="260")
-              .Products-catalog-list-about
-                a.item-header-link(href="#")
-                  h3.Products-catalog-list-header Aenean Ru Bristique
-                p.Products-catalog-list-price $350.00
-                span.Products-catalog-list-rating
-                  i.fas.fa-star
-                  i.fas.fa-star
-                  i.far.fa-star
-                  i.far.fa-star
-                  i.far.fa-star
-                p.Products-catalog-list-par
-                  | Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready.
-                ul.Products-btn-list
-                  li
-                    button
-                      i.far.fa-heart
-                  li
-                    button
-                      i.fas.fa-exchange-alt
-                  li
-                    button
-                      i.fas.fa-search
-                  li
-                    button.Add-to-cart-btn
-                      i.fas.fa-shopping-basket
-                      | ADD TO CART
-              .Products-catalog-list-image-wrapper
-                img(src="Img/MainLogo.png" alt="" width="262" height="260")
-              .Products-catalog-list-about
-                a.item-header-link(href="#")
-                  h3.Products-catalog-list-header Aenean Ru Bristique
-                p.Products-catalog-list-price $350.00
-                span.Products-catalog-list-rating
-                  i.fas.fa-star
-                  i.fas.fa-star
-                  i.far.fa-star
-                  i.far.fa-star
-                  i.far.fa-star
-                p.Products-catalog-list-par
-                  | Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready.
-                ul.Products-btn-list
-                  li
-                    button
-                      i.far.fa-heart
-                  li
-                    button
-                      i.fas.fa-exchange-alt
-                  li
-                    button
-                      i.fas.fa-search
-                  li
-                    button.Add-to-cart-btn
-                      i.fas.fa-shopping-basket
-                      | ADD TO CART
+mixin productItemsList(data)
+  li(class="Products-catalog-list-element",data-receipt-date= data.product_receipt_date.toISOString().substring(0,10))
+    -let isSaleClass="Products-catalog-list-image-wrapper";
+    -isSaleClass+=data.product_previous_price===null ? "":" Sale-item";    
+    div(class=isSaleClass)
+      -let imgDir="/img/products/"+(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id))+"/"+(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id))+"1.jpg";
+      img(src=imgDir alt="" width="260" height="260")
+    .Products-catalog-list-about
+      a(href=`/goods/${data.product_id}` class="Item-header-link")
+        h3.Item-header=data["product_name_"+i18n.locale].length<=90?data["product_name_"+i18n.locale]:data["product_name_"+i18n.locale].slice(0,90)+"..."
+      .Item-price
+        -let currentPriceConverted=money.convertTo(money({amount:Number.parseInt(data.product_current_price*100)}),session["currency"],currencyRates);
+        -if(data.product_previous_price==null){
+            p.New-price=currentPriceConverted.toFormat("$0,0.00")
+        -}else{
+            -let oldPriceConverted=money.convertTo(money({amount:Number.parseInt(data.product_previous_price*100)}),session["currency"],currencyRates);
+            p.New-price=currentPriceConverted.toFormat("$0,0.00")
+            p.Old-price=oldPriceConverted.toFormat("$0,0.00")
+        -}
+      span(class="Item-rating" data-value-rating= data.product_rating)
+        include /templates/star_rating.pug
+        +makeStarRating(data.product_rating)
+      p.Products-catalog-list-par=data["product_description_"+i18n.locale].length<=200?data["product_description_"+i18n.locale]:data["product_description_"+i18n.locale].slice(0,200)+"..."
+      ul.Products-btn-list
+        li
+          button(class="Control-btn Good-like-btn" data-product-id=data.product_id)
+            i.far.fa-heart
+        li
+          button(class="Control-btn Compare-btn", data-product-id=data.product_id, data-category-id=data.product_category_id)
+            i.fas.fa-balance-scale
+        li
+          button(class="Add-to-cart-btn" data-product-id=data.product_id)
+            i.fas.fa-shopping-basket
+            =i18n.__("add to cart")
+
+-for(let i=0;i<productsInfo.length;i++){
+  +productItemsList(productsInfo[i])
+-}

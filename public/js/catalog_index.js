@@ -281,6 +281,9 @@ function drag(elementToDrag, event, buttonType, nearButton, activePart, input, v
 let filtersForm=document.getElementsByClassName("Filters-form")[0];
 let filtersInputs=filtersForm.querySelectorAll("input");
 let showResultsBtn=filtersForm.getElementsByClassName("Show-results")[0];
+let viewTypes=document.querySelectorAll(".Catalog-view-btn-wrapper .Catalog-view-btn");
+let viewTypeInput=document.getElementById("view-type-field");
+
 filtersInputs.forEach(element => {
   element.addEventListener("change",function(event){
     let submitEvent=new Event("submit");
@@ -301,21 +304,35 @@ function serialize(formData){
   url=url.substring(0,url.length-1);
   return url;
 }
+async function getFilteredProducts(filtersForm) {
+  let data=new FormData(filtersForm);
+  let filteredProductsResponse;
+  try {
+    filteredProductsResponse=await fetch(window.location.href+serialize(data),{
+      method:"GET"
+    });    
+  } catch (error) {
+    console.error(error)
+  }
+  let filteredProductsContent= await filteredProductsResponse.text();
+  return filteredProductsContent;
+}
 let newCatalogResults=document.getElementsByClassName("Products-catalog-grid-new")[0];
-filtersForm.addEventListener("submit", function(event){
+filtersForm.addEventListener("submit", async function(event){
   newCatalogResults.innerHTML='<i class="fas fa-spinner"></i>';  
   event.preventDefault();
-  let data=new FormData(filtersForm);
-  fetch(window.location.href+serialize(data),{
-    method:"GET"
-  })
-  .then(response=>{
-    return response.text().then(function(text) {
-      showFiltersResults(text);
-    });
-  })
-  .catch(error => console.error(error));
+  let productsContent= await getFilteredProducts(filtersForm);
+  showFiltersResults(productsContent);
 });
+filtersForm.addEventListener("viewChanging", async function(event){
+  newCatalogResults.innerHTML='<i class="fas fa-spinner"></i>';  
+  event.preventDefault();
+  let productsContent= await getFilteredProducts(filtersForm);
+  showFiltersResults(productsContent);
+  let submitEvent=new Event("click");
+  showResultsBtn.dispatchEvent(submitEvent);
+});
+
 showResultsBtn.addEventListener("click",event=>{
   event.preventDefault();
   let catalogResults=document.getElementsByClassName("Products-catalog-grid")[0];
@@ -333,3 +350,16 @@ function showFiltersResults(result){
     newCatalogResults.innerHTML=result;
   }
 }
+viewTypes.forEach((element,typeIndex)=>{
+  element.addEventListener("click",(event)=>{
+    event.preventDefault();
+    let viewTypeValue=viewTypeInput.value;
+    let newViewType=element.getAttribute("data-view-type");
+    if(viewTypeValue===newViewType){
+      return;
+    }
+    viewTypeInput.value=newViewType;
+    let submitEvent=new Event("viewChanging");
+    filtersForm.dispatchEvent(submitEvent);
+  });
+});

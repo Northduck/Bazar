@@ -1,16 +1,15 @@
-mixin productsItems(data)
+mixin productsItemsGrid(data)
     li(class="Products-catalog-item" data-receipt-date= data.product_receipt_date.toISOString().substring(0,10))
-        -var isSaleClass="Product-catalog-item-top";
+        -let isSaleClass="Product-catalog-item-top";
         -isSaleClass+=data.product_previous_price===null ? "":" Sale-item";
         div(class= isSaleClass)
-            -var imgDir="/img/products/"+(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id))+"/"+(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id))+"1.jpg";
-            -console.log(imgDir)
-            img.Catalog-item-img(src= imgDir alt='' width='262' height='260')
+            -let imgDir="/img/products/"+(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id))+"/"+(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id))+"1.jpg";
+            img.Catalog-item-img(src= imgDir alt='' width='260' height='260')
             .Product-catalog-item-buttons
-              button.Quick-view-btn=i18n.__("Quick View")
-              button(class="Add-to-cart-btn" data-product-id=data.product_id)
-                i.fas.fa-shopping-basket
-                =i18n.__("add to cart")
+                button.Quick-view-btn=i18n.__("Quick View")
+                button(class="Add-to-cart-btn" data-product-id=data.product_id)
+                    i.fas.fa-shopping-basket
+                    =i18n.__("add to cart")
         .Product-catalog-item-bottom
             a(href=`/goods/${data.product_id}` class="Item-header-link")
                 h3.Item-header=data["product_name_"+i18n.locale].length<=90?data["product_name_"+i18n.locale]:data["product_name_"+i18n.locale].slice(0,90)+"..."
@@ -21,18 +20,20 @@ mixin productsItems(data)
             .Item-controls-and-price
                 ul.Item-controls
                     li
-                        button(class="Control-btn Good-like-btn" data-product-id=data.product_id)
+                        button(class="Control-btn Good-like-btn", data-product-id=data.product_id)
                             i.far.fa-heart
                     li
-                        button.Compare-btn
-                            i.fas.fa-exchange-alt
+                        button(class="Control-btn Compare-btn", data-product-id=data.product_id, data-category-id=data.product_category_id)
+                            i.fas.fa-balance-scale
                 .Item-price
+                    -let currentPriceConverted=money.convertTo(money({amount:Number.parseInt(data.product_current_price*100)}),session["currency"],currencyRates);
                     -if(data.product_previous_price==null){
-                    p.New-price= data.product_current_price
+                        p.New-price=currentPriceConverted.toFormat("$0,0.00")
                     -}else{
-                    p.New-price= data.product_current_price
-                    p.Old-price= data.product_previous_price
+                        -let oldPriceConverted=money.convertTo(money({amount:Number.parseInt(data.product_previous_price*100)}),session["currency"],currencyRates);
+                        p.New-price=currentPriceConverted.toFormat("$0,0.00")
+                        p.Old-price=oldPriceConverted.toFormat("$0,0.00")
                     -}
 -for(let i=0;i<productsInfo.length;i++){
-  +productsItems(productsInfo[i])
+    +productsItemsGrid(productsInfo[i])
 -}

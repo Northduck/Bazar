@@ -50,11 +50,11 @@ html(lang=i18n.locale)
                     option(value="1") 12
                     option(value="2") 24
                     option(value="3") 36
-              .Catalog-view-btn-wrapper
-                span.Catalog-view-btn
+              div(class="Catalog-view-btn-wrapper")
+                span(class="Catalog-view-btn", data-view-type="grid")
                   i.fas.fa-th-large
                   input(type="button")
-                span.Catalog-view-btn
+                span(class="Catalog-view-btn", data-view-type="list")
                   i.fas.fa-list
                   input(type="button")
           ul.Products-catalog-grid
@@ -62,6 +62,8 @@ html(lang=i18n.locale)
           ul.Products-catalog-grid-new.visually-hidden
         .Products-filters-wrapper
           form(class="Filters-form")
+            input( id="filter-activity-field",type="hidden", name="filterActivity" value="inactive")
+            input( id="view-type-field",type="hidden", name="viewType" value="")
             ul.Products-filters
               li.Products-filter-subcategory
                 h3.Filter-subcategory-header=i18n.__("Category")
@@ -69,32 +71,15 @@ html(lang=i18n.locale)
                   -for(let i=0;i<typeCategoryInfo.length;i++){
                   li
                     label.Subcategory-checbox-variant
-                      input.Checkbox-filter-checkbox.visually-hidden(type="checkbox" name=+"category_"+typeCategoryInfo[i]["service_category_name_en"])
+                      input.Checkbox-filter-checkbox.visually-hidden(type="checkbox" name="category_"+typeCategoryInfo[i]["service_category_name_en"])
                       span.Checkbox
                         i.far.fa-square
                         i.fas.fa-check
                       span.Variant-checkbox-name= typeCategoryInfo[i]["service_category_name_"+i18n.locale]
                   -}
-          div(class="Show-results visually-hidden" style="left:-150px; top: 0px;")
-              button(class="Show-results-btn" type="submit")=i18n.__("Show results")
-      section.Brands-list-section.Section-centerer
-        button.List-scroll-left-btn
-          i.fas.fa-chevron-left
-        ul.Brands-list
-          li
-            a.List-item(href="#")
-          li
-            a.List-item(href="#")
-          li
-            a.List-item(href="#")
-          li
-            a.List-item(href="#")
-          li
-            a.List-item(href="#")
-          li
-            a.List-item(href="#")
-        button.List-scroll-right-btn
-          i.fas.fa-chevron-right
+            div(class="Show-results visually-hidden" style="left:-150px; top: 0px;")
+                button(class="Show-results-btn" type="submit")=i18n.__("Show results")
+      include /templates/brands.pug
       include /templates/newsletter_form.pug
     footer.Footer
       include /templates/footer_top.pug
