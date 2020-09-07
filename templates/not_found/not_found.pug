@@ -1,0 +1,30 @@
+doctype html
+html(lang=i18n.locale)
+  head
+    meta(charset="utf-8")
+    title=i18n.__("Not found")
+    link(rel='stylesheet' type='text/css' href='../css/MainStyle.css')
+    link(href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap' rel='stylesheet')
+    link(rel='stylesheet' type='text/css' href='../css/all.min.css')
+    link(rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png")
+    link(rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png")
+    link(rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png")
+    link(rel="manifest" href="/img/favicon/site.webmanifest")
+    link(rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#5bbad5")
+    meta(name="msapplication-TileColor" content="#da532c")
+    meta(name="theme-color" content="#ffffff")
+  body
+    header.Header
+      include /templates/top_header.pug
+    main.Not-found-main
+      .Not-found-container.Section-centerer
+        .Not-found-logo-wrapper
+          a.Middle-logo(href='/')
+            img(src='/img/MainLogo.png' alt='Logo' width='165' height='77')
+        .Not-found-img-header-wrapper
+          h1.Not-found-header=i18n.__("Sorry")
+        p.Not-found-explanation=i18n.__("page not found")
+        .Not-found-come-back-wrapper
+          span.Not-found-come-back-par=i18n.__("Go back to")
+          a(href="/", class="Not-found-come-back-link")=i18n.__("Start page")
+    script(type="module" src="/js/common_script.js")
