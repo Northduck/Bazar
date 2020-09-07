@@ -1,18 +1,10 @@
-let conf=require("./../../config/index_config");
-module.exports=(req,res)=>{
-  console.log(res.locale);
+"use strict";
+const container=require("../../../infrastructure/infrastructureContainer.js");
+const {money}=container.cradle;
+module.exports=async (req,res,next)=>{
   let newLanguage=req.query["change_language"];
-  let supportedLanguages=conf.get("supported_languages");
-  if(newLanguage!==undefined&&typeof newLanguage==="string"&&newLanguage!==req.cookies["language"]){
-    let isSupported=supportedLanguages.find((el,i)=>{
-      if(el===newLanguage){
-        return true;
-      }
-    });
-    if(isSupported!==undefined){
-      req.session["language"]=newLanguage;
-      res.cookie("language",newLanguage);
-    }
-  }
+  req.session["language"]=newLanguage;
+  res.cookie("language",newLanguage);
+  money.globalLocale=newLanguage;
   res.end(JSON.stringify({returnValue:1}));
 }

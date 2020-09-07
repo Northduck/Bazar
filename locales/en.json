@@ -1,313 +1,377 @@
 {
-	"add to cart":"ADD TO CART",
-	"variants":[
+	"add to cart": "ADD TO CART",
+	"variants": [
 		"About us",
 		"F.A.Q",
 		"Online support"
 	],
-	"Bazar Online shopping":"Bazar Online shopping",
-	"variants_header":"Help",
-	"language_header":"English",
-	"current_header":"USD",
-	"user_controls_header":{
-		"logout_link_text":"Logout",
-		"login_link_text":"Login",
-		"register_link_text":"Register",
-		"favorites_link_text":"Favorites",
-		"compare_link_text":"Compare"
+	"Bazar Online shopping": "Bazar Online shopping",
+	"variants_header": "Help",
+	"language_header": "English",
+	"english": "english",
+	"russian": "russian",
+	"current_header": "USD",
+	"USD": "USD",
+	"EUR": "EUR",
+	"RUB": "RUB",
+	"user_controls_header": {
+		"logout_link_text": "Logout",
+		"login_link_text": "Login",
+		"register_link_text": "Register",
+		"favorites_link_text": "Favorites",
+		"compare_link_text": "Compare"
 	},
-	"Select a category":"Select a category",
-	"Home":"Home",
-	"Find a product":"Find a product",
-	"Furniture":"Furniture",
-	"Services":"Services",
-	"Blog":"Blog",
-	"Footer F.A.Q.":{
-		"header":"F.A.Q.",
-		"About us":"About us",
-		"Privacy":"Privacy",
-		"Conditions":"Conditions",
-		"Online support":"Online support"
+	"Select a category": "Select a category",
+	"Home": "Home",
+	"Find a product": "Find a product",
+	"Furniture": "Furniture",
+	"Services": "Services",
+	"Blog": "Blog",
+	"Footer F.A.Q.": {
+		"header": "F.A.Q.",
+		"About us": "About us",
+		"Privacy": "Privacy",
+		"Conditions": "Conditions",
+		"Online support": "Online support"
 	},
-	"Footer MY ACCOUNT":{
-		"header":"MY ACCOUNT",
-		"Account":"Account",
-		"Cart":"Cart",
-		"Favorites":"Favorites",
-		"Compare":"Compare"
+	"Footer MY ACCOUNT": {
+		"header": "MY ACCOUNT",
+		"Account": "Account",
+		"Cart": "Cart",
+		"Favorites": "Favorites",
+		"Compare": "Compare"
 	},
-	"Footer INFORMATION":{
-		"header":"INFORMATION",
-		"Specials":"Specials",
-		"New Products":"New Products",
-		"Best Sellers":"Best Sellers",
-		"Our Store":"Our Store"
+	"Footer INFORMATION": {
+		"header": "INFORMATION",
+		"Specials": "Specials",
+		"New Products": "New Products",
+		"Best Sellers": "Best Sellers",
+		"Our Store": "Our Store"
 	},
-	"Footer ORDERS":{
-		"header":"ORDERS",
-		"Payment options":"Payment options",
-		"Returns":"Returns",
-		"Shipping":"Shipping"
+	"Footer ORDERS": {
+		"header": "ORDERS",
+		"Payment options": "Payment options",
+		"Returns": "Returns",
+		"Shipping": "Shipping"
 	},
-	"hot deals":"HOT DEALS",
-	"special offers content":[
+	"hot deals": "HOT DEALS",
+	"special offers content": [
 		{
-			"light word":"INDOOR ",
-			"bold word":" FURNITURE",
-			"about":"SAVE UP TO 50% OF ALL FURNITURE"
+			"light word": "INDOOR ",
+			"bold word": " FURNITURE",
+			"about": "SAVE UP TO 50% OF ALL FURNITURE"
 		},
 		{
-			"light word":"LIVING ROOM ",
-			"bold word":"",
-			"about":"MAKE YOUR OWN MODERN PLACE TO LIVE"
+			"light word": "LIVING ROOM ",
+			"bold word": "",
+			"about": "MAKE YOUR OWN MODERN PLACE TO LIVE"
 		},
 		{
-			"light word":"",
-			"bold word":" BEDS",
-			"about":"SLEEP WITH STYLE"
+			"light word": "",
+			"bold word": " BEDS",
+			"about": "SLEEP WITH STYLE"
 		}
 	],
-	"special offer link text":"SHOP NOW",
-	"our advantages":[
+	"special offer link text": "SHOP NOW",
+	"our advantages": [
 		{
-			"advantage head":"FREE SHIPPING",
-			"advantage par":"ALL ORDER"
-		},
-		{			
-			"advantage head":"24/7 COSTUMER",
-			"advantage par":"SUPPORT"
+			"advantage head": "FREE SHIPPING",
+			"advantage par": "ALL ORDER"
 		},
 		{
-			"advantage head":"MONEY BACK",
-			"advantage par":"GUARANTEE"
+			"advantage head": "24/7 COSTUMER",
+			"advantage par": "SUPPORT"
 		},
 		{
-			"advantage head":"MEMBER DISCOUNT",
-			"advantage par":"FIRST ORDER"
+			"advantage head": "MONEY BACK",
+			"advantage par": "GUARANTEE"
+		},
+		{
+			"advantage head": "MEMBER DISCOUNT",
+			"advantage par": "FIRST ORDER"
 		}
 	],
-	"fixed special offers":[
+	"fixed special offers": [
 		{
-			"top line":"GUEST ROOM",
-			"bottom line":"SOFA",
-			"special offer par":"-20%"
+			"top line": "GUEST ROOM",
+			"bottom line": "SOFA",
+			"special offer par": "-20%"
 		},
 		{
-			"top line":"OFFICE CHAIR",
-			"bottom line":"COLLECTION",
-			"special offer par":"$200.00"			
+			"top line": "OFFICE CHAIR",
+			"bottom line": "COLLECTION",
+			"special offer par": "$200.00"
 		},
 		{
-			"top line":"SPECIAL",
-			"bottom line":"COLLECTION",
-			"special offer par":"SAVE UP 45% OF FURNIUTURE"
+			"top line": "SPECIAL",
+			"bottom line": "COLLECTION",
+			"special offer par": "SAVE UP 45% OF FURNIUTURE"
 		}
 	],
-	"new furniture":"NEW FURNITURE",
-	"extra promotion":{
-		"small word":"FROM",
-		"price":"$50.80",
-		"name":"Bedroom Bed"
+	"new furniture": "NEW FURNITURE",
+	"extra promotion": {
+		"small word": "FROM",
+		"price": "$50.80",
+		"name": "Bedroom Bed"
 	},
-	"latest blog":"LATEST BLOG",
-	"client feedback header":"CLIENT FEEDBACK",
-	"client feedback content":[
+	"latest blog": "LATEST BLOG",
+	"client feedback header": "CLIENT FEEDBACK",
+	"client feedback content": [
 		{
-			"feedback text":"Convenience is on the highest level",
-			"author name":"John Smith",
-			"author occupation":"Furniture client"
+			"feedback text": "Convenience is on the highest level",
+			"author name": "John Smith",
+			"author occupation": "Furniture client"
 		},
 		{
-			"feedback text":"The Greatest shop ever.",
-			"author name":"Bob Black",
-			"author occupation":"The Best client"
+			"feedback text": "The Greatest shop ever.",
+			"author name": "Bob Black",
+			"author occupation": "The Best client"
 		},
 		{
-			"feedback text":"I only buy furniture there!",
-			"author name":"Kate Mackcormak",
-			"author occupation":"Furniture client"
+			"feedback text": "I only buy furniture there!",
+			"author name": "Kate Mackcormak",
+			"author occupation": "Furniture client"
 		}
 	],
-	"timer values":{
-		"DAYS":"DAYS",
-		"HRS":"HRS",
-		"MINS":"MINS",
-		"SECS":"SECS"
+	"timer values": {
+		"DAYS": "DAYS",
+		"HRS": "HRS",
+		"MINS": "MINS",
+		"SECS": "SECS"
 	},
-	"FURNITURE GALLERY":"FURNITURE GALLERY",
-	"blog artice comments quantity":"4 comments",
-	"read more":"READ MORE",
-	"Your account":"Your account",
-	"account nav buttons":{
-		"My orders":"My orders",
-		"My reviews":"My reviews",
-		"My profive":"My profive",
-		"Preferences":"Preferences"
+	"FURNITURE GALLERY": "FURNITURE GALLERY",
+	"blog artice comments quantity": "4 comments",
+	"read more": "READ MORE",
+	"Your account": "Your account",
+	"account nav buttons": {
+		"My orders": "My orders",
+		"My reviews": "My reviews",
+		"My profive": "My profive",
+		"Preferences": "Preferences"
 	},
-	"account orders buttons":{
-		"Products":"Products",
-		"Services":"Services"
+	"account orders buttons": {
+		"Products": "Products",
+		"Services": "Services"
 	},
-	"account orders info":{
-		"Payment type":"Payment type:",
-		"Receiving type":"Receiving type:",
-		"Order date":"Order date:",
-		"Order summ":"Order summ:"
+	"account orders info": {
+		"Payment type": "Payment type:",
+		"Receiving type": "Receiving type:",
+		"Order date": "Order date:",
+		"Order summ": "Order summ:"
 	},
-	"account orders products":{
-		"Product Name":"Product Name:",
-		"Product price":"Product price:",
-		"Product quantity":"Product quantity:"
+	"account orders products": {
+		"Product Name": "Product Name:",
+		"Product price": "Product price:",
+		"Product quantity": "Product quantity:"
 	},
-	"no orders":"There are no orders",
-	"Show ordered products":"Show ordered products",
-	"Your cart":"Your cart: ",
-	"Your order":"Your order:",
-	"items":"items",
-	"items local":" items ",
-	"Subtotal":"Subtotal(",
-	"Subtotalitems":"items)",
-	"Est. total":"Est. total:",
-	"Total":"Total",
-	"Check-Out":"Check-Out",
-	"Quantity":"Quantity:",
-	"Summ":"Summ:",
-	"catalog special offer":{
-		"light text":"BEDROOM",
-		"regular text":"FURNITURE",
-		"special offer par left":"ALWAYS",
-		"special offer par right":"OFF OR MORE",
-		"Special text":"25%"
+	"account orders services": {
+		"Service Name": "Service Name:",
+		"Service price": "Service price:"
 	},
-	"Sort By":"Sort By",
-	"sorting types":[
+	"no orders": "There are no orders",
+	"Show ordered products": "Show ordered products",
+	"Your cart": "Your cart: ",
+	"Your order": "Your order:",
+	"items": " items",
+	"items local": " items ",
+	"Subtotal": "Subtotal",
+	"Subtotalitems": " items",
+	"Est. total": "Est. total:",
+	"Total": "Total",
+	"Check-Out": "Check-Out",
+	"Quantity": "Quantity:",
+	"Summ": "Summ: ",
+	"catalog special offer": {
+		"light text": "BEDROOM",
+		"regular text": "FURNITURE",
+		"special offer par left": "ALWAYS",
+		"special offer par right": "OFF OR MORE",
+		"Special text": "25%"
+	},
+	"Sort By": "Sort By",
+	"sorting types": [
 		"Rating",
 		"Price: Lowest first",
 		"Price: Highest first",
 		"Alphabet",
 		"Newest"
 	],
-	"Show":"Show",
-	"Quick View":"Quick View",
-	"FEATURED PRODUCTS":"FEATURED PRODUCTS",
-	"Checkout":"Checkout",
-	"Fulfillment stages head":[
+	"Show": "Show",
+	"Quick View": "Quick View",
+	"FEATURED PRODUCTS": "FEATURED PRODUCTS",
+	"Checkout": "Checkout",
+	"Fulfillment stages head": [
 		"Receiving method",
 		"Contact information",
 		"Payment method",
 		"Final"
 	],
-	"Choose receiving method":"Choose receiving method",
-	"Pickup":"Pickup",
-	"Shipment":"Shipment",
-	"Change":"Change",
-	"pickup places":[
+	"Choose receiving method": "Choose receiving method",
+	"Pickup": "Pickup",
+	"Shipment": "Shipment",
+	"Change": "Change",
+	"pickup places": [
 		{
-			"place info":"1919 Davis St, San Leandro",
-			"place date":"tomorrow from 12-45"
+			"place info": "1919 Davis St, San Leandro",
+			"place date": "tomorrow from 12-45"
 		},
 		{
-			"place info":"365 Broadway, Millbrae",
-			"place date":"Saturday"
+			"place info": "365 Broadway, Millbrae",
+			"place date": "Saturday"
 		},
 		{
-			"place info":"1578 12 lane street",
-			"place date":"Monday"
+			"place info": "1578 12 lane street",
+			"place date": "Monday"
 		}
 	],
-	"Choose":"Choose",
-	"Enter shipment address":"Enter shipment address",
-	"Required field":"Required field",
-	"shipment form":{
-		"City":"City",
-		"Street":"Street",
-		"House":"House",
-		"Apartment":"Apartment"
+	"Choose": "Choose",
+	"Enter shipment address": "Enter shipment address",
+	"Required field": "Required field",
+	"shipment form": {
+		"City": "City",
+		"Street": "Street",
+		"House": "House",
+		"Apartment": "Apartment"
 	},
-	"Contact information":"Contact information",
-	"Fulfillment contact information":{
-		"Phone number":"Phone number",
-		"Email":"Email",
-		"Name":"Name"
+	"Contact information": "Contact information",
+	"Fulfillment contact information": {
+		"Phone number": "Phone number",
+		"Email": "Email",
+		"Name": "Name",
+		"Note":"Note"
 	},
-	"Choose payment method":"Choose payment method",
-	"Fulfillment payment type":{
-		"In store":"In store",
-		"Online":"Online"
+	"Choose payment method": "Choose payment method",
+	"Fulfillment payment type": {
+		"In store": "In store",
+		"Online": "Online",
+		"after execution":"After execution"
 	},
-	"Fulfillment stages btns":
-	{
-		"Back":"Back",
-		"Next":"Next"
+	"Fulfillment stages btns": {
+		"Back": "Back",
+		"Next": "Next"
 	},
-	"Fulfillment-info":{
-		"Your order:":"Your order:",
-		"Order list:":"Order list:",
-		"items":"items ",
-		"Receiving method:":"Receiving method:",
-		"pickup from":"pickup from ",
-		"Receipt date:":"Receipt date:",
-		"Total":"Total"
+	"Fulfillment-info": {
+		"Your order:": "Your order:",
+		"Order list:": "Order list:",
+		"items": " items ",
+		"Receiving method:": "Receiving method:",
+		"pickup from": "pickup from ",
+		"Receipt date:": "Receipt date:",
+		"Total": "Total"
 	},
-	"Order service":"Order service",
-	"Your favorites":"Your favorites",
-	"The list:":"The list:",
-	"products":"products",
-	"Buy all":"Buy all",
-	"Clear list":"Clear list",
-	"favorites emptyness plug":"You have not added any products to this list yet.",
-	"DESCRIPTION":"DESCRIPTION",
-	"REVIEWS":"REVIEWS (",
-	"SPECIFICATION":"SPECIFICATION",
-	"Product Description":"Product Description",
-	"Add a review":"Add a review",
-	"Your Rating":"Your Rating",
-	"Your review":"Your review",
-	"Product Characteristics":"Product Characteristics",
-	"User name":"User name:",
-	"no reviews":"There are no reviews for this product.",
-	"Add Your Review":"Add Your Review",
-	"Quick Overview":"Quick Overview",
-	"Avaliability":"Avaliability:",
-	"In Stock":"In Stock",
-	"Category":"Category:",
-	"Login_field":"Login",
-	"Login_header":"Login",
-	"Email":"Email",
-	"Password":"Password",
-	"Sign In":"Sign In",
-	"Sign in to":"Sign in to",
-	"your account":"your account",
-	"Forgot password":"Forgot password?",
-	"Don't have an account":"Don't have an account?",
-	"Create Account":"Create Account",
-	"Registration":"Registration",
-	"Password should be at least":"Password should be at least",
-	"7 symbols with uppercase and digit":"7 symbols with uppercase and digit",
-	"Name":"Name",
-	"Service Description":"Service Description",
-	"Service Characteristics":"Service Characteristics",
-	"NEWSLETTER":"NEWSLETTER: ",
-	"Enter your email address":"Enter your email address",
-	"Shop by room":"Shop by room",
-	"types names":[{
-		"Living room":"Living room",
-		"Bedroom":"Bedroom",
-		"tv stands & entertainment centers":"tv stands & entertainment centers",
-		"kitchen & dining furniture":"kitchen & dining furniture",
-		"mattresses & accessories":"mattresses & accessories",
-		"office furniture":"office furniture",
-		"kids’ furniture":"kids’ furniture",
-		"other":"Other"
-	}],
-	"Compare goods":"Compare goods",
-	"Register":"Register",
-	"Enter login or email":"Enter login or email",
-	"Enter password":"Enter password",
-	"From":"From",
-	"To":"To",
-	"Services catalog":"Services catalog",
-	"Show results":"Show results",
-	"BLOG ARTICLES LIST":"BLOG ARTICLES LIST",
-	"About us":"About us"
+	"Order service": "Order service",
+	"Your favorites": "Your favorites",
+	"The list:": "The list:",
+	"products": "products",
+	"Buy all": "Buy all",
+	"Clear list": "Clear list",
+	"favorites emptyness plug": "You have not added any products to this list yet.",
+	"DESCRIPTION": "DESCRIPTION",
+	"REVIEWS": "REVIEWS (",
+	"SPECIFICATION": "SPECIFICATION",
+	"Product Description": "Product Description",
+	"Add a review": "Add a review",
+	"Your Rating": "Your Rating",
+	"Your review": "Your review",
+	"Product Characteristics": "Product Characteristics",
+	"User name": "User name:",
+	"no reviews": "There are no reviews for this product.",
+	"Add Your Review": "Add Your Review",
+	"Quick Overview": "Quick Overview",
+	"Avaliability": "Avaliability:",
+	"In Stock": "In Stock",
+	"Category": "Category:",
+	"Login_field": "Login",
+	"Login_header": "Login",
+	"Email": "Email",
+	"Password": "Password",
+	"Sign In": "Sign In",
+	"Sign in to": "Sign in to",
+	"your account": "your account",
+	"Forgot password": "Forgot password?",
+	"Don't have an account": "Don't have an account?",
+	"Create Account": "Create Account",
+	"Registration": "Registration",
+	"Password should be at least": "Password should be at least",
+	"7 symbols with uppercase and digit": "7 symbols with uppercase and digit",
+	"Name": "Name",
+	"Service Description": "Service Description",
+	"Service Characteristics": "Service Characteristics",
+	"NEWSLETTER": "NEWSLETTER: ",
+	"Enter your email address": "Enter your email address",
+	"Shop by room": "Shop by room",
+	"types names": [
+		{
+			"Living room": "Living room",
+			"Bedroom": "Bedroom",
+			"tv stands & entertainment centers": "tv stands & entertainment centers",
+			"kitchen & dining furniture": "kitchen & dining furniture",
+			"mattresses & accessories": "mattresses & accessories",
+			"office furniture": "office furniture",
+			"kids’ furniture": "kids’ furniture",
+			"other": "Other"
+		}
+	],
+	"Compare goods": "Compare goods",
+	"Register": "Register",
+	"Enter login or email": "Enter login or email",
+	"Enter password": "Enter password",
+	"From": "From",
+	"To": "To",
+	"Services catalog": "Services catalog",
+	"Show results": "Show results",
+	"BLOG ARTICLES LIST": "BLOG ARTICLES LIST",
+	"About us": "About us",
+	"Order": "Order",
+	"Sorry": "Sorry...",
+	"page not found": "The page you are looking for could not be found.",
+	"Go back to": "Go back to",
+	"Start page": "Start page",
+	"Not found": "Not found",
+	"about header": "Why Shop at Bazar?",
+	"SERVICE header": "SERVICE",
+	"SELECTION header": "SELECTION",
+	"SATISFACTION header": "SATISFACTION",
+	"DELIVERY header": "DELIVERY",
+	"main par part1": "A better way to shop online for furniture, home d&eacute;cor and so much more!",
+	"main par part2": "Bazar is more than just an online furniture store. We hand pick and curate the best in quality and style for you and your home.",
+	"main par part3": "Why spend days driving from store to store trying to find that perfect look or unique piece. Find everything you&apos;re looking for and more from the comfort of your own home.",
+	"service par part1": "You&apos;re not alone. From browsing, to ordering, to delivery... we&apos;re here to help you every step of the way. Our Customer Care Team can answer any questions you may have, as well as provide personalized assistance with: scheduling, availability, bulk orders, custom orders and delivery options.",
+	"selection par": "Shop our extensive selection of quality furniture and home decor for every room, plus a vast assortment of mattresses, appliances and electronics at prices that can&apos;t be beat! Find everything you&apos;re looking for from the comfort of your home.",
+	"satisfaction par": "Shop with confidence! Our Satisfaction Guarantee and Price Match Promise ensure you are always happy with your purchase.",
+	"delivery par part1": "Our One Of A Kind Delivery network is fast, reliable and FREE on thousands of items. Delivery is free on all purchases over $799, plus all items in the Bazar COLLECTION including many home decor items qualify for FREE DELIVERY.",
+	"delivery par part2": "Have more questions? Check out the FAQ&apos;S",
+	"Characteristics": "Characteristics",
+	"Compare-emptyness-header": "There are no products...",
+	"Compare-emptyness-par": "You can choose the necessary goods ",
+	"Compare-emptyness-link": "there",
+	"birthdate": "Birthdate",
+	"phonenumber": "Phone number",
+	"address": "Address",
+	"complete order": "Thank you for purchase! Your order number: № ",
+	"Return to main page": "Return to main page",
+	"Cart is empty": "Cart is empty",
+	"Cart-emptyness-header": "There are no products...",
+	"Cart-emptyness-par": "You can choose the necessary goods ",
+	"Cart-emptyness-link": "there",
+	"inStore": "In store",
+	"online": "Online",
+	"afterExecution":"After execution",
+	"shipment": "Shipment",
+	"pickup": "Pickup",
+	"main": "Main info",
+	"additional": "Additional info",
+	"Login": "login",
+	"email": "email",
+	"fullname": "fullname",
+	"Enter Your address":"Enter Your address",
+	"signature":"Pseudonym",
+	"signature explanation":"Please enter your name or pseudonym. If you leave this field blank, the review will be posted anonymously.",
+	"post":"POST",
+	"anonymous":"Anonymous",
+	"Authorize":"Authorize",
+	"unauthorized par":"To add review you should be authorized. You can",
+	"or":"or",
+	"reviews":" reviews",
+	"your signature":"Your signature: "
 }
