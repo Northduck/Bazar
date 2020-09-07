@@ -8,6 +8,8 @@ html(lang=i18n.locale)
     link(rel='stylesheet' type='text/css' href='/css/all.min.css')
     link(rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png")
     link(rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png")
+    link(rel="icon" type="image/png" href="/img/favicon/android-chrome-192x192.png" sizes="192x192")
+    link(rel="icon" type="image/png" href="/img/favicon/android-chrome-512x512.png" sizes="512x512")
     link(rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png")
     link(rel="manifest" href="/img/favicon/site.webmanifest")
     link(rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#5bbad5")
@@ -26,19 +28,29 @@ html(lang=i18n.locale)
                 =i18n.__("items")
             .Cart-section-columns
                 .Cart-product-wrapper
-                  ul.Cart-products-column
+                  -if(cartProducts.length!==0){
+                    ul.Cart-products-column
                       include /templates/cart/cart_items.pug
+                  -}else{
+                      include /templates/cart/empty_cart_plug.pug
+                  -}
                 .Cart-order-information-column-wrapper
                   .Cart-order-information-column
                     h2.Cart-order-header=i18n.__("Your order")
                     .Cart-order-subtotal
                         ul.Cart-order-subtotal-row
                             li.Cart-order-subtotal-head
+                              span.Subtotal-head-text
                                 =i18n.__("Subtotal")
+                              .Subtotal-head-quantity
                                 span.Cart-quantity 
                                   =cartQuantity
-                                =i18n.__("Subtotalitems")
+                                span.Subtotal-head-quantity-text
+                                  =i18n.__("Subtotalitems")
                             li.Cart-order-subtotal-price
+                              span.Subtotal-price-text
+                                =i18n.__("Summ")
+                              span.Subtotal-price-summ
                     .Cart-order-total
                         h3.Cart-order-total-header
                           =i18n.__("Est. total")
@@ -52,5 +64,6 @@ html(lang=i18n.locale)
     footer.Footer
       include /templates/footer_top.pug
       include /templates/footer_bottom.pug
+    script(type="module" src="/js/modules/dinero.js")
     script(type="module" src="/js/cart_index.js")
     script(type="module" src="/js/common_script.js")

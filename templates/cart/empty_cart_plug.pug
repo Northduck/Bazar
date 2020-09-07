@@ -1,0 +1,6 @@
+mixin emptyCartPlug()
+    .Cart-empty
+        h2.Cart-emptyness-header=i18n.__("Cart-emptyness-header")
+        p.Cart-emptyness-par=i18n.__("Cart-emptyness-par")
+            a(href="/shop_by_room",class="Cart-emptyness-link")=i18n.__("Cart-emptyness-link")
++emptyCartPlug()

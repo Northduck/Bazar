@@ -1,51 +1,55 @@
 import {getCookie, setCookie, updateProductCookie, replaceCookie} from "./modules/cookie_methods.js";
-function deleteCurrency(price) {
-    price.replace(/\$/g,"");
-}
+import Dinero from "./modules/dinero.js";
+console.log(Dinero().getLocale());
 let cookiesOptions={
     "max-age":3600*24*365
 };
 function updateCartQuan(toDo,quan) {
     quan=quan||1;
     let cookieCounterValue=getCookie("cartCounter");
-    if(cookieCounterValue){
-        let cartC=Number.parseInt(cookieCounterValue);
-        if(toDo==="+"){
-            setCookie("cartCounter",`${cartC+=quan}`,cookiesOptions);
-        }else{
-            setCookie("cartCounter",`${cartC-=quan}`,cookiesOptions);
-        }
-        cartCounter.innerText=`${cartC}`;
-    }else{
-        setCookie("cartCounter","1",cookiesOptions);
-        cartCounter.innerText="1";
+    if(cookieCounterValue==undefined&&cookieCounterValue===""){
+        setCookie("cartCounter","0",cookiesOptions);
+        cookieCounterValue=getCookie("cartCounter");
     }
+    let cartC=Number.parseInt(cookieCounterValue);
+    if(toDo==="+"){
+        setCookie("cartCounter",`${cartC+=quan}`,cookiesOptions);
+    }else{
+        cartC-=quan;
+        if(cartC<0){
+            cartC=0;
+        }
+        setCookie("cartCounter",`${cartC}`,cookiesOptions);
+    }
+    cartCounter.innerText=`${cartC}`;
 }
 let cartCounter=document.querySelector(".Cart-counter");
 let cartQuantityMas=document.querySelectorAll(".Cart-quantity");
-let subtotalPrice=document.querySelector(".Cart-order-subtotal-price");
-let totalPrice=document.querySelector(".Cart-order-total-price");
+let subtotalSummElement=document.querySelector(".Subtotal-price-summ");
+let totalSummElement=document.querySelector(".Cart-order-total-price");
 let productItems=document.querySelectorAll(".Cart-product-item");
 console.log(productItems);
 updateCart();
 function updateCart() {
-    let subtotalSumm=0;
+    let cartCurrency=getCookie("currency")||"USD";
+    let totalSumm=Dinero({"amount":0,"currency":cartCurrency});
     let cartQuantity=0;
     let productsPrices=document.querySelectorAll(".Cart-product-item .Cart-product-price");
     let productsQuantities=document.querySelectorAll(".Product-quantity-value");
     let productTotalPrice=document.querySelectorAll(".Cart-product-total-price");
     for(let i=0;i<productsPrices.length;i++){
-        let producTempSumm=Number.parseFloat(productsPrices[i].getAttribute("data-product-price"))
-        *Number.parseFloat(productsQuantities[i].value);
-        productTotalPrice[i].innerText="$"+producTempSumm.toFixed(2);
-        subtotalSumm+=producTempSumm;
-        cartQuantity+=Number.parseInt(productsQuantities[i].value);
+        let productPrice=Dinero({"amount":Number.parseInt(productsPrices[i].getAttribute("data-product-price")),"currency":cartCurrency});
+        let productQuantity=Number.parseInt(productsQuantities[i].value);
+        let productSumm=productPrice.multiply(productQuantity);
+        productTotalPrice[i].innerText=productSumm.toFormat("$0,0.00");
+        totalSumm=totalSumm.add(productSumm);
+        cartQuantity+=productQuantity;
     }
-    subtotalPrice.innerText="$"+subtotalSumm.toFixed(2);
     cartQuantityMas.forEach((val)=>{
         val.innerText=" "+cartQuantity+" ";
     });
-    totalPrice.innerText="$"+(subtotalSumm+subtotalSumm/5).toFixed(2);
+    subtotalSummElement.innerText=totalSumm.toFormat("$0,0.00");
+    totalSummElement.innerText=totalSumm.toFormat("$0,0.00");
 }
 let productQuantityWrapperMas=document.querySelectorAll(".Cart-product-quantity-controls");
 productQuantityWrapperMas.forEach((val,j)=>{
@@ -89,8 +93,8 @@ deletepProductBtns.forEach((val,i)=>{
         productItems[i].remove();
         let cookieValue=getCookie("cartContent");
         let reg=RegExp(`_${productItems[i].getAttribute("data-product-id")}-[0-9]*|${productItems[i].getAttribute("data-product-id")}-[0-9]*_|${productItems[i].getAttribute("data-product-id")}-[0-9]*`);
-        let productStart=cookieValue.search(reg);
-        let productVal=cookieValue.substring(productStart,cookieValue.indexOf("_",productStart)===-1?undefined:cookieValue.indexOf("_",productStart));
+        let productVal=cookieValue.match(reg)[0];
+        productVal=productVal.replace(/_/,"");
         let productQuantity=productVal.split("-");
         setCookie("cartContent",cookieValue.replace(reg,""),cookiesOptions);
         updateCartQuan("-",Number.parseInt(productQuantity[1]));
