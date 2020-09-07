@@ -9,19 +9,21 @@ mixin cartGoodItem(data)
                 p.Favorites-product-name 
                     a(href=`/goods/${productCompositeID}`)=data["product_name_"+i18n.locale]          
             div(class="Favorites-product-price" data-product-price=Number.parseFloat(data.product_current_price))
+                -let currentPriceConverted=money.convertTo(money({amount:Number.parseInt(data.product_current_price*100)}),session["currency"],currencyRates);
                 -if(data.product_previous_price==null){
-                p.Product-current-price="$"+Number.parseFloat(data.product_current_price).toFixed(2)
-                -}else{ 
-                p.Old-price="$"+Number.parseFloat(data.product_previous_price).toFixed(2)
-                p.Product-current-price="$"+Number.parseFloat(data.product_current_price).toFixed(2)
+                    p.New-price=currentPriceConverted.toFormat("$0,0.00")
+                -}else{
+                    -let oldPriceConverted=money.convertTo(money({amount:Number.parseInt(data.product_previous_price*100)}),session["currency"],currencyRates);
+                    p.Old-price=oldPriceConverted.toFormat("$0,0.00")
+                    p.New-price=currentPriceConverted.toFormat("$0,0.00")
                 -}
         .Favorites-product-total
             ul.Favorites-product-total-buttons
                 li
-                    button.Delete-item
+                    button(class="Delete-item", data-product-id=data.product_id)
                         i.fas.fa-trash-alt
                 li
-                    button.Compare-btn
+                    button(class="Control-btn Compare-btn", data-product-id=data.product_id, data-category-id=data.product_category_id)
                         i.fas.fa-balance-scale
             div(class="To-cart-wrapper")
                 button(class="Add-to-cart-btn" data-product-id=data.product_id)

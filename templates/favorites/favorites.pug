@@ -1,18 +1,21 @@
 doctype html
 html(lang=i18n.locale)
   head
-      meta(charset="utf-8")
-      title=i18n.__("Your favorites")
-      link(rel='stylesheet' type='text/css' href='/css/MainStyle.css')
-      link(href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap' rel='stylesheet')
-      link(rel='stylesheet' type='text/css' href='/css/all.min.css')
-      link(rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png")
-      link(rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png")
-      link(rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png")
-      link(rel="manifest" href="/img/favicon/site.webmanifest")
-      link(rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#5bbad5")
-      meta(name="msapplication-TileColor" content="#da532c")
-      meta(name="theme-color" content="#ffffff")
+    meta(charset="utf-8")
+    title=i18n.__("Your favorites")
+    link(rel='stylesheet' type='text/css' href='/css/MainStyle.css')
+    link(href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap' rel='stylesheet')
+    link(rel='stylesheet' type='text/css' href='/css/all.min.css')
+    link(rel="shortcut icon" href="/img/favicon/favicon.ico")
+    link(rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png")
+    link(rel="icon" type="image/png" href="/img/favicon/android-chrome-192x192.png" sizes="192x192")
+    link(rel="icon" type="image/png" href="/img/favicon/android-chrome-512x512.png" sizes="512x512")
+    link(rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png")
+    link(rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png")
+    link(rel="manifest" href="/img/favicon/site.webmanifest")
+    link(rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#5bbad5")
+    meta(name="msapplication-TileColor" content="#da532c")
+    meta(name="theme-color" content="#ffffff")
   body
     header.Header
       include /templates/top_header.pug
@@ -34,7 +37,7 @@ html(lang=i18n.locale)
                         =i18n.__("items local")
                     ul.Favorites-controls-container
                       li
-                        button.Favorites-buy-all-btn
+                        button(class="Favorites-buy-all-btn", data-is-bought="no")
                           =i18n.__("Buy all")
                       li
                         button.Favorites-delete-all-btn
@@ -42,4 +45,5 @@ html(lang=i18n.locale)
     footer.Footer
       include /templates/footer_top.pug
       include /templates/footer_bottom.pug
+    script(type="module" src="/js/favorites_index.js")
     script(type="module" src="/js/common_script.js")
