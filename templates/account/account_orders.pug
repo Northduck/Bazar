@@ -10,16 +10,17 @@ mixin productsOrdersHistory()
                 ul(class='Orders-history-order-info-list')
                     li
                         p=accountOrdersProductsInfo["Payment type"]
-                        p=userProductsOrders[i]["product_order_payment_type"]
+                        p=i18n.__(userProductsOrders[i]["product_order_payment_type"])
                     li
                         p=accountOrdersProductsInfo["Receiving type"]
-                        p=userProductsOrders[i]["product_order_receive_type"]
+                        p=i18n.__(userProductsOrders[i]["product_order_receive_type"])
                     li
                         p=accountOrdersProductsInfo["Order date"]
-                        p=userProductsOrders[i]["product_order_date"].toISOString().substring(0,10)
+                        p=userProductsOrders[i]["product_order_date"].toLocaleString(i18n.locale,{"year":"numeric","month":"2-digit","day":"2-digit"})
                     li
                         p=accountOrdersProductsInfo["Order summ"]
-                        p=userProductsOrders[i]["product_order_summ"]
+                        -let orderSummConverted=money.convertTo(money({amount:Number.parseInt(userProductsOrders[i]["product_order_summ"]*100)}),session["currency"],currencyRates);
+                        p=orderSummConverted.toFormat("$0,0.00")
                 button(class='Order-products-open-btn')=i18n.__("Show ordered products")
                 -let orderProducts=i18n.__("account orders products")
                 ul(class='Orders-history-order-products-list visually-hidden')
@@ -35,57 +36,57 @@ mixin productsOrdersHistory()
                     li(class="Order-product-card")
                         ul(class='Order-product-list')
                             li(class='Order-product-name')=userProductsOrders[j]["product_name_"+i18n.locale]
-                            li=userProductsOrders[j]["purchase_for_price"]
-                            li=userProductsOrders[j]["purchase_quantity"]
+                            -let currentPriceConverted=money.convertTo(money({amount:Number.parseInt(userProductsOrders[j]["purchase_for_price"]*100)}),session["currency"],currencyRates);
+                            li(class="Order-product-price")=currentPriceConverted.toFormat("$0,0.00")
+                            li(class="Order-product-quantity")=userProductsOrders[j]["purchase_quantity"]
                     -}
                     -}
         -}
         -}
 
 mixin servicesOrdersHistory()
-    ul.Account-orders-type-products.visually-hidden
+    ul.Account-orders-type-products
         -let currentOrderId=-1;
-        -for(let i=0;i<userProductsOrders.length;i++){
-        -if(userProductsOrders[i]["product_order_id"]!==currentOrderId){
-            -currentOrderId=userProductsOrders[i];
+        -for(let i=0;i<userServicesOrders.length;i++){
+        -console.log("i= ",i,"  userServicesOrders.length= ",userServicesOrders.length)
+        -if(userServicesOrders[i]["service_order_id"]!==currentOrderId){
+            -currentOrderId=userServicesOrders[i]["service_order_id"];
             li.Orders-history-order-el
-                h3(class='Orders-history-order-header')="Order #"+userProductsOrders[i]["product_order_generated_number"]
+                h3(class='Orders-history-order-header')="Order #"+userServicesOrders[i]["service_order_generated_number"]
                 -let accountOrdersServicesInfo=i18n.__("account orders info")
                 ul(class='Orders-history-order-info-list')
                     li
                         p=accountOrdersServicesInfo["Payment type"]
-                        p=userProductsOrders[i]["product_order_payment_type"]
-                    li
-                        p=accountOrdersServicesInfo["Receiving type"]
-                        p=userProductsOrders[i]["product_order_receive_type"]
+                        p=i18n.__(userServicesOrders[i]["service_order_payment_type"])
                     li
                         p=accountOrdersServicesInfo["Order date"]
-                        p=userProductsOrders[i]["product_order_date"].toISOString().substring(0,10)
+                        p=userServicesOrders[i]["service_order_date"].toLocaleString(i18n.locale,{"year":"numeric","month":"2-digit","day":"2-digit"})
                     li
                         p=accountOrdersServicesInfo["Order summ"]
-                        p=userProductsOrders[i]["product_order_summ"]
+                        -let orderSummConverted=money.convertTo(money({amount:Number.parseInt(userServicesOrders[i]["service_order_summ"]*100)}),session["currency"],currencyRates);
+                        p=orderSummConverted.toFormat("$0,0.00")
                 button(class='Order-products-open-btn')=i18n.__("Show ordered products")
-                -let orderServices=i18n.__("account orders products")
+                -let orderServices=i18n.__("account orders services")
                 ul(class='Orders-history-order-products-list visually-hidden')
-                    li(class='Order-products-header')
-                        h4(class="Order-product-nav-name")=orderServices["Product Name"]
-                        h4(class="Order-product-nav-price")=orderServices["Product price"]
-                        h4(class="Order-product-nav-quntity")=orderServices["Product quantity"]
-                    -for(let j=i;j<navCatalogCategories.length;j++){
-                    -if(userProductsOrders[j]["product_order_id"]!==currentOrderId){
+                    li(class='Order-product-header')
+                        h4(class="Order-product-nav-name")=orderServices["Service Name"]
+                        h4(class="Order-product-nav-price")=orderServices["Service price"]
+                        h4(class="Order-product-nav-quntity")=orderServices["Service quantity"]
+                    -for(let j=i;j<userServicesOrders.length;j++){
+                    -console.log("j= ",userServicesOrders[j]["service_order_id"],"current",currentOrderId);
+                    -if(userServicesOrders[j]["service_order_id"]!==currentOrderId){
                     -i=j-1;
                     -break;
                     -}else{
-                    li
-                        ul(class='Order-products-list')
-                            li(class='Order-products-name')=userProductsOrders[j]["product_name_"+i18n.locale]
-                            li(class="Order-products-price")=userProductsOrders[j]["purchase_for_price"]
-                            li(class="Order-products-quantity")=userProductsOrders[j]["purchase_quantity"]
+                    li(class="Order-product-card")
+                        ul(class='Order-product-list')
+                            li(class='Order-product-name')=userServicesOrders[j]["service_name_"+i18n.locale]
+                            -let currentPriceConverted=money.convertTo(money({amount:Number.parseInt(userServicesOrders[j]["service_current_price"]*100)}),session["currency"],currencyRates);
+                            li(class="Order-product-price")=currentPriceConverted.toFormat("$0,0.00")
                     -}
                     -}
         -}
         -}
--console.log("\n\nContext",userProductsOrders);
 div.Account-products-orders
     -if(userProductsOrders!==undefined&&userProductsOrders.length>0){
     +productsOrdersHistory()

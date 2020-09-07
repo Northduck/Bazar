@@ -26,7 +26,7 @@ html(lang=i18n.locale)
                 -let accountNav=i18n.__("account nav buttons")
                 ul.Account-nav
                     li.Account-nav-orders.Current-account-tab
-                      button=accountNav["My orders"]
+                      button.Current-account-tab=accountNav["My orders"]
                     li.Account-nav-reviews
                       button=accountNav["My reviews"]
                     li.Account-nav-profive
@@ -39,16 +39,18 @@ html(lang=i18n.locale)
                     -let accountOrders=i18n.__("account orders buttons")
                     ul.Account-orders-type-nav
                       li.Account-orders-type-el.Current-account-tab
-                        button.Account-orders-type-products=accountOrders["Products"]
+                        button.Account-orders-type-products.Current-account-tab=accountOrders["Products"]
                       li.Account-orders-type-el
                         button.Account-orders-type-services=accountOrders["Services"]
                     .Account-orders-type-content
                       include /templates/account/account_orders.pug
                   li.Account-content-reviews.visually-hidden
+                    include /templates/account/account_reviews.pug
                   li.Account-content-profive.visually-hidden
+                    include /templates/account/account_profile.pug
                   li.Account-content-preferences.visually-hidden
     footer.Footer
       include /templates/footer_top.pug
       include /templates/footer_bottom.pug
-    script(src="/js/account_index.js")
-    script(type="module" src="/js/common_script.js")
+    script(type="module", src="/js/account_index.js")
+    script(type="module", src="/js/common_script.js")

@@ -1,0 +1,87 @@
+mixin accountProfile()
+    .Account-profile-wrapper
+        .Account-main-user-info-wrapper
+            h3.Main-user-info-header=i18n.__("main")
+            ul.Main-user-info-list
+                li.User-info-login
+                    h4.User-info-element-header=i18n.__("login")
+                    .User-info-content
+                        p.User-info-par=userInfo[0]["user_login"]
+                        .User-info-input-wrapper.visually-hidden
+                            input(type="text",class="Account-login-input", name="login",placeholder=i18n.__("login"), value=userInfo[0]["user_login"])
+                        .User-control-btns-wrapper
+                            button.User-change-info-btn
+                                i(class="fas fa-pen")
+                            button.User-cancel-btn.visually-hidden
+                                i(class="fas fa-times")
+                            button.User-confirm-btn.visually-hidden
+                                i(class="fas fa-check")
+                li.User-info-email
+                    h4.User-info-element-header=i18n.__("email")
+                    .User-info-content
+                        p.User-info-par=userInfo[0]["user_email"]
+                        .User-info-input-wrapper.visually-hidden
+                            input(type="text",class="Account-email-input", name="email",placeholder=i18n.__("email") value=userInfo[0]["user_email"])
+                        .User-control-btns-wrapper
+                            button.User-change-info-btn
+                                i(class="fas fa-pen")
+                            button.User-cancel-btn.visually-hidden
+                                i(class="fas fa-times")
+                            button.User-confirm-btn.visually-hidden
+                                i(class="fas fa-check")
+                li.User-info-fullname
+                    h4.User-info-element-header=i18n.__("fullname")
+                    .User-info-content
+                        p.User-info-par=userInfo[0]["user_full_name"]
+                        .User-info-input-wrapper.visually-hidden
+                            input(type="text",class="Account-name-input", name="fullname",placeholder=i18n.__("fullname") value=userInfo[0]["user_full_name"])
+                        .User-control-btns-wrapper
+                            button.User-change-info-btn
+                                i(class="fas fa-pen")
+                            button.User-cancel-btn.visually-hidden
+                                i(class="fas fa-times")
+                            button.User-confirm-btn.visually-hidden
+                                i(class="fas fa-check")
+                li.User-info-phoneNumber
+                    h4.User-info-element-header=i18n.__("phonenumber")
+                    .User-info-content
+                        p.User-info-par=userInfo[0]["user_phone_number"]
+                        .User-info-input-wrapper.visually-hidden
+                            input(type="text",class="Account-phonenumber-input", name="phone_number",placeholder=i18n.__("phonenumber") value=userInfo[0]["user_phone_number"])
+                        .User-control-btns-wrapper
+                            button.User-change-info-btn
+                                i(class="fas fa-pen")
+                            button.User-cancel-btn.visually-hidden
+                                i(class="fas fa-times")
+                            button.User-confirm-btn.visually-hidden
+                                i(class="fas fa-check")
+        .Account-additional-info-wrapper
+            h3.Additional-user-info-header=i18n.__("additional")
+            ul.Additional-user-info-list
+                li.User-info-birthdate
+                    h4.User-info-element-header=i18n.__("birthdate")
+                    .User-info-content
+                        p.User-info-par=userInfo[0]["user_birthdate"].toLocaleString(i18n.locale,{"year":"numeric","month":"2-digit","day":"2-digit"})
+                        .User-info-input-wrapper.visually-hidden
+                            input(type="date",class="Account-birthdate-input", name="birthdate", value=userInfo[0]["user_birthdate"].toISOString().substring(0,10))
+                        .User-control-btns-wrapper
+                            button.User-change-info-btn
+                                i(class="fas fa-pen")
+                            button.User-cancel-btn.visually-hidden
+                                i(class="fas fa-times")
+                            button.User-confirm-btn.visually-hidden
+                                i(class="fas fa-check")
+                li.User-info-address
+                    h4.User-info-element-header=i18n.__("address")
+                    .User-info-content
+                        p.User-info-par=userInfo[0]["user_address"]
+                        .User-info-input-wrapper.visually-hidden
+                            input(type="text",class="Account-address-input", name="address",placeholder=i18n.__("address") value=userInfo[0]["user_address"])
+                        .User-control-btns-wrapper
+                            button.User-change-info-btn
+                                i(class="fas fa-pen")
+                            button.User-cancel-btn.visually-hidden
+                                i(class="fas fa-times")
+                            button.User-confirm-btn.visually-hidden
+                                i(class="fas fa-check")
++accountProfile()

@@ -1,0 +1,51 @@
+mixin accountProductReviews(data)
+    ul.Account-reviews-list
+        li.Product-review
+            .Product-wrapper
+                h3.Account-product-name
+                    a(href=`/goods/${data[`product_id`]}`)=data[`product_name_${i18n.locale}`]
+            div(class="Review-about")
+                span.Item-rating
+                    include /templates/star_rating.pug
+                    +makeStarRating(data.product_review_rating)
+                p.User-name-header=i18n.__("your signature")
+                p.User-name=data.product_user_pseudonym
+            p(class="Review-content")= data.product_review_text
+            p(class="Review-date")=data.product_review_date.toLocaleString(i18n.locale,{"year":"numeric","month":"2-digit","day":"2-digit"})
+mixin accountServiceReviews(data)
+    ul.Account-reviews-list
+        li.Product-review
+            .Product-wrapper
+                h3.Account-product-name
+                    a(href=`/services/${data[`service_id`]}`)=data[`service_name_${i18n.locale}`]
+            div(class="Review-about")
+                span.Item-rating
+                    include /templates/star_rating.pug
+                    +makeStarRating(data.service_review_rating)
+                p.User-name-header=i18n.__("User name")
+                p.User-name=data.service_user_pseudonym
+            p(class="Review-content")= data.service_review_text
+            p(class="Review-date")= data.service_review_date.toLocaleString(i18n.locale,{"year":"numeric","month":"2-digit","day":"2-digit"})
+-let accountReviews=i18n.__("account orders buttons")
+ul.Account-review-type-nav
+    li.Account-review-type-el.Current-account-tab
+        button.Account-review-type-products.Current-account-tab=accountReviews["Products"]
+    li.Account-review-type-el
+        button.Account-review-type-services=accountOrders["Services"]
+.Account-review-type-content
+    div.Account-products-orders
+        -if(userProductsReviews!==undefined&&userProductsReviews.length>0){
+            -for(let i=0;i<userProductsReviews.length;i++){
+            +accountProductReviews(userProductsReviews[i])
+            -}
+        -}else{
+            p.Account-emptiness-explanation=i18n.__("no orders")
+        -}
+    div.Account-services-orders.visually-hidden
+        -if(userServicesReviews!==undefined&&userServicesReviews.length>0){
+            -for(let i=0;i<userServicesReviews.length;i++){
+                +accountServiceReviews(userServicesReviews[i])
+            -}
+        -}else{
+            p.Account-emptiness-explanation=i18n.__("no orders")
+        -}
