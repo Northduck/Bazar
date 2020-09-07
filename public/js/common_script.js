@@ -5,33 +5,47 @@ let cookiesOptions={
 };
 
 function initializeCartField(cartField) {
-  let cookieCounterValue=getCookie(cartField);
-  if(cookieCounterValue!==undefined){
-      cartCounter.innerText=cookieCounterValue;
+  let cookieCounterValue=Number.parseInt(getCookie("cartCounter"));
+  let cartCookieContent=getCookie("cartContent");
+  if(cartCookieContent!=undefined&&cartCookieContent!==""){
+    let cartContent=cartCookieContent.split("_");
+    let realCartQuantity=0;
+    for (let i = 0; i < cartContent.length; i++) {
+      let productInfo=cartContent[i].split("-");
+      realCartQuantity+=Number.parseInt(productInfo[1]);
+    }
+    if(cookieCounterValue!==realCartQuantity){
+      setCookie("cartCounter",realCartQuantity,cookiesOptions);
+    }
   }else{
-      cartCounter.innerText="0";
+    setCookie("cartCounter",0,cookiesOptions);
   }
+  cookieCounterValue=Number.parseInt(getCookie("cartCounter"));
+  cartField.innerText=cookieCounterValue;
+
 }
 let addToCartBtns=document.querySelectorAll(".Add-to-cart-btn");
 let cartCounter=document.querySelector(".Cart-counter");
-initializeCartField("cartCounter");
+if(cartCounter!=undefined){
+  initializeCartField(cartCounter);
+}
 addToCartBtns.forEach((cartBtn)=>{
     cartBtn.addEventListener("click",(event)=>{
         event.preventDefault();
         let productId=cartBtn.getAttribute("data-product-id");
         let cartCookie=getCookie("cartContent");
-        if(cartCookie){
+        if(cartCookie!==undefined){
           let productIdIndex=cartCookie.indexOf(`${productId}-`);
           if(productIdIndex===-1){
             setCookie("cartContent",cartCookie+"_"+productId+"-1",cookiesOptions);
           }else{
-            updateProductCookie("cartContent",productId,"+",cookiesOptions)
+            return;
           }
         }else{
             setCookie("cartContent",`${productId}-1`,cookiesOptions);
         }
         let cookieCounterValue=getCookie("cartCounter");
-        if(cookieCounterValue){
+        if(cookieCounterValue!==undefined){
             let cartC=Number.parseInt(cookieCounterValue);
             setCookie("cartCounter",`${++cartC}`,cookiesOptions);
             cartCounter.innerText=`${cartC}`;
@@ -82,7 +96,42 @@ languagesBtns.forEach((element,i)=>{
     let languageValue=element.getAttribute("data-language-value");
     let fetchURL=window.location.origin+"/language?change_language="+languageValue;
     let changeLanguageResponse= (await fetch(fetchURL)).json();
-    location = location
+    location = location;
     return false;
+  });
+});
+let currenciesBtns=document.querySelectorAll(".Change-currency-link");
+currenciesBtns.forEach((element,i)=>{
+  element.addEventListener("click",async (event)=>{
+    event.preventDefault();
+    let currencyValue=element.getAttribute("data-currency-value");
+    let fetchURL=window.location.origin+"/currency?change_currency="+currencyValue;
+    let changeCurrencyResponse= (await fetch(fetchURL)).json();
+    location = location;
+    return false;
+  });
+});
+let compareBtns=document.querySelectorAll(".Compare-btn");
+compareBtns.forEach((element,i)=>{
+  element.addEventListener("click",async (event)=>{
+    event.preventDefault();
+    let productIdToCompare=element.getAttribute("data-product-id");
+    let productCategoryIdToCompare=element.getAttribute("data-category-id");
+    let compareRequestUrl=window.location.origin+`/toggle_product_to_compare?compareCategoryId=${productCategoryIdToCompare}&compareProductId=${productIdToCompare}`;
+    let buttonTempContent=element.innerHTML;
+    let loadingIcon=document.createElement("i");
+    loadingIcon.classList.add("Loading-animation","fas","fa-spinner");
+    element.innerHTML="";
+    element.insertAdjacentElement("afterbegin",loadingIcon);
+    let addProductToCompareResponse= (await fetch(compareRequestUrl)).json();
+    let okIcon=document.createElement("i");
+    okIcon.classList.add("fas","fa-check-circle");
+    element.innerHTML="";
+    element.insertAdjacentElement("afterbegin",okIcon);
+    element.classList.toggle("Added-successfully");
+    setTimeout(()=>{
+      element.classList.toggle("Added-successfully");
+      element.innerHTML=buttonTempContent;
+    },2000);
   });
 });

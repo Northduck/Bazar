@@ -28,10 +28,15 @@ function updateProductCookie(cookieName,productId,toDo,cookiesOptions){
   let productInfo=cookieValue.slice(productIdIndex).split("_")[0].split("-");
   let productRegexp=RegExp(`${productInfo[0]}-${productInfo[1]}`);
   let resCookie=cookieValue.replace(productRegexp,(match)=>{
-    if(toDo==="+"){
-      return `${productInfo[0]}-${(Number.parseInt(productInfo[1]))+1}`;
-    }else{
-      return `${productInfo[0]}-${(Number.parseInt(productInfo[1]))-1}`;
+    switch (toDo) {
+      case "+":
+        return `${productInfo[0]}-${(Number.parseInt(productInfo[1]))+1}`;
+        break;
+      case "-":
+        return `${productInfo[0]}-${(Number.parseInt(productInfo[1]))-1}`;
+        break;
+      default:
+        break;
     }
   });
   setCookie(cookieName,resCookie,cookiesOptions);
