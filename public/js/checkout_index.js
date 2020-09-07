@@ -1,4 +1,5 @@
 "use strict";
+import {getCookie, setCookie, updateProductCookie, replaceCookie} from "./modules/cookie_methods.js";
 function serialize(formData){
     let url="?"
     for (var [key, value] of formData.entries()) { 
@@ -35,40 +36,41 @@ function checkFirstStage() {
             return false;
         }
     }else if(stagesContent[0].getAttribute("data-receiving-method")==="shipment"){
-        let neededInputs=document.querySelectorAll(".Receiving-shipment-form label.Input-needed ~ input");
+        let shipmentInputs=document.querySelectorAll(".Shipment-form input");
         let formFlag=true;
-        for (let i = 0; i < neededInputs.length; i++) {
-            if(neededInputs[i].value===""){
-                neededInputs[i].classList.add("Bad-input");
+        let inputChangeEvent=new Event("change");
+        for (let i = 0; i < shipmentInputs.length; i++) {
+            shipmentInputs[i].dispatchEvent(inputChangeEvent);
+            let dataCorrection=shipmentInputs[i].getAttribute("data-is-good-field");
+            if(dataCorrection==="no"){
                 formFlag=false;
-            }else{
-                neededInputs[i].classList.remove("Bad-input");
-                neededInputs[i].classList.add("Good-input");
+                break;
             }
         }
         return formFlag;
     }
 },
 function checkSecondStage(){
-    let neededInputs=document.querySelectorAll(".Contact-information-form label.Input-needed ~ input");
+    let contactInfoInputs=document.querySelectorAll(".Fulfillment-contact-information-form input");
     let formFlag=true;
-    for (let i = 0; i < neededInputs.length; i++) {
-        let regExp=new RegExp(neededInputs[i].getAttribute("data-reg-exp"));
-        console.log(regExp);
-        console.log(neededInputs[i].value);
-        console.log(neededInputs[i].value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/));
-        if(neededInputs[i].value.match(regExp)){
-            neededInputs[i].classList.remove("Bad-input");
-            neededInputs[i].classList.add("Good-input");
-        }else{
-            neededInputs[i].classList.add("Bad-input");
+    let inputChangeEvent=new Event("change");
+    for (let i = 0; i < contactInfoInputs.length; i++) {
+        contactInfoInputs[i].dispatchEvent(inputChangeEvent);
+        let dataCorrection=contactInfoInputs[i].getAttribute("data-is-good-field");
+        if(dataCorrection==="no"){
             formFlag=false;
+            break;
         }
     }
+    
     return formFlag;
 },
 function checkThirdStage(){
-    return true;
+    if(document.querySelectorAll(".Payment-method-form input:checked").length!==0){
+        return true;
+    }else{
+        return false;
+    }
 }
 ];
 let stagesForm=[
@@ -104,25 +106,38 @@ async function sendStageInfoToServer(currentStage, changeDirection) {
 }
 function handleResponse(response) {
     if(response["currentStage"]===3){
+        let locale=getCookie("language")||"end";
         let chekoutContainer=document.querySelector(".Checkout-section");
-        chekoutContainer.innerHTML=`<div class="Fulfillment-final"><i class='Register-ok-icon far fa-check-circle'></i>
-        <p class='Register-ok-par'>Thank you for purchase! Your order number: №${response["orderNumber"]}</p>
-        <a href='/' class='Register-return-link'>Return to main page</a></div>`;
+        switch (locale) {
+            case "end":
+                chekoutContainer.innerHTML=`<div class="Fulfillment-final"><i class='Register-ok-icon far fa-check-circle'></i>
+                <p class='Register-ok-par'>Thank you for purchase! Your order number: №:  ${response["orderNumber"]}</p>
+                <a href='/' class='Register-return-link'>Return to main page</a></div>`;
+                break;
+            case "ru":
+                chekoutContainer.innerHTML=`<div class="Fulfillment-final"><i class='Register-ok-icon far fa-check-circle'></i>
+                <p class='Register-ok-par'>Спасибо за покупку! Номер вашего заказа: №:  ${response["orderNumber"]}</p>
+                <a href='/' class='Register-return-link'>Вернуться на главную страницу</a></div>`;
+                break;
+            default:
+                break;
+        }
+        
     }
 }
 async function changeStageForward(currentStage) {
     if(stagesChekingHandlers[currentStage]()===true){
         let serverResponse=await sendStageInfoToServer(currentStage,"forward");
         handleResponse(serverResponse);
-        if(serverResponse["returnCode"]===1){
+        if(serverResponse["responseCode"]===1&&serverResponse["currentStage"]!==3){
             changeLayoutStageForward(currentStage);
         }
     }
 }
 async function changeStageBackward(currentStage) {
         let serverResponse=await sendStageInfoToServer(currentStage-1,"backward");
-        handleResponse(req);
-        if(serverResponse["returnCode"]===1){
+        handleResponse(serverResponse);
+        if(serverResponse["responseCode"]===1&&serverResponse["currentStage"]!==0){
             changeLayoutStageBackward(currentStage);
         }
 }
@@ -213,3 +228,71 @@ let paymentMethods=document.querySelectorAll(".Fulfillment-payment-method-list>l
     });
 }
 )();
+
+function checkInputs(input,regExpMas,isOptional,isReverse){
+    input.addEventListener("change",event=>{
+        let regExpRes=regExpMas.every((regExpElement)=>{
+            return input.value.match(regExpElement);
+        });
+        if(isReverse===true){
+            regExpRes=!regExpRes;
+        }
+        if(regExpRes===true||(isOptional===true&&input.value===""))
+        {
+            input.setAttribute("data-is-good-field","yes");
+            input.classList.add("Good-input");
+            input.classList.remove("Bad-input");
+        }else{
+            input.setAttribute("data-is-good-field","no");
+            input.classList.add("Bad-input");
+            input.classList.remove("Good-input");
+        }
+    });
+}
+let shipmentCityField=document.querySelector(".Shipment-form-city");
+let shipmentStreetField=document.querySelector(".Shipment-form-street");
+let shipmentHouseField=document.querySelector(".Shipment-form-house");
+let shipmentApartmentField=document.querySelector(".Shipment-form-apartment");
+let cityRegExp=[/[^a-zA-Z,. -_\dа-яА-Я]/];
+let streetRegExp=[/[^a-zA-Z,. -_\dа-яА-Я]/];
+let houseNumbRegExp=[/[^\d\/]/];
+let apartmentNumbRegExp=[/[^\d]/];
+checkInputs(shipmentCityField,cityRegExp,false,true);
+checkInputs(shipmentStreetField,streetRegExp,false,true);
+checkInputs(shipmentHouseField,houseNumbRegExp,false,true);
+checkInputs(shipmentApartmentField,apartmentNumbRegExp,true,true);
+
+let contactInformationPhone=document.querySelector(".Fulfillment-contact-information-phone-number");
+let contactInformationEmail=document.querySelector(".Fulfillment-contact-information-email");
+let contactInformationName=document.querySelector(".Fulfillment-contact-information-name");
+let emailRegExp=[/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/];
+let phoneNumberRegExp=[/\+[\d]{11,16}/];
+let nameRegExp=[/[^a-zA-zа-яА-Я ,.'-]+$/i];
+checkInputs(contactInformationPhone,phoneNumberRegExp,false,false);
+checkInputs(contactInformationEmail,emailRegExp,false,false);
+checkInputs(contactInformationName,nameRegExp,true,true);
+
+var phoneInput = document.querySelector(".Fulfillment-contact-information-phone-number");
+
+phoneInput.addEventListener('keypress', e => {
+    if(!/\d/.test(e.key)){
+        e.preventDefault();
+    }
+});
+
+phoneInput.addEventListener('keypress', function(event) {
+    var key = event.keyCode || event.charCode;
+    if( key === 8 ||key===46){
+        return;
+    }
+    let newValue=phoneInput.value.replace(/[^\d]/g,"");
+    var curLen = phoneInput.value.length;
+    if (curLen >=16){
+        event.preventDefault();
+        phoneInput.value = phoneInput.value.substring(0, 16);
+    }
+});
+phoneInput.addEventListener("keyup",(event)=>{
+    let newValue=phoneInput.value.replace(/[^\d]/g,"");
+    phoneInput.value="+"+newValue;
+});

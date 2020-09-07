@@ -1,0 +1,6 @@
+mixin completedOrderPlug()
+    .Fulfillment-final
+        i(class='Register-ok-icon far fa-check-circle')
+        p(class='Register-ok-par')=`${i18n.__("complete order")}${response["orderNumber"]}`
+        a(href='/' class='Register-return-link')=i18n.__("Return to main page")
++completedOrderPlug()
