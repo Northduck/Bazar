@@ -27,7 +27,7 @@ html(lang=i18n.locale)
             form(class="Login-form" action="" method="POST")
               ul(class="Login-inputs")
                 li.Login-login-section
-                  input(id="Login-email-input-field" class="Login-login-input" type="text" name="userLogin" placeholder=i18n.__("Enter login or email"))
+                  input(id="Login-email-input-field" class="Login-login-email-input" type="text" name="userLoginEmail" placeholder=i18n.__("Enter login or email"))
                 li.Login-password-section
                   input(id="Login-password-input-field" class="Login-password-input" type="password", name="userPassword" placeholder=i18n.__("Enter password"))
                   span.Forger-password-field
@@ -38,9 +38,9 @@ html(lang=i18n.locale)
               .Login-unregistered         
                 h3.Login-unregistered-header
                   =i18n.__("Don't have an account")
-                a(href="#" class="Login-unregistered-link")=i18n.__("Create Account")            
+                a(href="/register" class="Login-unregistered-link")=i18n.__("Create Account")            
     footer.Footer
       include /templates/footer_top.pug
       include /templates/footer_bottom.pug
-    script(src="/js/login_index.js")
-    script(type="module" src="/js/common_script.js")
+    script(type="module", src="/js/login_index.js")
+    script(type="module", src="/js/common_script.js")

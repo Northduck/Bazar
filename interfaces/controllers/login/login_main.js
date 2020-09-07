@@ -1,15 +1,9 @@
-let fs=require("fs");
-let pug=require("pug");
-let loginPage;
-let pugContext={};
-module.exports=(req,res)=>{
-  fs.readFile("./templates/login/login.pug",(error,data)=>{
-    if(error){
-      console.log(error);
-    }
-    pugContext.session=req.session;
-    pugContext.i18n=res.locals;
-    loginPage=pug.compile(data,{"basedir":"./"});
-    res.end(loginPage(pugContext));
-  });
-}
+const makePage=require("../../utilities/makePage.js");
+module.exports=async (req,res)=>{
+  
+  let loginPage=new makePage(req,res,"login","login","pug",{});
+
+  let pageContent=await loginPage.makePage();
+
+  res.end(pageContent);
+};

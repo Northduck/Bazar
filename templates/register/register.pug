@@ -31,7 +31,7 @@ html(lang=i18n.locale)
                   label(for="Register-email-input-field" class="Register-label Register-needed")=i18n.__("Email")
                   input(id="Register-email-input-field" class="Register-email-input" type="email" name="User-email")
                 li.Register-password-section
-                  label(for="Register-password-input-field" class="Register-label Register-needed")=i18n.__("Password") 
+                  label(for="Register-password-input-field" class="Register-label Register-needed")=i18n.__("Password")
                   input(id="Register-password-input-field" class="Register-password-input" type="password", name="User-password")
                   span.Register-password-about
                     =i18n.__("Password should be at least")
@@ -39,7 +39,17 @@ html(lang=i18n.locale)
                     =i18n.__("7 symbols with uppercase and digit")
                 li
                   label(for="Register-name-input-field" class="Register-label")=i18n.__("Name") 
-                  input(id="Register-name-input-field" class="Register-name-input" type="text" name="User-name")        
+                  input(id="Register-name-input-field" class="Register-name-input" type="text" name="User-fullname")
+                li
+                  -let today = new Date();
+                  label(for="Register-birthdate-input-field" class="Register-label")=i18n.__("birthdate") 
+                  input(id="Register-birthdate-input-field", class="Register-birthdate-input", type="date", name="User-birthdate", min="1910-01-01" max=(today.getFullYear()-12)+today.toISOString().substring(4,10))
+                li
+                  label(for="Register-phonenumber-input-field" class="Register-label")=i18n.__("phonenumber") 
+                  input(id="Register-phonenumber-input-field" class="Register-phonenumber-input" type="tel" name="User-phonenumber")
+                li
+                  label(for="Register-address-input-field" class="Register-label")=i18n.__("address") 
+                  input(id="Register-address-input-field" class="Register-address-input" type="text" name="User-address")
                 li
                   input(class="Register-submit-btn" type="submit" value=i18n.__("Register"))                                       
     footer.Footer
