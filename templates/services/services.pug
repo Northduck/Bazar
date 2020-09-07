@@ -27,10 +27,7 @@ html(lang=i18n.locale)
               a(href='/')=i18n.__("Home")
               i.fas.fa-chevron-right
             li
-              a(href='')=i18n.__("Services")
-              i.fas.fa-chevron-right
-            li
-              a(href='catalog/product_category_id')=serviceMainInformation[0]["service_category_name_"+i18n.locale]
+              a(href='/catalog_services')=i18n.__("Services")
       include /templates/services/services_card.pug
       .Product-info-wrapper
         ul.Product-info-nav
@@ -49,32 +46,19 @@ html(lang=i18n.locale)
             p.Product-description= serviceMainInformation[0]["service_description_"+i18n.locale]
           li.Product-info-content-reviews-wrapper
             include /templates/services/services_reviews.pug
-            .New-user-review
+            div(class="New-user-review",id="New-review-anchor")
               h4.New-user-review-header=i18n.__("Add a review")
               div(class="Add-review-wrapper")
-                form.User-review-form(action='' method='POST')
-                  fieldset.New-user-review-rating-fieldset
-                    label.New-user-review-rating-caption=i18n.__("Your Rating")
-                    div(class="New-user-review-rating-group" tabindex="1")
-                      input.Rating-star(type='radio' name='product-rating' value='1' aria-label='awful')
-                      input.Rating-star(type='radio' name='product-rating' value='2' aria-label='bad')
-                      input.Rating-star(type='radio' name='product-rating' value='3' aria-label='normal')
-                      input.Rating-star(type='radio' name='product-rating' value='4' aria-label='good')
-                      input.Rating-star(type='radio' name='product-rating' value='5' aria-label='exelent')
-                      .Rating-focus
-                  form.User-review-form(action='' method='POST')
-                    label.Review-text-label(for='review-text-field')
-                      =i18n.__("Your review")
-                      textarea#review-text-field.New-user-revier-text(name='review-text' rows='5')
-                    .User-info-wrapper
-                      input.User-info-user-name(type='text' name="user-name-field" placeholder='Name*' pattern="[a-zA-z0-9]{3,}" title="Name at least with 3 symbols")
-                      input.User-info-email(type='email' name="user-email-field" placeholder='Email*')
-                      input.User-info-submit-btn(type='submit' value='POST')
+                -if(session["userInfo"]==undefined){
+                include /templates/services/services_unauthorized_plug.pug
+                -}else{
+                include /templates/services/services_new_review_section.pug
+                -}
           li(class="Goods-characteristics-table-wrappper visually-hidden")
             h4.New-user-review-header=i18n.__("Service Characteristics")                         
       include /templates/newsletter_form.pug
     footer.Footer
       include /templates/footer_top.pug
       include /templates/footer_bottom.pug
-    script(src="/js/goods_index.js")
-    script(type="module" src="/js/common_script.js")
+    script(type="module", src="/js/services_index.js")
+    script(type="module", src="/js/common_script.js")

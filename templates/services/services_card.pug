@@ -21,23 +21,20 @@ mixin makeCard(data,counts)
       li.Product-header-subsection
         .Product-header-row
           h1.Product-name-header= data["service_name_"+i18n.locale]
-          .Change-product-btn-wrapper
-            button.Change-product-btn-left
-              i.fas.fa-chevron-left
-            button.Change-product-btn-right
-              i.fas.fa-chevron-right
         .Product-users-rating-row
           span(class="Product-rating" data-value-rating= data.service_rating)
             include /templates/star_rating.pug
             +makeStarRating(data.service_rating)
-          a.Product-reviews-counter(href='#')= counts+" reviews" 
-          a.Product-to-adding-review-link(href='#')=i18n.__("Add Your Review")
+          a.Product-reviews-counter(href='#Product-reviews-anchor')= counts+i18n.__("reviews") 
+          a.Product-to-adding-review-link(href='#New-review-anchor')=i18n.__("Add Your Review")
       li.Product-price-subsection
+        -let currentPriceConverted=money.convertTo(money({amount:Number.parseInt(data.service_current_price*100)}),session["currency"],currencyRates);
         -if(data.service_previous_price==null){
-        p.New-price= data.service_current_price
+            p.New-price=currentPriceConverted.toFormat("$0,0.00")
         -}else{
-        p.New-price= data.service_current_price
-        p.Old-price= data.service_previous_price
+            -let oldPriceConverted=money.convertTo(money({amount:Number.parseInt(data.service_previous_price*100)}),session["currency"],currencyRates);
+            p.New-price=currentPriceConverted.toFormat("$0,0.00")
+            p.Old-price=oldPriceConverted.toFormat("$0,0.00")
         -}
       li.Product-controls-btns-subsection
         ul.Controls-btns

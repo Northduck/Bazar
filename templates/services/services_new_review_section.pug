@@ -1,0 +1,22 @@
+mixin addReview()
+    form.User-review-form(action='' method='POST')
+        fieldset.New-user-review-rating-fieldset
+            label.New-user-review-rating-caption=i18n.__("Your Rating")
+            div(class="New-user-review-rating-group" tabindex="1")
+                input.Rating-star(type='radio' name='review-rating' value='1' aria-label='awful')
+                input.Rating-star(type='radio' name='review-rating' value='2' aria-label='bad')
+                input.Rating-star(type='radio' name='review-rating' value='3' aria-label='normal')
+                input.Rating-star(type='radio' name='review-rating' value='4' aria-label='good')
+                input.Rating-star(type='radio' name='review-rating' value='5' aria-label='exelent')
+                .Rating-focus
+        form.User-review-form(action='' method='POST')
+            label.Review-text-label(for='review-text-field')
+                =i18n.__("Your review")
+                textarea#review-text-field.New-user-revier-text(name='review-text' rows='5')
+            .User-info-wrapper
+                .User-signature
+                    h4.User-signature-header=i18n.__("signature")
+                    input.User-info-user-name(type='text',class="User-info-user-name", name="review-signature" placeholder=i18n.__("signature"), pattern="[a-zA-z0-9]{3,}" title="Name at least with 3 symbols")
+                    p.Signature-explanation=i18n.__("signature explanation")
+                input.User-info-submit-btn(type='submit', value=i18n.__("post"))
++addReview()
