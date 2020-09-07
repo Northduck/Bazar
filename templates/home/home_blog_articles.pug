@@ -19,7 +19,6 @@ mixin articleContent(i,quan)
     -}
 mixin articlesPages(quantity)
     ul.Articles-pages
-        -console.log(quantity);
         -for(let i=0;quantity>0;quantity-=3,i+=3){
         li(class= i===0 ? "Articles-page": "Articles-page visually-hidden")
             ul.Blog-list

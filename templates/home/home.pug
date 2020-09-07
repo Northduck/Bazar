@@ -142,24 +142,7 @@ html(lang=i18n.locale)
             button.Slider-btn
             button.Slider-btn
         include /templates/home/home_blog_articles.pug
-      section.Brands-list-section.Section-centerer
-        button.List-scroll-left-btn
-          i.fas.fa-chevron-left
-        ul.Brands-list
-          li
-            a.List-item(href='#')
-          li
-            a.List-item(href='#')
-          li
-            a.List-item(href='#')
-          li
-            a.List-item(href='#')
-          li
-            a.List-item(href='#')
-          li
-            a.List-item(href='#')
-        button.List-scroll-right-btn
-          i.fas.fa-chevron-right
+      include /templates/brands.pug
       section.Section-centerer
         .Feedback-section-top
           h2.Section-header=i18n.__("client feedback header")

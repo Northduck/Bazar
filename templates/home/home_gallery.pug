@@ -1,32 +1,32 @@
 mixin homePageGalleryContent(data)
-    -console.log("Data is:", data);
     -var mainImgDir="/img/products/"+(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id))+"/"+(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id))+"1.jpg";
     img.Gallery-img(src= mainImgDir alt=data["product_name_"+i18n.locale] width='553' height='408')
     ul.Item-controls
-      li
-        button.Hot-deal-look
-          i.far.fa-eye
-      li
-        button(class="Good-like-btn" data-product-id=data.product_id)
-          i.far.fa-heart
-      li
-        button.Hot-deal-compare
-          i.fas.fa-exchange-alt
-      li
-        button.Hot-deal-compare
-          i.fas.fa-shopping-basket
-
+        li
+            button.Hot-deal-look
+                i.far.fa-eye
+        li
+            button(class="Good-like-btn" data-product-id=data.product_id)
+                i.far.fa-heart
+        li
+            button(class="Control-btn Compare-btn", data-product-id=data.product_id, data-category-id=data.product_category_id)
+                i.fas.fa-balance-scale
+        li
+            button(class="Control-btn Add-to-cart-btn", data-product-id=data.product_id, data-category-id=data.product_category_id)
+                i.fas.fa-shopping-basket
     div.Gallery-item-prices
+        -let currentPriceConverted=money.convertTo(money({amount:Number.parseInt(data.product_current_price*100)}),session["currency"],currencyRates);
         -if(data.product_previous_price==null){
-            p.Gallery-item-new-price= data.product_current_price
+            p.Gallery-item-new-price=currentPriceConverted.toFormat("$0,0.00")
         -}else{
-            p.New-price= data.product_current_price
-            p.Old-price= data.product_previous_price
+            -let oldPriceConverted=money.convertTo(money({amount:Number.parseInt(data.product_previous_price*100)}),session["currency"],currencyRates);
+            p.New-price=currentPriceConverted.toFormat("$0,0.00")
+            p.Old-price=oldPriceConverted.toFormat("$0,0.00")
         -}
     .Gallery-item-about
-      a.Item-header-link(href=`/goods/${data.product_id}`)
-        h3.Gallery-item-header= data["product_name_"+i18n.locale].length>40 ? data["product_name_"+i18n.locale].slice(0,40)+" ...":data["product_name_"+i18n.locale]
-      span.Item-rating
+        a.Item-header-link(href=`/goods/${data.product_id}`)
+            h3.Gallery-item-header= data["product_name_"+i18n.locale].length>40 ? data["product_name_"+i18n.locale].slice(0,40)+" ...":data["product_name_"+i18n.locale]
+        span.Item-rating
             include /templates/star_rating.pug
             +makeStarRating(data.product_rating)
     .Gallery-slider
