@@ -22,15 +22,18 @@ mixin productsItems(data)
                 ul.Item-controls
                     li
                         button(class="Control-btn Good-like-btn" data-product-id=data.product_id)
+                            i.far.fa-heart
                     li
-                        button.Compare-btn
-                            i.fas.fa-exchange-alt
+                        button(class="Control-btn Compare-btn", data-product-id=data.product_id, data-category-id=data.product_category_id)
+                            i.fas.fa-balance-scale
                 .Item-price
+                    -let currentPriceConverted=money.convertTo(money({amount:Number.parseInt(data.product_current_price*100)}),session["currency"],currencyRates);
                     -if(data.product_previous_price==null){
-                    p.New-price= data.product_current_price
+                        p.New-price=currentPriceConverted.toFormat("$0,0.00")
                     -}else{
-                    p.New-price= data.product_current_price
-                    p.Old-price= data.product_previous_price
+                        -let oldPriceConverted=money.convertTo(money({amount:Number.parseInt(data.product_previous_price*100)}),session["currency"],currencyRates);
+                        p.New-price=currentPriceConverted.toFormat("$0,0.00")
+                        p.Old-price=oldPriceConverted.toFormat("$0,0.00")
                     -}
             
 mixin productsCategoriesElement(data)     

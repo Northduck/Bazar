@@ -1,0 +1,7 @@
+mixin unauthorized()
+    p.Unauthorized-par
+        =i18n.__("unauthorized par")
+        a(href="/login")=i18n.__("Authorize")
+        =i18n.__("or")
+        a(href="/register")=i18n.__("Register")
++unauthorized()

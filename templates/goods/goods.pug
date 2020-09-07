@@ -3,9 +3,9 @@ html(lang=i18n.locale)
   head
     meta(charset="utf-8")
     title=goodMainInformation[0]["product_name_"+i18n.locale]
-    link(rel='stylesheet' type='text/css' href='/css/MainStyle.css')
+    link(rel='stylesheet' type='text/css' href='../css/MainStyle.css')
     link(href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap' rel='stylesheet')
-    link(rel='stylesheet' type='text/css' href='/css/all.min.css')
+    link(rel='stylesheet' type='text/css' href='../css/all.min.css')
     link(rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png")
     link(rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png")
     link(rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png")
@@ -24,10 +24,11 @@ html(lang=i18n.locale)
           h3.Category-header=i18n.__("Furniture")
           ul.Category-nesting-nav
             li
-              a(href='/')=i18n.__("Home")
+              a(href="/shop_by_room")
+                =i18n.__("Furniture")
               i.fas.fa-chevron-right
             li
-              a(href='')=goodMainInformation[0]["type_name_"+i18n.locale]
+              a(href=`/rooms_categories/${goodMainInformation[0]["type_name_en"]}`)=goodMainInformation[0]["type_name_"+i18n.locale]
               i.fas.fa-chevron-right
             li
               -let preparedcategory=goodMainInformation[0]["product_category_name_en"].replace(/ /g,"_");
@@ -50,27 +51,14 @@ html(lang=i18n.locale)
             p.Product-description= goodMainInformation[0]["product_description_"+i18n.locale]
           li.Product-info-content-reviews-wrapper
             include /templates/goods/goods_reviews.pug
-            .New-user-review
+            div(class="New-user-review",id="New-review-anchor")
               h4.New-user-review-header=i18n.__("Add a review")
               div(class="Add-review-wrapper")
-                form.User-review-form(action='' method='POST')
-                  fieldset.New-user-review-rating-fieldset
-                    label.New-user-review-rating-caption=i18n.__("Your Rating")
-                    div(class="New-user-review-rating-group" tabindex="1")
-                      input.Rating-star(type='radio' name='product-rating' value='1' aria-label='awful')
-                      input.Rating-star(type='radio' name='product-rating' value='2' aria-label='bad')
-                      input.Rating-star(type='radio' name='product-rating' value='3' aria-label='normal')
-                      input.Rating-star(type='radio' name='product-rating' value='4' aria-label='good')
-                      input.Rating-star(type='radio' name='product-rating' value='5' aria-label='exelent')
-                      .Rating-focus
-                  form.User-review-form(action='' method='POST')
-                    label.Review-text-label(for='review-text-field')
-                      =i18n.__("Your review")
-                      textarea#review-text-field.New-user-revier-text(name='review-text' rows='5')
-                    .User-info-wrapper
-                      input.User-info-user-name(type='text' name="user-name-field" placeholder='Name*' pattern="[a-zA-z0-9]{3,}" title="Name at least with 3 symbols")
-                      input.User-info-email(type='email' name="user-email-field" placeholder='Email*')
-                      input.User-info-submit-btn(type='submit' value='POST')
+                -if(session["userInfo"]==undefined){
+                include /templates/goods/goods_unauthorized_plug.pug
+                -}else{
+                include /templates/goods/goods_new_review_section.pug
+                -}
           li(class="Goods-characteristics-table-wrappper visually-hidden")
             h4.New-user-review-header=i18n.__("Product Characteristics")
             table
@@ -84,5 +72,6 @@ html(lang=i18n.locale)
     footer.Footer
       include /templates/footer_top.pug
       include /templates/footer_bottom.pug
-    script(src="/js/goods_index.js")
-    script(type="module" src="/js/common_script.js")
+    .Overlay
+    script(type="module", src="/js/goods_index.js")
+    script(type="module", src="/js/common_script.js")

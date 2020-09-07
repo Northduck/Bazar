@@ -1,16 +1,16 @@
 mixin reviewsList(data)
-    ul.Product-reviews
+    ul(class="Product-reviews",id="Product-reviews-anchor")
         -if(data.length>0){
         -for(let i=0;i<data.length;i++){
         li.Product-review
             div(class="Review-about")
                 span.Item-rating
                     include /templates/star_rating.pug
-                    +makeStarRating(data[i].product_rating)
+                    +makeStarRating(data[i].product_review_rating)
                 p.User-name-header=i18n.__("User name")
-                p.User-name= data[i].user_name
-            p(class="Review-content")= data[i].review_text
-            p(class="Review-date")= data[i].review_date.toISOString().substring(0,10)
+                p.User-name=data[i].product_user_pseudonym
+            p(class="Review-content")= data[i].product_review_text
+            p(class="Review-date")= data[i].product_review_date.toLocaleString(i18n.locale,{"year":"numeric","month":"2-digit","day":"2-digit"})
         -}
         -}else{
         li.No-reviews-plug=i18n.__("no reviews")

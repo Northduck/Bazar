@@ -1,43 +1,49 @@
 mixin makeCard(data,counts)    
   .Shop-page-product-item
     .Shop-page-product-left-column
-        .Product-active-img-wrapper
-          -let mainImgDir="/img/products/"+(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id))+"/"+(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id))+"1.jpg";
-          img(class="Product-active-img" src= mainImgDir alt='')
-          button.Expand-img-btn
-            i.far.fa-expand-alt
-        .Product-img-slider
-          button.Slide-left-btn
-            i.fas.fa-chevron-left
-          ul.Product-imgs-list
-            -var imgsDir="/img/products/"+(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id))+"/"+(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id));
-            -for(var i=1;i<=data.imgQuan;i++){
-            li(class=i>4 ? "visually-hidden Gallery-item": "Gallery-item")
-              img.Gallery-photo(src= imgsDir+i+".jpg" alt='' width='90' height='90')
-            -}
-          button.Slide-right-btn
-            i.fas.fa-chevron-right
+      .Product-active-img-wrapper
+        -let mainImgDir="/img/products/"+(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id))+"/"+(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id))+"1.jpg";
+        img(class="Product-active-img" src=mainImgDir alt='', data-current-element="0")
+        button.Expand-img-btn
+          i.far.fa-expand-alt
+      .Product-img-slider
+        button.Slide-left-btn
+          i.fas.fa-chevron-left
+        ul.Product-imgs-list
+          -let imgsDir="/img/products/"+(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id))+"/"+(100000000+(Number(data.product_category_id)*10000)+Number(data.product_id));
+          -for(let i=1;i<=data.imgQuan;i++){
+          li(class=i>4 ? "visually-hidden Gallery-item": "Gallery-item")
+            img.Gallery-photo(src= imgsDir+i+".jpg" alt='' width='90' height='90')
+          -}
+        button.Slide-right-btn
+          i.fas.fa-chevron-right
+      .Modal-img-slider-wrapper
+        button.Slide.Slide-left-btn
+          i.fas.fa-chevron-left
+        .Modal-img-wrapper
+          img(src="", alt="")
+        button.Slide.Slide-right-btn
+          i.fas.fa-chevron-right
+        button.Close-modal-window
+          i(class="fas fa-times")
     ul.Shop-page-product-right-column
       li.Product-header-subsection
         .Product-header-row
           h1.Product-name-header= data["product_name_"+i18n.locale]
-          .Change-product-btn-wrapper
-            button.Change-product-btn-left
-              i.fas.fa-chevron-left
-            button.Change-product-btn-right
-              i.fas.fa-chevron-right
         .Product-users-rating-row
           span(class="Product-rating" data-value-rating= data.product_rating)
             include /templates/star_rating.pug
             +makeStarRating(data.product_rating)
-          a.Product-reviews-counter(href='#')= counts+" reviews" 
-          a.Product-to-adding-review-link(href='#')=i18n.__("Add Your Review")
+          a.Product-reviews-counter(href='#Product-reviews-anchor')= counts+i18n.__("reviews") 
+          a.Product-to-adding-review-link(href='#New-review-anchor')=i18n.__("Add Your Review")
       li.Product-price-subsection
+        -let currentPriceConverted=money.convertTo(money({amount:Number.parseInt(data.product_current_price*100)}),session["currency"],currencyRates);
         -if(data.product_previous_price==null){
-        p.New-price= data.product_current_price
+            p.New-price=currentPriceConverted.toFormat("$0,0.00")
         -}else{
-        p.New-price= data.product_current_price
-        p.Old-price= data.product_previous_price
+            -let oldPriceConverted=money.convertTo(money({amount:Number.parseInt(data.product_previous_price*100)}),session["currency"],currencyRates);
+            p.New-price=currentPriceConverted.toFormat("$0,0.00")
+            p.Old-price=oldPriceConverted.toFormat("$0,0.00")
         -}
       li.Product-controls-btns-subsection
         ul.Controls-btns
@@ -49,8 +55,8 @@ mixin makeCard(data,counts)
             button(class="Control-btn Good-like-btn" data-product-id=data.product_id)
               i.far.fa-heart
           li
-            button.Control-btn.Hot-deal-compare
-              i.fas.fa-exchange-alt
+            button(class="Control-btn Compare-btn", data-product-id=data.product_id, data-category-id=data.product_category_id)
+              i.fas.fa-balance-scale
         .Quantity-controls
           label(for='Product-quantity-field')=i18n.__("Quantity")
           button.Quantity-minus-btn
@@ -69,19 +75,19 @@ mixin makeCard(data,counts)
       li.Product-share-subsection
         ul.Product-share-list
           li
-            a.Share-facebook(href='#')
+            a.Share-facebook(href='https://www.facebook.com/')
               i.fab.fa-facebook-f
               | Facebook
           li
-            a.Share-twitter(href='#')
+            a.Share-twitter(href='https://twitter.com/')
               i.fab.fa-twitter
               | Tweet
           li
-            a.Share-pinterest(href='#')
+            a.Share-pinterest(href='https://www.pinterest.com/')
               i.fab.fa-pinterest-p
               | Pinterest
           li
-            a.Share-linkedin(href='#')
+            a.Share-linkedin(href='https://linkedin.com/')
               i.fab.fa-linkedin-in
               | Linkedin
 +makeCard(goodMainInformation[0],reviewsCount[0].count)
