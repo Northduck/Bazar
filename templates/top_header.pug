@@ -2,23 +2,23 @@
   .Header-top.Section-centerer
     .Top-config
       .Config-money
-        a.Current-config-tab.Current-money-tab(href='#')=i18n.__("current_header")
+        a.Current-config-tab.Current-money-tab(href='#')=i18n.__(session["currency"])
           i.fas.fa-caret-down
         ul.Config-money-list
           li
-            a.Config-money-usd(href='#') USD
+            button(class="Change-currency-link" data-currency-value="USD")=i18n.__("USD")
           li
-            a.Config-money-euro(href='#') EUR
+            button(class="Change-currency-link" data-currency-value="EUR")=i18n.__("EUR")
           li
-            a.Config-money-rubles(href='#') RUB
+            button(class="Change-currency-link" data-currency-value="RUB")=i18n.__("RUB")
       .Config-language
         a.Current-config-tab.Current-language-tab(href='#')=i18n.__("language_header")
           i.fas.fa-caret-down
         ul.Config-language-list
           li
-            button(class="Change-language-link" data-language-value="en") English
+            button(class="Change-language-link" data-language-value="en")=i18n.__("english")
           li
-            button(class="Change-language-link" data-language-value="ru") Русский
+            button(class="Change-language-link" data-language-value="ru")=i18n.__("russian")
       .Config-help
         a.Current-config-tab.Current-help-tab(href='#')=i18n.__("variants_header")
           i.fas.fa-caret-down
@@ -53,6 +53,6 @@
           i.fas.fa-heart
           =i18n.__("user_controls_header")["favorites_link_text"]
       li.Profile-compare
-        a(href="#")
-          i.fas.fa-exchange-alt
+        a(href="/compare_goods")
+          i.fas.fa-balance-scale
           =i18n.__("user_controls_header")["compare_link_text"]
