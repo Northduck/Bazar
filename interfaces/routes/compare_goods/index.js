@@ -1,4 +1,6 @@
 let compare = require('express').Router();
-compare.get("/compare_goods",require("../../controllers/compare_goods/main_compare.js"));
+let readyContentCompare=require("../../controllers/compare_goods/main_compare.js");
+let emptyContentCompare=require("../../controllers/compare_goods/empty_content_compare.js");
+compare.get("/compare_goods",emptyContentCompare,readyContentCompare);
 
 module.exports=compare;

@@ -19,90 +19,14 @@ html(lang=i18n.locale)
             include /templates/middle_header.pug
             include /templates/bottom_header.pug
         main.Compare-goods-main
+            include /templates/compare_goods/compare_goods_empty_content_plug.pug
             section.Compare-goods-section.Section-centerer
-                h1.Compare-goods-header
-                    =i18n.__("Compare goods")
-                -if(categoriesInfo!==undefined&&categoriesInfo.length>0){
-                ul.Compare-categories-list
-                    -for(let i=0;i<categoriesInfo.length;i++){
-                    li.Compare-category-el
-                        button(class="Compare-category-name-btn "+(i===0?"Active-slide-btn":"") data-category-id=categoriesInfo[i]["product_category_id"])
-                            =categoriesInfo[i]["product_category_name_"+i18n.locale]
-                    -}
-                ul.Compare-categories-nav-stack
-                    -for(let i=0;i<categoriesInfo.length;i++){
-                    li(class="Compare-categories-nav-el "+(i!==0?"visually-hidden":""))
-                        ul.Compare-category-nav-list
-                            li.Compare-category-nav-el
-                                a(href="/shop_by_room")
-                                    =i18n.__("Furniture")
-                                i.fas.fa-chevron-right
-                            li.Compare-category-nav-el
-                                a(href=`/rooms_categories/${categoriesInfo[i]["type_name_en"]}`)
-                                    =categoriesInfo[i]["type_name_"+i18n.locale]
-                                i.fas.fa-chevron-right
-                            li.Compare-category-nav-el
-                                a(href=`/catalog_goods/${categoriesInfo[i]["product_category_name_en"]}`)
-                                    =categoriesInfo[i]["product_category_name_"+i18n.locale]
-                    -}
-                .Compare-categories-content-section
-                    .Compare-categories-content-controls
-                        button(value="delete all")
-                    ul.Compare-categories-content-list
-                        -let l=0;
-                        -let f=0;
-                        -for(let i=0;i<categoriesInfo.length;i++){
-                        -let categoryID=categoriesInfo[i]["product_category_id"];
-                        li(class="Compare-categories-content-el "+(i!==0?"visually-hidden":""))
-                            ul.Compare-product-head-list
-                                -for(let p=f;p<productsInfo.length;p++){
-                                -if(categoryID!==productsInfo[p]["product_category_id"]){
-                                -f=p;
-                                -break;
-                                -}
-                                li.Compare-product-head-el
-                                    .Compare-head-img-wrapper
-                                        -var ImgDir="/img/products/"+(100000000+(Number(productsInfo[p].product_category_id)*10000)+Number(productsInfo[p].product_id))+"/"+(100000000+(Number(productsInfo[p].product_category_id)*10000)+Number(productsInfo[p].product_id))+"1.jpg";
-                                        img(src=ImgDir, alt="" width='200' height='200')
-                                    a(href=`goods/${productsInfo[p].product_id}` class="Item-header-link")    
-                                        p.Compare-head-product-name
-                                            =productsInfo[p]["product_name_"+i18n.locale]
-                                    .Compare-product-rating-wrapper
-                                        include /templates/star_rating.pug
-                                        +makeStarRating(productsInfo[p].product_rating)
-                                    .Item-price
-                                        -if(productsInfo[p].product_previous_price==null){
-                                        p.New-price= productsInfo[p].product_current_price
-                                        -}else{
-                                        p.New-price= productsInfo[p].product_current_price
-                                        p.Old-price= productsInfo[p].product_previous_price
-                                        -}
-                                -}
-                            h2.Compare-characteristics-header
-                                |Characteristics
-                            -for(let n=l;n<productsCharacteristics.length;n++){
-                            -if(categoryID!==productsCharacteristics[n]["product_category_id"]){
-                            -l=n;
-                            -break;
-                            -}
-                            ul.Compare-products-rows-list
-                                li.Compare-products-row
-                                    .Compare-characteristic-name-wrapper
-                                        h3.Compare-characteristic-name
-                                            =productsCharacteristics[n]["product_characteristic_name_"+i18n.locale]
-                                    ul.Compare-characteristics-values-list
-                                        -let productCharacteristicID=productsCharacteristics[n]["product_characteristic_id"];
-                                        -for(let j=n;j<productsCharacteristics.length;j++){
-                                        -if(productCharacteristicID!==productsCharacteristics[j]["product_characteristic_id"]){
-                                        -n=j-1;
-                                        -break;
-                                        -}
-                                        li(class="Compare-characteristics-value "+(j%2!==0?" Different-color-cell":""))
-                                            =productsCharacteristics[j]["product_characteristic_value_"+i18n.locale]
-                                        -}
-                            -}
-                        -}
+                -if(contentEmpty!==true){
+                include /templates/compare_goods/compare_goods_content.pug
+                -}else{
+                    +emptyPlug(false)
                 -}
+            +emptyPlug(true)
         footer.Footer
             include /templates/footer_top.pug
             include /templates/footer_bottom.pug

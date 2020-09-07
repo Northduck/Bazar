@@ -1,0 +1,5 @@
+mixin emptyPlug(isHidden)
+    div(class="Compare-emptyness-plug Section-centerer"+(isHidden===true?" visually-hidden":""))
+        h2.Compare-emptyness-header=i18n.__("Compare-emptyness-header")
+        p.Compare-emptyness-par=i18n.__("Compare-emptyness-par")
+            a(href="/shop_by_room",class="Compare-emptyness-link")=i18n.__("Compare-emptyness-link")
