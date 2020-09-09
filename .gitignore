@@ -3,7 +3,7 @@ Img
 img
 webfonts
 Css
-package*
 config
 *.sql
 .vscode
+.*
