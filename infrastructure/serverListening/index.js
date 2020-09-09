@@ -10,9 +10,9 @@ module.exports=({config, app})=>{
         const promisifyListening=promisify(app.listen);
         await promisifyListening(app.get("port"));
         console.log(`Listening ${config.get("port")}`);*/
-        app.set("port", await config.get("port"));
+        app.set("port", process.env.PORT);
         app.listen(app.get("port"), () => {
-          console.log(`Listening ${config.get("port")}`);
+            console.log(`Listening ${config.get("port")}`);
         });
     }
 }

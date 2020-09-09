@@ -3,10 +3,25 @@ const {Pool}=require("pg");
 const pgSession = require('connect-pg-simple')(session);
 const container=require("../../infrastructure/infrastructureContainer.js");
 const {config}=container.cradle;
-const pgPool = new Pool(config.get("postgresBd"));
-
+let pgPool;
+if(process.env.NODE_ENV==="production"){
+    pgPool=new Pool({
+    connectionString:process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false
+    }
+  });
+}else{
+    pgPool=new Pool({
+        "host":process.env.HOST,
+        "database":process.env.DATABASE,
+        "user":process.env.USER,
+        "schema":process.env.SCHEMA,
+        "password":process.env.PASSWORD
+    });
+}
 module.exports=session({
-    secret:config.get("session:secret"),
+    secret:process.env.SECRET,
     store: new pgSession({
         pool : pgPool,
         tableName:"user_session",

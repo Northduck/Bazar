@@ -1,5 +1,10 @@
 "use strict";
-
+let dotenv=require('dotenv');
+try {
+  dotenv.config();
+} catch (error) {
+  console.log(error);
+}
 const container=require("./infrastructure/infrastructureContainer.js");
 const Server=require("./interfaces/server/index.js");
 
