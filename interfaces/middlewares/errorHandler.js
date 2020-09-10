@@ -1,6 +1,6 @@
 const makePage=require("../../interfaces/utilities/makePage");
 module.exports=async (err,req,res,next)=>{
-    console.log(req.originalUrl,"   ",req.headers,"   ",req.accepts("image/*"),"\n\n\n");
+    console.log("\n\nError handler URL= ",req.originalUrl,"\n\n");
     if (!err.statusCode) {
         err.statusCode = 500;
     }
